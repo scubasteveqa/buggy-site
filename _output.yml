@@ -1,0 +1,25 @@
+bookdown::gitbook:
+  css: style.css
+  encoding: UTF-8
+  self_contained: true
+  documentclass: book
+  config:
+    toc:
+      before: |
+        <li><a href="./">Uvod u R i R Studio</a></li>
+        <li><img src='https://raw.githubusercontent.com/kakoste/Uvod_u_R_i_R_Studio/intro.png' width='280px'></li>
+      after: |
+        <li><img src='https://raw.githubusercontent.com/kakoste/Uvod_u_R_i_R_Studio/unipu.png' width='250px'></li>
+        <li><a href=" " target="blank"> <br>  </a></li>
+      scroll_highlight: true
+      collapse: section
+      toolbar:
+        position: fixed
+    toc_depth: 2
+    lot: yes
+    lof: yes
+  edit : null
+  download: ["pdf", "epub"]
+  search:
+    engine: lunr
+  sharing: null

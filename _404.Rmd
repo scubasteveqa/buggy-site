@@ -1,0 +1,102 @@
+---
+title: "_404"
+author: ' '
+date: ' '
+output:
+  html_document:
+    df_print: paged
+  bookdown::epub_book:
+    toc: yes
+    number_sections: no
+    toc_depth: 3
+  pdf_document:
+    toc: yes
+    toc_depth: '3'
+fontsize: 12pt
+biblio-style: apalike
+bibliography: bibfile.bib
+---
+
+<div style="display:none;">
+# _404{-}
+</div>
+
+<div style="display: flex; align-items: center;">
+<div style="margin-right: 10px;">
+
+Dobrodošli na mrežno izdanje priručnika **Uvod u R i R Studio**, osmišljenog kako bi vam pružio jednostavan i pristupačan uvod u programski jezik R i razvojno okruženje R Studio.
+
+</div>
+<div>
+![ ](cover.png){width=50%}
+  </div>
+</div>
+
+<br>
+<br>
+<hr>
+<br>
+<br>
+
+\pagebreak
+
+
+
+<div align="center">
+
+<p style="font-size: 16px"> Izdavač i sjedište </p>
+
+<p style="font-size: 14px"> <strong> Sveučilište Jurja Dobrile u Puli </strong></p>
+Zagrebačka 30, Pula
+
+<br>
+
+<p style="font-size: 16px"> Za izdavača </p>
+
+<p style="font-size: 14px"> <strong> prof. dr. sc. Marinko Škare </strong></p>
+
+<br>
+
+<p style="font-size: 16px"> Autori</p>
+
+<p style="font-size: 14px"> <strong> Katarina Kostelić </strong></p>
+
+<p style="font-size: 14px"> <strong> Darko Etinger </strong></p>
+
+<br>
+
+<p style="font-size: 16px"> Recenzenti:</p>
+
+<p style="font-size: 14px"> <strong> Siniša Sovilj </strong></p>
+<p style="font-size: 14px"> <strong> Siniša Miličić </strong></p>
+<p style="font-size: 14px"> <strong> Ivan Lorencin </strong></p>
+<p style="font-size: 14px"> <strong> Marko Turk </strong></p>
+
+<br>
+<p style="font-size: 16px"> Lektura:</p>
+<p style="font-size: 14px"><strong> Nitor usluge d.o.o.</strong></p> 
+Petračićeva 4, 10000 Zagreb
+
+<br>
+
+<p style="font-size: 16px"> Grafičko oblikovanje i prijelom </p>
+
+<p style="font-size: 14px"> <strong> RMarkdown, gitbook, DALL·E </strong></p>
+
+<br>
+
+<p style="font-size: 16px"> ISBN 978-953-377-068-0 </p>
+
+<br>
+
+<p style="font-size: 16px"> DOI 10.17605/OSF.IO/DNFM8 </p>
+
+<br>
+
+<p style="font-size: 16px"> Broj i datum odluke Odbora za izdavačku djelatnost:</p>
+
+<p style="font-size: 14px"> <strong> Sveučilišni priručnik objavljen je na temelju Odluke Odbora za izdavačku djelatnost Sveučilišta Jurja Dobrile u Puli, KLASA: 611-04/24-01/35, URBROJ: 143-01-15-24-1 od 16. prosinca 2024. godine. </strong></p>
+
+</div>
+
+\pagebreak

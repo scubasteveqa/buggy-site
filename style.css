@@ -1,0 +1,63 @@
+@media screen {
+  .book .book-body .page-wrapper .page-inner {
+    background-color: #f0f0f0;
+  }
+}
+
+.book .book-body .page-wrapper .page-inner {
+  background-color: #f0f0f0;
+}
+
+body {
+  background-color: #f8f8f8;
+}
+
+.book .book-body .body-inner {
+  background-color: #f8f8f8;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal h1.title {
+  text-align: center;
+}
+
+h1 {
+  color: #8B4513;
+}
+
+h2, h3, h4, h5, h6 {
+  color: #5C4033;
+}
+
+p.caption {
+  color: #771;
+  margin-top: 10px;
+}
+
+p code {
+  white-space: inherit;
+}
+
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+
+pre code {
+  white-space: inherit;
+}
+
+pre.sourceCode {
+  background-color: #d3d3d3; 
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+pre.sourceCode code {
+  background-color: #d3d3d3;
+}
+.book .book-body .page-wrapper .page-inner section.normal pre.output{
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-radius: 5px;
+}

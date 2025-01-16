@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title> 9 Elementi kontrole toka | Uvod u R i R Studio</title>
+  <meta name="description" content=" 9 Elementi kontrole toka | Uvod u R i R Studio" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content=" 9 Elementi kontrole toka | Uvod u R i R Studio" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content=" 9 Elementi kontrole toka | Uvod u R i R Studio" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="uvozpodataka.html"/>
+<link rel="next" href="kreiranjefunkcija.html"/>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="site_libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="site_libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="site_libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="site_libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="site_libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="site_libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="site_libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="site_libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="site_libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="site_libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Uvod u R i R Studio</a></li>
+<li><img src='intro.png' width='280px'></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="uvod-u-r-i-r-studio.html"><a href="uvod-u-r-i-r-studio.html"><i class="fa fa-check"></i>Uvod u R i R Studio</a></li>
+<li class="chapter" data-level="" data-path="impressum.html"><a href="impressum.html"><i class="fa fa-check"></i>Impressum</a></li>
+<li class="chapter" data-level="" data-path="predgovor.html"><a href="predgovor.html"><i class="fa fa-check"></i>Predgovor</a></li>
+<li class="chapter" data-level="1" data-path="rirstudio.html"><a href="rirstudio.html"><i class="fa fa-check"></i><b>1</b> R i RStudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="rirstudio.html"><a href="rirstudio.html#upotreba-r-a-i-rstudija-u-praksi"><i class="fa fa-check"></i><b>1.1</b> Upotreba R-a i RStudija u praksi</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="rirstudio.html"><a href="rirstudio.html#upravljanje-podacima-i-manipulacija"><i class="fa fa-check"></i><b>1.1.1</b> Upravljanje podacima i manipulacija</a></li>
+<li class="chapter" data-level="1.1.2" data-path="rirstudio.html"><a href="rirstudio.html#analiza-podataka"><i class="fa fa-check"></i><b>1.1.2</b> Analiza podataka</a></li>
+<li class="chapter" data-level="1.1.3" data-path="rirstudio.html"><a href="rirstudio.html#vizualizacija"><i class="fa fa-check"></i><b>1.1.3</b> Vizualizacija</a></li>
+<li class="chapter" data-level="1.1.4" data-path="rirstudio.html"><a href="rirstudio.html#reprodukcija-istraživanja-i-simulacija"><i class="fa fa-check"></i><b>1.1.4</b> Reprodukcija istraživanja i simulacija</a></li>
+<li class="chapter" data-level="1.1.5" data-path="rirstudio.html"><a href="rirstudio.html#praktične-primjene-u-različitim-sektorima"><i class="fa fa-check"></i><b>1.1.5</b> Praktične primjene u različitim sektorima</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="rirstudio.html"><a href="rirstudio.html#razumijevanje-r-a-i-osnova-rada-u-r-u"><i class="fa fa-check"></i><b>1.2</b> Razumijevanje R-a i osnova rada u R-u</a></li>
+<li class="chapter" data-level="1.3" data-path="rirstudio.html"><a href="rirstudio.html#statistika-i-grafički-prikaz-u-r-u"><i class="fa fa-check"></i><b>1.3</b> Statistika i grafički prikaz u R-u</a></li>
+<li class="chapter" data-level="1.4" data-path="rirstudio.html"><a href="rirstudio.html#napredne-tehnike-i-rješavanje-problema"><i class="fa fa-check"></i><b>1.4</b> Napredne tehnike i rješavanje problema</a></li>
+<li class="chapter" data-level="1.5" data-path="rirstudio.html"><a href="rirstudio.html#gdje-pronaći-pomoć-i-resurse"><i class="fa fa-check"></i><b>1.5</b> Gdje pronaći pomoć i resurse</a></li>
+<li class="chapter" data-level="1.6" data-path="rirstudio.html"><a href="rirstudio.html#općeniti-savjeti"><i class="fa fa-check"></i><b>1.6</b> Općeniti savjeti</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html"><i class="fa fa-check"></i><b>2</b> Osnovni pojmovi i prvi koraci</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#okruženje-ili-environment"><i class="fa fa-check"></i><b>2.1</b> Okruženje ili environment</a></li>
+<li class="chapter" data-level="2.2" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#konzola"><i class="fa fa-check"></i><b>2.2</b> Konzola</a></li>
+<li class="chapter" data-level="2.3" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#datoteke-i-radni-direktorij"><i class="fa fa-check"></i><b>2.3</b> Datoteke i radni direktorij</a></li>
+<li class="chapter" data-level="2.4" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#projekti"><i class="fa fa-check"></i><b>2.4</b> Projekti</a></li>
+<li class="chapter" data-level="2.5" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#skripte"><i class="fa fa-check"></i><b>2.5</b> Skripte</a></li>
+<li class="chapter" data-level="2.6" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#plots-viewer-i-help"><i class="fa fa-check"></i><b>2.6</b> Plots, Viewer i Help</a></li>
+<li class="chapter" data-level="2.7" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#paketi"><i class="fa fa-check"></i><b>2.7</b> Paketi</a></li>
+<li class="chapter" data-level="2.8" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#najčešće-početničke-greške"><i class="fa fa-check"></i><b>2.8</b> Najčešće početničke greške</a></li>
+<li class="chapter" data-level="" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#pitanja-za-ponavljanje"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="instalacijaiaktivacijapaketa.html"><a href="instalacijaiaktivacijapaketa.html"><i class="fa fa-check"></i><b>3</b> Instalacija i aktivacija paketa</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="instalacijaiaktivacijapaketa.html"><a href="instalacijaiaktivacijapaketa.html#instalacija-paketa"><i class="fa fa-check"></i><b>3.1</b> Instalacija paketa</a></li>
+<li class="chapter" data-level="3.2" data-path="instalacijaiaktivacijapaketa.html"><a href="instalacijaiaktivacijapaketa.html#učitavanje-paketa"><i class="fa fa-check"></i><b>3.2</b> Učitavanje paketa</a></li>
+<li class="chapter" data-level="3.3" data-path="instalacijaiaktivacijapaketa.html"><a href="instalacijaiaktivacijapaketa.html#ažuriranje-paketa"><i class="fa fa-check"></i><b>3.3</b> Ažuriranje paketa</a></li>
+<li class="chapter" data-level="3.4" data-path="instalacijaiaktivacijapaketa.html"><a href="instalacijaiaktivacijapaketa.html#najčešće-pogreške"><i class="fa fa-check"></i><b>3.4</b> Najčešće pogreške</a></li>
+<li class="chapter" data-level="" data-path="instalacijaiaktivacijapaketa.html"><a href="instalacijaiaktivacijapaketa.html#pitanja-za-ponavljanje-1"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="identifikatori-i-vrijednosti.html"><a href="identifikatori-i-vrijednosti.html"><i class="fa fa-check"></i><b>4</b> Identifikatori i vrijednosti</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="identifikatori-i-vrijednosti.html"><a href="identifikatori-i-vrijednosti.html#osnovnitipovipodataka"><i class="fa fa-check"></i><b>4.1</b> Osnovni tipovi podataka</a></li>
+<li class="chapter" data-level="" data-path="identifikatori-i-vrijednosti.html"><a href="identifikatori-i-vrijednosti.html#pitanja-za-ponavljanje-2"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+<li class="chapter" data-level="4.2" data-path="identifikatori-i-vrijednosti.html"><a href="identifikatori-i-vrijednosti.html#nazivi"><i class="fa fa-check"></i><b>4.2</b> Nazivi</a></li>
+<li class="chapter" data-level="" data-path="identifikatori-i-vrijednosti.html"><a href="identifikatori-i-vrijednosti.html#pitanja-za-ponavljanje-3"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+<li class="chapter" data-level="4.3" data-path="identifikatori-i-vrijednosti.html"><a href="identifikatori-i-vrijednosti.html#kreiranjevarijabli"><i class="fa fa-check"></i><b>4.3</b> Kreiranje varijabli</a></li>
+<li class="chapter" data-level="" data-path="identifikatori-i-vrijednosti.html"><a href="identifikatori-i-vrijednosti.html#pitanja-za-ponavljanje-4"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="osnovni-operatori-i-funkcije.html"><a href="osnovni-operatori-i-funkcije.html"><i class="fa fa-check"></i><b>5</b> Osnovni operatori i funkcije</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="osnovni-operatori-i-funkcije.html"><a href="osnovni-operatori-i-funkcije.html#operatoriuR-u"><i class="fa fa-check"></i><b>5.1</b> Operatori u R-u</a></li>
+<li class="chapter" data-level="" data-path="osnovni-operatori-i-funkcije.html"><a href="osnovni-operatori-i-funkcije.html#pitanja-za-ponavljanje-5"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+<li class="chapter" data-level="5.2" data-path="osnovni-operatori-i-funkcije.html"><a href="osnovni-operatori-i-funkcije.html#osnovnefunkcije"><i class="fa fa-check"></i><b>5.2</b> Osnovne funkcije</a></li>
+<li class="chapter" data-level="" data-path="osnovni-operatori-i-funkcije.html"><a href="osnovni-operatori-i-funkcije.html#pitanja-za-ponavljanje-6"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html"><i class="fa fa-check"></i><b>6</b> Jednodimenzionalni tip podataka</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#kreiranjevektora"><i class="fa fa-check"></i><b>6.1</b> Kreiranje vektora</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#kreiranje-vektora-koristeći-izravan-upis-elemenata"><i class="fa fa-check"></i><b>6.1.1</b> Kreiranje vektora koristeći izravan upis elemenata</a></li>
+<li class="chapter" data-level="6.1.2" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#vektor-indeksa"><i class="fa fa-check"></i><b>6.1.2</b> Vektor indeksa</a></li>
+<li class="chapter" data-level="6.1.3" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#kreiranje-vektora-cjelobrojnih-vrijednosti-u-zadanom-intervalu"><i class="fa fa-check"></i><b>6.1.3</b> Kreiranje vektora cjelobrojnih vrijednosti u zadanom intervalu</a></li>
+<li class="chapter" data-level="6.1.4" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#kreiranje-sekvencijskih-vektora"><i class="fa fa-check"></i><b>6.1.4</b> Kreiranje sekvencijskih vektora</a></li>
+<li class="chapter" data-level="6.1.5" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#kreiranje-vektora-s-ponovljenim-vrijednostima"><i class="fa fa-check"></i><b>6.1.5</b> Kreiranje vektora s ponovljenim vrijednostima</a></li>
+<li class="chapter" data-level="6.1.6" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#kreiranje-vektora-koristeći-teorijske-distribucije-vjerojatnosti-generator-slučajnih-brojeva"><i class="fa fa-check"></i><b>6.1.6</b> Kreiranje vektora koristeći teorijske distribucije vjerojatnosti/ generator slučajnih brojeva</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#radsvektorima"><i class="fa fa-check"></i><b>6.2</b> Rad s vektorima</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#spajanje-vektora"><i class="fa fa-check"></i><b>6.2.1</b> Spajanje vektora</a></li>
+<li class="chapter" data-level="6.2.2" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#sortiranje-elemenata-vektora"><i class="fa fa-check"></i><b>6.2.2</b> Sortiranje elemenata vektora</a></li>
+<li class="chapter" data-level="6.2.3" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#tip-vektora"><i class="fa fa-check"></i><b>6.2.3</b> Tip vektora</a></li>
+<li class="chapter" data-level="6.2.4" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#dodavanje-atributa"><i class="fa fa-check"></i><b>6.2.4</b> Dodavanje atributa</a></li>
+<li class="chapter" data-level="6.2.5" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#duljina-vektora"><i class="fa fa-check"></i><b>6.2.5</b> Duljina vektora</a></li>
+<li class="chapter" data-level="6.2.6" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#odabir-elemenata-vektora"><i class="fa fa-check"></i><b>6.2.6</b> Odabir elemenata vektora</a></li>
+<li class="chapter" data-level="6.2.7" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#zamjena-i-brisanje-elemenata-vektora"><i class="fa fa-check"></i><b>6.2.7</b> Zamjena i brisanje elemenata vektora</a></li>
+<li class="chapter" data-level="6.2.8" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#operacije-na-vektorima"><i class="fa fa-check"></i><b>6.2.8</b> Operacije na vektorima</a></li>
+<li class="chapter" data-level="6.2.9" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#izračun-pokazatelja-deskriptivne-statistike-vektora"><i class="fa fa-check"></i><b>6.2.9</b> Izračun pokazatelja deskriptivne statistike vektora</a></li>
+<li class="chapter" data-level="6.2.10" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#recikliranje-vektora"><i class="fa fa-check"></i><b>6.2.10</b> Recikliranje vektora</a></li>
+<li class="chapter" data-level="6.2.11" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#usporedba-vektora"><i class="fa fa-check"></i><b>6.2.11</b> Usporedba vektora</a></li>
+<li class="chapter" data-level="6.2.12" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#logički-upiti"><i class="fa fa-check"></i><b>6.2.12</b> Logički upiti</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#pitanja-za-ponavljanje-7"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+<li class="chapter" data-level="6.3" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#kreiranjefaktora"><i class="fa fa-check"></i><b>6.3</b> Kreiranje faktora</a></li>
+<li class="chapter" data-level="6.4" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#najčešće-greške-pri-kreiranju-i-radu-s-faktorima"><i class="fa fa-check"></i><b>6.4</b> Najčešće greške pri kreiranju i radu s faktorima</a></li>
+<li class="chapter" data-level="" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#pitanja-za-ponavljanje-8"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html"><i class="fa fa-check"></i><b>7</b> Visediomenzionalni tipovi podataka</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#kreiranjematrice"><i class="fa fa-check"></i><b>7.1</b> Kreiranje matrice</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#kreiranje-matrice-koristeći-izravan-upis-elemenata"><i class="fa fa-check"></i><b>7.1.1</b> Kreiranje matrice koristeći izravan upis elemenata</a></li>
+<li class="chapter" data-level="7.1.2" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#matrica-indeksa"><i class="fa fa-check"></i><b>7.1.2</b> Matrica indeksa</a></li>
+<li class="chapter" data-level="7.1.3" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#kreiranje-matrice-iz-vektora"><i class="fa fa-check"></i><b>7.1.3</b> Kreiranje matrice iz vektora</a></li>
+<li class="chapter" data-level="7.1.4" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#dodjela-atributa"><i class="fa fa-check"></i><b>7.1.4</b> Dodjela atributa</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#radsmatricama"><i class="fa fa-check"></i><b>7.2</b> Rad s matricama</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#provjera-tipa-matrice"><i class="fa fa-check"></i><b>7.2.1</b> Provjera tipa matrice</a></li>
+<li class="chapter" data-level="7.2.2" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#odabir-elemenata-matrice"><i class="fa fa-check"></i><b>7.2.2</b> Odabir elemenata matrice</a></li>
+<li class="chapter" data-level="7.2.3" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#zamjena-elemenata-matrica"><i class="fa fa-check"></i><b>7.2.3</b> Zamjena elemenata matrica</a></li>
+<li class="chapter" data-level="7.2.4" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#filtriranje-matrice---odabir-elemenata-prema-kriteriju"><i class="fa fa-check"></i><b>7.2.4</b> Filtriranje matrice - odabir elemenata prema kriteriju</a></li>
+<li class="chapter" data-level="7.2.5" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#kreiranje-matrice-s-ponovljenim-vrijednostima-i-zadavanje-dijagonale"><i class="fa fa-check"></i><b>7.2.5</b> Kreiranje matrice s ponovljenim vrijednostima i zadavanje dijagonale</a></li>
+<li class="chapter" data-level="7.2.6" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#spajanje-matrica"><i class="fa fa-check"></i><b>7.2.6</b> Spajanje matrica</a></li>
+<li class="chapter" data-level="7.2.7" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#operacije-na-matricama"><i class="fa fa-check"></i><b>7.2.7</b> Operacije na matricama</a></li>
+<li class="chapter" data-level="7.2.8" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#konverzija-matrice-u-vektor"><i class="fa fa-check"></i><b>7.2.8</b> Konverzija matrice u vektor</a></li>
+<li class="chapter" data-level="7.2.9" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#konverzija-matrice-u-podatkovni-okvir"><i class="fa fa-check"></i><b>7.2.9</b> Konverzija matrice u podatkovni okvir</a></li>
+<li class="chapter" data-level="7.2.10" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#izračun-pokazatelja-deskriptivne-statistike-za-matrice"><i class="fa fa-check"></i><b>7.2.10</b> Izračun pokazatelja deskriptivne statistike za matrice</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#prednosti-i-nedostaci-rada-s-matricama-te-najčešće-greške"><i class="fa fa-check"></i><b>7.3</b> Prednosti i nedostaci rada s matricama te najčešće greške</a></li>
+<li class="chapter" data-level="" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#pitanja-za-ponavljanje-9"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+<li class="chapter" data-level="7.4" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#kreiranjeiradslistama"><i class="fa fa-check"></i><b>7.4</b> Kreiranje i rad s listama</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#dodavanje-atributa-1"><i class="fa fa-check"></i><b>7.4.1</b> Dodavanje atributa</a></li>
+<li class="chapter" data-level="7.4.2" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#odabir-elemenata"><i class="fa fa-check"></i><b>7.4.2</b> Odabir elemenata</a></li>
+<li class="chapter" data-level="7.4.3" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#dodavanje-elemenata"><i class="fa fa-check"></i><b>7.4.3</b> Dodavanje elemenata</a></li>
+<li class="chapter" data-level="7.4.4" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#izmjena-ili-brisanje-elementa"><i class="fa fa-check"></i><b>7.4.4</b> Izmjena ili brisanje elementa</a></li>
+<li class="chapter" data-level="7.4.5" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#spajanje-lista"><i class="fa fa-check"></i><b>7.4.5</b> Spajanje lista</a></li>
+<li class="chapter" data-level="7.4.6" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#razdvajanje-lista"><i class="fa fa-check"></i><b>7.4.6</b> Razdvajanje lista</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#prednosti-i-nedostaci-rada-s-listama-te-najčešće-greške"><i class="fa fa-check"></i><b>7.5</b> Prednosti i nedostaci rada s listama te najčešće greške</a></li>
+<li class="chapter" data-level="" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#pitanja-za-ponavljanje-10"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+<li class="chapter" data-level="7.6" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#kreiranje-podatkovnih-okvira-data-frame"><i class="fa fa-check"></i><b>7.6</b> Kreiranje podatkovnih okvira (data frame)</a></li>
+<li class="chapter" data-level="7.7" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#radspodatkovnimokvirima"><i class="fa fa-check"></i><b>7.7</b> Rad s podatkovnim okvirima</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#uvid-u-podatkovni-okvir"><i class="fa fa-check"></i><b>7.7.1</b> Uvid u podatkovni okvir</a></li>
+<li class="chapter" data-level="7.7.2" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#odabir-elemenata-1"><i class="fa fa-check"></i><b>7.7.2</b> Odabir elemenata</a></li>
+<li class="chapter" data-level="7.7.3" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#dodavanje-elemenata-1"><i class="fa fa-check"></i><b>7.7.3</b> Dodavanje elemenata</a></li>
+<li class="chapter" data-level="7.7.4" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#podskup-podatkovnog-okvira-prema-kriteriju-filtriranje"><i class="fa fa-check"></i><b>7.7.4</b> Podskup podatkovnog okvira prema kriteriju (filtriranje)</a></li>
+<li class="chapter" data-level="7.7.5" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#sortiranje-elemenata"><i class="fa fa-check"></i><b>7.7.5</b> Sortiranje elemenata</a></li>
+<li class="chapter" data-level="7.7.6" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#brisanje-elemenata"><i class="fa fa-check"></i><b>7.7.6</b> Brisanje elemenata</a></li>
+<li class="chapter" data-level="7.7.7" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#učitavanje-podatkovnog-okvira-sadržanog-u-r-u"><i class="fa fa-check"></i><b>7.7.7</b> Učitavanje podatkovnog okvira sadržanog u R-u</a></li>
+<li class="chapter" data-level="7.7.8" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#izračun-pokazatelja-deskriptivne-statistike"><i class="fa fa-check"></i><b>7.7.8</b> Izračun pokazatelja deskriptivne statistike</a></li>
+<li class="chapter" data-level="7.7.9" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#pretvaranje-varijable-u-faktor-unutar-postojećeg-podatkovnog-okvira"><i class="fa fa-check"></i><b>7.7.9</b> Pretvaranje varijable u faktor unutar postojećeg podatkovnog okvira</a></li>
+<li class="chapter" data-level="7.7.10" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#pretvaranje-podatkovnog-okvira-u-tablicu"><i class="fa fa-check"></i><b>7.7.10</b> Pretvaranje podatkovnog okvira u tablicu</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#prednosti-i-nedostaci-rada-s-podatkovnim-okvirima-te-najčešće-greške"><i class="fa fa-check"></i><b>7.8</b> Prednosti i nedostaci rada s podatkovnim okvirima te najčešće greške</a></li>
+<li class="chapter" data-level="" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#pitanja-za-ponavljanje-11"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+<li class="chapter" data-level="7.9" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#kreiranjetablica"><i class="fa fa-check"></i><b>7.9</b> Kreiranje tablica</a></li>
+<li class="chapter" data-level="7.10" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#prednosti-i-nedostaci-tablica-te-najčešće-greške"><i class="fa fa-check"></i><b>7.10</b> Prednosti i nedostaci tablica te najčešće greške</a></li>
+<li class="chapter" data-level="" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#pitanja-za-ponavljanje-12"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="uvozpodataka.html"><a href="uvozpodataka.html"><i class="fa fa-check"></i><b>8</b> Uvoz podataka</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="uvozpodataka.html"><a href="uvozpodataka.html#uvoz-podataka-pohranjenih-na-računalu"><i class="fa fa-check"></i><b>8.1</b> Uvoz podataka pohranjenih na računalu</a></li>
+<li class="chapter" data-level="8.2" data-path="uvozpodataka.html"><a href="uvozpodataka.html#uvoz-podataka-iz-r-paketa"><i class="fa fa-check"></i><b>8.2</b> Uvoz podataka iz R paketa</a></li>
+<li class="chapter" data-level="8.3" data-path="uvozpodataka.html"><a href="uvozpodataka.html#dohvaćanje-i-uvoz-podataka-iz-online-izvora"><i class="fa fa-check"></i><b>8.3</b> Dohvaćanje i uvoz podataka iz online izvora</a></li>
+<li class="chapter" data-level="8.4" data-path="uvozpodataka.html"><a href="uvozpodataka.html#uvoz-podataka-iz-baza-podataka"><i class="fa fa-check"></i><b>8.4</b> Uvoz podataka iz baza podataka</a></li>
+<li class="chapter" data-level="8.5" data-path="uvozpodataka.html"><a href="uvozpodataka.html#uobičajene-greške-pri-uvozu-podataka"><i class="fa fa-check"></i><b>8.5</b> Uobičajene greške pri uvozu podataka</a></li>
+<li class="chapter" data-level="" data-path="uvozpodataka.html"><a href="uvozpodataka.html#pitanja-za-ponavljanje-13"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html"><i class="fa fa-check"></i><b>9</b> Elementi kontrole toka</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html#for"><i class="fa fa-check"></i><b>9.1</b> for</a></li>
+<li class="chapter" data-level="9.2" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html#apply-sapply-lapply"><i class="fa fa-check"></i><b>9.2</b> apply, sapply, lapply</a></li>
+<li class="chapter" data-level="9.3" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html#if"><i class="fa fa-check"></i><b>9.3</b> if</a></li>
+<li class="chapter" data-level="9.4" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html#ifelse"><i class="fa fa-check"></i><b>9.4</b> ifelse</a></li>
+<li class="chapter" data-level="9.5" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html#razlika-između-ifelse-i-kombinecije-if-i-else"><i class="fa fa-check"></i><b>9.5</b> Razlika između ifelse i kombinecije if i else</a></li>
+<li class="chapter" data-level="9.6" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html#switch"><i class="fa fa-check"></i><b>9.6</b> switch</a></li>
+<li class="chapter" data-level="9.7" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html#while"><i class="fa fa-check"></i><b>9.7</b> while</a></li>
+<li class="chapter" data-level="" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html#pitanja-za-ponavljanje-14"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="kreiranjefunkcija.html"><a href="kreiranjefunkcija.html"><i class="fa fa-check"></i><b>10</b> Kreiranje funkcija</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="kreiranjefunkcija.html"><a href="kreiranjefunkcija.html#funkcije-s-više-argumenata"><i class="fa fa-check"></i><b>10.1</b> Funkcije s više argumenata</a></li>
+<li class="chapter" data-level="10.2" data-path="kreiranjefunkcija.html"><a href="kreiranjefunkcija.html#zadane-vrijednosti-argumenata"><i class="fa fa-check"></i><b>10.2</b> Zadane vrijednosti argumenata</a></li>
+<li class="chapter" data-level="10.3" data-path="kreiranjefunkcija.html"><a href="kreiranjefunkcija.html#funkcije-koje-vraćaju-više-vrijednosti"><i class="fa fa-check"></i><b>10.3</b> Funkcije koje vraćaju više vrijednosti</a></li>
+<li class="chapter" data-level="" data-path="kreiranjefunkcija.html"><a href="kreiranjefunkcija.html#pitanja-za-ponavljanje-15"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="jednostavnevizualizacije.html"><a href="jednostavnevizualizacije.html"><i class="fa fa-check"></i><b>11</b> Jednostavne vizualizacije</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="jednostavnevizualizacije.html"><a href="jednostavnevizualizacije.html#primjeri-najčešće-korištenih-vizualizacija"><i class="fa fa-check"></i><b>11.1</b> Primjeri najčešće korištenih vizualizacija</a></li>
+<li class="chapter" data-level="11.2" data-path="jednostavnevizualizacije.html"><a href="jednostavnevizualizacije.html#prilagodba-grafikona"><i class="fa fa-check"></i><b>11.2</b> Prilagodba grafikona</a></li>
+<li class="chapter" data-level="11.3" data-path="jednostavnevizualizacije.html"><a href="jednostavnevizualizacije.html#prednosti-i-nedostaci-vizualizacija-u-r-u-te-najčešće-pogreške"><i class="fa fa-check"></i><b>11.3</b> Prednosti i nedostaci vizualizacija u R-u te najčešće pogreške</a></li>
+<li class="chapter" data-level="" data-path="jednostavnevizualizacije.html"><a href="jednostavnevizualizacije.html#pitanja-za-ponavljanje-16"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="primjerupravljanjapodacima.html"><a href="primjerupravljanjapodacima.html"><i class="fa fa-check"></i><b>12</b> Primjer upravljanja podacima</a>
+<ul>
+<li class="chapter" data-level="" data-path="primjerupravljanjapodacima.html"><a href="primjerupravljanjapodacima.html#pitanja-za-ponavljanje-17"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+<li class="chapter" data-level="" data-path="primjerupravljanjapodacima.html"><a href="primjerupravljanjapodacima.html#zadaci"><i class="fa fa-check"></i>Zadaci</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="prilagodbara.html"><a href="prilagodbara.html"><i class="fa fa-check"></i><b>13</b> Prilagodba R-a</a></li>
+<li class="chapter" data-level="" data-path="literatura.html"><a href="literatura.html"><i class="fa fa-check"></i>Literatura</a></li>
+<li class="divider"></li>
+<li><img src='unipu.png' width='250px'></li>
+<li><a href=" " target="blank"> <br> Published with bookdown </a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Uvod u R i R Studio</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="elementikontroletoka" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number"> 9</span> Elementi kontrole toka<a href="elementikontroletoka.html#elementikontroletoka" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Ovo poglavlje uvodi osnovne elemente kontrole toka u R-u, kao što su for i while petlje te uvjetne naredbe if, ifelse i switch. Ovi alati omogućuju nam uvjetno izvršavanje koda, ponavljanje radnji i fleksibilnu manipulaciju podacima temeljem zadatih uvjeta. Prikazani primjeri i primjene pokazuju kako kontrola toka može poboljšati učinkovitost i prilagodljivost analitičkog procesa u R-u.</p>
+<p>U R-u, „for”, „if” i „ifelse” su temeljni elementi kontrole toka. Svaki od ovih elemenata ima svoju specifičnu ulogu i sintaksu:</p>
+<p>For petlja:</p>
+<ul>
+<li><p>„For” se koristi za izvođenje ponovljenih radnji unutar petlje.</p></li>
+<li><p>Sintaksa:</p>
+<p><code>for (varijabla in skup) {
+# izvrši neku radnju
+}</code></p></li>
+<li><p>Ovdje varijabla prolazi kroz svaki element u skup.</p></li>
+</ul>
+<p>If uvjet:</p>
+<ul>
+<li><p>„If” se koristi za ispitivanje uvjeta te izvršavanje koda ako je uvjet istinit (TRUE).</p></li>
+<li><p>Sintaksa:</p>
+<p><code>if (uvjet) {
+# izvrši neku radnju
+}</code></p></li>
+<li><p>Ovdje se radnja izvršava samo ako je uvjet istinit.</p></li>
+</ul>
+<p>Ifelse funkcija:</p>
+<ul>
+<li><p>„Ifelse” nije petlja, već vektorizirana funkcija koja omogućava ispitivanje uvjeta i vraća jednu vrijednost ako je uvjet istinit, a drugu vrijednost ako nije.</p></li>
+<li><p>Sintaksa:</p>
+<p><code>ifelse(uvjet, vrijednost_za_true, vrijednost_za_false)</code></p></li>
+<li><p>Ovdje funkcija vraća vrijednost_za_true ako je uvjet istinit, inače vraća vrijednost_za_false.</p></li>
+</ul>
+<p>Svaki od ovih elemenata igra važnu ulogu u strukturiranju i kontroli toka programa u R-u. „For” petlja se koristi za iteracije, „if” uvjet za kontrolu toka na osnovi logičkih uvjeta, dok se „ifelse” često koristi za vektorizirane operacije koje zahtijevaju uvjetno izvršavanje.</p>
+<div id="for" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> for<a href="elementikontroletoka.html#for" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Na primjer, recimo da želimo dobiti uvide u podatke o olujama. Podaci storms iz paketa dplyr sadrže informacije o putanjama oluja. To su podaci iz baze podataka Atlantskog uragana NOAA (Nacionalne uprave za oceane i atmosferu SAD), koji uključuju položaje i karakteristike oluja od 1975. do 2021. godine. Oluje od 1979. godine nadalje mjerene su svakih šest sati tijekom života oluje, dok su podaci za ranije godine ponekad nepotpuni.</p>
+<p><strong>Format podataka</strong></p>
+<p>Podaci su formatirani kao tibble (moderniji oblik podatkovnih okvira u R-u) s 19,066 opažanja i 13 varijabli:</p>
+<ul>
+<li><p>name: ime oluje.</p></li>
+<li><p>year, month, day: datum izvještaja. Godina, mjesec i dan su odvojene varijable koje zajedno čine datum.</p></li>
+<li><p>hour: sat izvještaja (u UTC vremenu).</p></li>
+<li><p>lat, long: lokacija središta oluje. Geografska širina i dužina.</p></li>
+<li><p>status: klasifikacija oluje (tropska depresija, tropska oluja ili uragan).</p></li>
+<li><p>category: kategorija uragana prema Saffir-Simpsonovoj skali, izračunata na temelju brzine vjetra.</p>
+<ul>
+<li>NA: Nije uragan</li>
+<li>1: 64+ čvorova</li>
+<li>2: 83+ čvorova</li>
+<li>3: 96+ čvorova</li>
+<li>4: 113+ čvorova</li>
+<li>5: 137+ čvorova</li>
+</ul></li>
+<li><p>wind: maksimalna održavana brzina vjetra oluje (u čvorovima).</p></li>
+<li><p>pressure: zračni tlak u središtu oluje (u milibarima).</p></li>
+<li><p>tropicalstorm_force_diameter: promjer (u nautičkim miljama) područja koje doživljava vjetrove snage tropske oluje (34 čvora ili više). Dostupno samo od 2004. godine.</p></li>
+<li><p>hurricane_force_diameter: promjer (u nautičkim miljama) područja koje doživljava vjetrove snage uragana (64 čvora ili više). Dostupno samo od 2004. godine.</p></li>
+</ul>
+<p>Na ovim podacima možemo isprobati nekolicinu primjera upotrebe kontrole toka. Prvo moramo učitati podatke.</p>
+<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="elementikontroletoka.html#cb542-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(dplyr)</span>
+<span id="cb542-2"><a href="elementikontroletoka.html#cb542-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">data</span>(storms)</span>
+<span id="cb542-3"><a href="elementikontroletoka.html#cb542-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">glimpse</span>(storms)</span></code></pre></div>
+<pre class="chunk-background"><code>## Rows: 19,537
+## Columns: 13
+## $ name                         &lt;chr&gt; &quot;Amy&quot;, &quot;Amy&quot;, &quot;Amy&quot;, &quot;Amy&quot;, &quot;Amy&quot;, &quot;Amy&quot;,…
+## $ year                         &lt;dbl&gt; 1975, 1975, 1975, 1975, 1975, 1975, 1975,…
+## $ month                        &lt;dbl&gt; 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6,…
+## $ day                          &lt;int&gt; 27, 27, 27, 27, 28, 28, 28, 28, 29, 29, 2…
+## $ hour                         &lt;dbl&gt; 0, 6, 12, 18, 0, 6, 12, 18, 0, 6, 12, 18,…
+## $ lat                          &lt;dbl&gt; 27.5, 28.5, 29.5, 30.5, 31.5, 32.4, 33.3,…
+## $ long                         &lt;dbl&gt; -79.0, -79.0, -79.0, -79.0, -78.8, -78.7,…
+## $ status                       &lt;fct&gt; tropical depression, tropical depression,…
+## $ category                     &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ wind                         &lt;int&gt; 25, 25, 25, 25, 25, 25, 25, 30, 35, 40, 4…
+## $ pressure                     &lt;int&gt; 1013, 1013, 1013, 1013, 1012, 1012, 1011,…
+## $ tropicalstorm_force_diameter &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ hurricane_force_diameter     &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</code></pre>
+<p><em>for</em> petlje se obično koriste za iterativno izvršavanje koda nad elementima nekog skupa, kao što su redovi ili stupci u datasetu. Evo nekoliko primjera kako možete koristiti for petlju s datasetom storms:</p>
+<ul>
+<li><strong>Ispisivanje vrijednosti</strong></li>
+</ul>
+<p>Možete koristiti for petlju da prođete kroz redove ili stupce dataset-a i ispišete određene vrijednosti. Na primjer, ispisati nazive svih oluja:</p>
+<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="elementikontroletoka.html#cb544-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(storms)) {</span>
+<span id="cb544-2"><a href="elementikontroletoka.html#cb544-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">print</span>(<span class="fu">unique</span>(storms<span class="sc">$</span>name[i]))</span>
+<span id="cb544-3"><a href="elementikontroletoka.html#cb544-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span></code></pre></div>
+<p>Ova petlja prolazi kroz svaki red u datasetu storms i ispisuje ime oluje. Ovdje je to zapisano kao komentar, jer bi u suprotnom rezultiralo ispisom 19066 redaka s nazivima oluja.</p>
+<ul>
+<li><strong>Izračunavanje i pohrana rezultata</strong></li>
+</ul>
+<p>Možete izračunati nešto za svaki red i pohraniti rezultate u novi vektor. Na primjer, izračunati maksimalnu brzinu vjetra za svaku godinu:</p>
+<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="elementikontroletoka.html#cb545-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># izdvajanje jedinstvenih godina</span></span>
+<span id="cb545-2"><a href="elementikontroletoka.html#cb545-2" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> unique_years <span class="ot">&lt;-</span> <span class="fu">unique</span>(storms<span class="sc">$</span>year) </span>
+<span id="cb545-3"><a href="elementikontroletoka.html#cb545-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb545-4"><a href="elementikontroletoka.html#cb545-4" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># kreiranje praznog vektora u koji će se pohraniti najveće brzine vjetra, </span></span>
+<span id="cb545-5"><a href="elementikontroletoka.html#cb545-5" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># duljine vektora jedinstvenih godina</span></span>
+<span id="cb545-6"><a href="elementikontroletoka.html#cb545-6" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> max_wind_speed_per_year <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fu">length</span>(unique_years)) </span>
+<span id="cb545-7"><a href="elementikontroletoka.html#cb545-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb545-8"><a href="elementikontroletoka.html#cb545-8" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(unique_years)) {   </span>
+<span id="cb545-9"><a href="elementikontroletoka.html#cb545-9" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># i in 1:length(unique_years) funkcionira kao brojač </span></span>
+<span id="cb545-10"><a href="elementikontroletoka.html#cb545-10" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># i redom prolazi kroz godine</span></span>
+<span id="cb545-11"><a href="elementikontroletoka.html#cb545-11" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   year_data <span class="ot">&lt;-</span> storms[storms<span class="sc">$</span>year <span class="sc">==</span> unique_years[i], ] </span>
+<span id="cb545-12"><a href="elementikontroletoka.html#cb545-12" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># privremeni vektor (temp) u koji se pohranjuju podaci za promatranu godinu</span></span>
+<span id="cb545-13"><a href="elementikontroletoka.html#cb545-13" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   max_wind_speed_per_year[i] <span class="ot">&lt;-</span> <span class="fu">max</span>(year_data<span class="sc">$</span>wind, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb545-14"><a href="elementikontroletoka.html#cb545-14" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># utvrđivanje maksimalne vrijednosti za godinu i pohrana u </span></span>
+<span id="cb545-15"><a href="elementikontroletoka.html#cb545-15" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># vektor max_wind_speed_per_year</span></span>
+<span id="cb545-16"><a href="elementikontroletoka.html#cb545-16" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span>
+<span id="cb545-17"><a href="elementikontroletoka.html#cb545-17" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb545-18"><a href="elementikontroletoka.html#cb545-18" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">summary</span>(max_wind_speed_per_year)  </span></code></pre></div>
+<pre class="chunk-background"><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    80.0   115.0   125.0   127.7   145.0   165.0</code></pre>
+<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb547-1"><a href="elementikontroletoka.html#cb547-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># vektor max_wind_speed_per_year i dalje ima puno (47) opažanja, </span></span>
+<span id="cb547-2"><a href="elementikontroletoka.html#cb547-2" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># pa će summary pružiti sažeti uvid u rezultate</span></span></code></pre></div>
+<p>Ukratko, ova petlja prolazi kroz svaku jedinstvenu godinu u datasetu i računa maksimalnu brzinu vjetra za tu godinu.</p>
+<p>Na sličan način, može nas zanimati koliko je dugo svaka oluja trajala prema satima u kojima je zabilježena. Stoga, prethodni kod prilagođavamo s obzirom na predmet interesa.</p>
+<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="elementikontroletoka.html#cb548-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> unique_names <span class="ot">&lt;-</span> <span class="fu">unique</span>(storms<span class="sc">$</span>name) <span class="co"># izdvajanje jedinstvenih naziva</span></span>
+<span id="cb548-2"><a href="elementikontroletoka.html#cb548-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> max_hour <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fu">length</span>(unique_names)) <span class="co"># kreiranje praznog vektora </span></span>
+<span id="cb548-3"><a href="elementikontroletoka.html#cb548-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> min_hour <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fu">length</span>(unique_names)) <span class="co"># kreiranje praznog vektora</span></span>
+<span id="cb548-4"><a href="elementikontroletoka.html#cb548-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> duration_hour <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fu">length</span>(unique_names)) <span class="co"># kreiranje praznog vektora</span></span>
+<span id="cb548-5"><a href="elementikontroletoka.html#cb548-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb548-6"><a href="elementikontroletoka.html#cb548-6" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(unique_names)) {   </span>
+<span id="cb548-7"><a href="elementikontroletoka.html#cb548-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   names_data <span class="ot">&lt;-</span> storms[storms<span class="sc">$</span>name <span class="sc">==</span> unique_names[i], ] </span>
+<span id="cb548-8"><a href="elementikontroletoka.html#cb548-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   max_hour[i] <span class="ot">&lt;-</span> <span class="fu">max</span>(names_data<span class="sc">$</span>hour, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb548-9"><a href="elementikontroletoka.html#cb548-9" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># utvrđivanje maksimalne vrijednosti</span></span>
+<span id="cb548-10"><a href="elementikontroletoka.html#cb548-10" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   min_hour[i] <span class="ot">&lt;-</span> <span class="fu">min</span>(names_data<span class="sc">$</span>hour, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb548-11"><a href="elementikontroletoka.html#cb548-11" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># utvrđivanje minimalne vrijednosti</span></span>
+<span id="cb548-12"><a href="elementikontroletoka.html#cb548-12" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   duration_hour[i] <span class="ot">&lt;-</span> max_hour[i]<span class="sc">-</span>min_hour[i]</span>
+<span id="cb548-13"><a href="elementikontroletoka.html#cb548-13" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span>
+<span id="cb548-14"><a href="elementikontroletoka.html#cb548-14" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb548-15"><a href="elementikontroletoka.html#cb548-15" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> storms_duration <span class="ot">&lt;-</span> <span class="fu">cbind.data.frame</span>(unique_names, min_hour, </span>
+<span id="cb548-16"><a href="elementikontroletoka.html#cb548-16" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                                     max_hour, duration_hour)</span>
+<span id="cb548-17"><a href="elementikontroletoka.html#cb548-17" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">summary</span>(storms_duration<span class="sc">$</span>duration_hour)</span></code></pre></div>
+<pre class="chunk-background"><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   18.00   18.00   18.00   18.98   20.00   23.00</code></pre>
+<p>Napomene za korištenje for petlji u R-u</p>
+<ul>
+<li>Iako su intuitivne i lako razumljive, for petlje u R-u su često manje efikasne od vektoriziranih operacija i funkcija poput <code>apply()</code>. Razmislite o korištenju vektoriziranih operacija gdje je to moguće za bolje performanse.</li>
+<li>Prilikom rada s većim skupovima podataka, for petlje mogu biti sporije. U takvim slučajevima, paketi poput data.table ili dplyr mogu pružiti brže alternative.</li>
+</ul>
+</div>
+<div id="apply-sapply-lapply" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> apply, sapply, lapply<a href="elementikontroletoka.html#apply-sapply-lapply" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Da biste zamijenili for petlju apply funkcijom u R-u, trebate uzeti u obzir vrstu operacije koju izvodite. <strong>apply</strong> funkcije (koje uključuju apply, lapply, sapply, vapply itd.) omogućuju vektorizirane operacije na podatkovnim okvirima i listama.</p>
+<ul>
+<li><strong>Ispisivanje vrijednosti</strong></li>
+</ul>
+<p>Za ispisivanje imena oluja iz skupa podataka storms, možete koristiti lapply ili sapply. Međutim, ova operacija neće biti efikasnija s apply funkcijom jer je ispisivanje inherentno iterativni proces. Ali, za demonstraciju:</p>
+<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb550-1"><a href="elementikontroletoka.html#cb550-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">sapply</span>(storms<span class="sc">$</span>name, print)</span></code></pre></div>
+<ul>
+<li><strong>Izračunavanje maksimalne brzine vjetra po godini</strong></li>
+</ul>
+<p>Ovo je složeniji primjer gdje apply funkcije uistinu mogu biti korisnije. Koristeći sapply ili lapply, možemo izračunati maksimalnu brzinu vjetra za svaku godinu:</p>
+<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="elementikontroletoka.html#cb551-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> unique_years <span class="ot">&lt;-</span> <span class="fu">unique</span>(storms<span class="sc">$</span>year)</span>
+<span id="cb551-2"><a href="elementikontroletoka.html#cb551-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> max_wind_speed_per_year <span class="ot">&lt;-</span> <span class="fu">sapply</span>(unique_years, <span class="cf">function</span>(yr) {</span>
+<span id="cb551-3"><a href="elementikontroletoka.html#cb551-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">max</span>(storms<span class="sc">$</span>wind[storms<span class="sc">$</span>year <span class="sc">==</span> yr], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb551-4"><a href="elementikontroletoka.html#cb551-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> })</span>
+<span id="cb551-5"><a href="elementikontroletoka.html#cb551-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb551-6"><a href="elementikontroletoka.html#cb551-6" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">summary</span>(max_wind_speed_per_year)</span></code></pre></div>
+<pre class="chunk-background"><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    80.0   115.0   125.0   127.7   145.0   165.0</code></pre>
+<p>Ovdje sapply prolazi kroz svaku jedinstvenu godinu i primjenjuje funkciju koja računa maksimalnu brzinu vjetra za tu godinu. Rezultat je numerički vektor maksimalnih brzina vjetra za svaku godinu.</p>
+<p>Napomene za korištenje apply funkcija:</p>
+<ul>
+<li>apply funkcije su obično efikasnije od for petlji za vektorizirane operacije.</li>
+<li>lapply vraća listu, dok sapply pokušava pojednostaviti rezultat u vektor ili matricu ako je to moguće.</li>
+<li>Kod složenijih operacija ili kada su performanse kritične, alternativni pristupi kao što su funkcije iz paketa data.table mogu biti još efikasniji.</li>
+</ul>
+</div>
+<div id="if" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> if<a href="elementikontroletoka.html#if" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Primjena „if” uvjeta na skupu podataka poput storms iz paketa dplyr može se koristiti za različite analize i manipulacije podacima. Evo nekoliko primjera kako možete koristiti „if” uvjete sa skupom podataka storms:</p>
+<ul>
+<li><strong>Filtriranje i analiza</strong></li>
+</ul>
+<p>Možete koristiti „if” uvjete za filtriranje oluja na temelju određenih kriterija, kao što su kategorija, brzina vjetra ili godina. Na primjer, za ispitivanje je li neka oluja bila kategorije 4 ili veća. Prisjetimo se opisa podataka:</p>
+<pre><code>+ NA: Nije uragan
++ 1: 64+ čvorova
++ 2: 83+ čvorova
++ 3: 96+ čvorova
++ 4: 113+ čvorova
++ 5: 137+ čvorova</code></pre>
+<p>Dakle, kategorija 4 utvrđuje se temeljem jačine vjetra 113 čvorova ili više od toga. U ovom slučaju ne možemo izravno koristiti varijablu storms$category kao uvjet, zbog toga što sadrži NA. S obzirom da je <em>if</em> logički uvjet, ne može izvršiti provjeru vrijednosti koje nedostaju.</p>
+<div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb554-1"><a href="elementikontroletoka.html#cb554-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(storms)) {</span>
+<span id="cb554-2"><a href="elementikontroletoka.html#cb554-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="cf">if</span> (storms<span class="sc">$</span>wind[i] <span class="sc">&gt;=</span> <span class="dv">113</span>) {</span>
+<span id="cb554-3"><a href="elementikontroletoka.html#cb554-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="fu">print</span>(<span class="fu">paste</span>(storms<span class="sc">$</span>name[i], <span class="st">&quot;je bio uragan kategorije&quot;</span>, storms<span class="sc">$</span>category[i]))</span>
+<span id="cb554-4"><a href="elementikontroletoka.html#cb554-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   }</span>
+<span id="cb554-5"><a href="elementikontroletoka.html#cb554-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span></code></pre></div>
+<p>Ispis bi rezultirao podužim popisom, pa je zbog toga ovdje izuzet. No, možete sami isprobati ispis.</p>
+<ul>
+<li><strong>Izmjena u skupu podataka temeljem uvjeta</strong></li>
+</ul>
+<p>Možete dodati novi stupac u podatkovni skup na osnovi nekog uvjeta. Na primjer, označavanje oluje kao „Snažne” ili „Slabe” na temelju brzine vjetra (proizvoljno odabranih 100 čvorova):</p>
+<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="elementikontroletoka.html#cb555-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> storms<span class="sc">$</span>intensity <span class="ot">&lt;-</span> <span class="cn">NA</span> <span class="co"># kreiramo prazan stupac u skupu podataka</span></span>
+<span id="cb555-2"><a href="elementikontroletoka.html#cb555-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb555-3"><a href="elementikontroletoka.html#cb555-3" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(storms)) {</span>
+<span id="cb555-4"><a href="elementikontroletoka.html#cb555-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="cf">if</span> (storms<span class="sc">$</span>wind[i] <span class="sc">&gt;=</span> <span class="dv">100</span>) {</span>
+<span id="cb555-5"><a href="elementikontroletoka.html#cb555-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     storms<span class="sc">$</span>intensity[i] <span class="ot">&lt;-</span> <span class="st">&quot;Snažna&quot;</span></span>
+<span id="cb555-6"><a href="elementikontroletoka.html#cb555-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   } <span class="cf">else</span> {</span>
+<span id="cb555-7"><a href="elementikontroletoka.html#cb555-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     storms<span class="sc">$</span>intensity[i] <span class="ot">&lt;-</span> <span class="st">&quot;Slaba&quot;</span></span>
+<span id="cb555-8"><a href="elementikontroletoka.html#cb555-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   }</span>
+<span id="cb555-9"><a href="elementikontroletoka.html#cb555-9" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span>
+<span id="cb555-10"><a href="elementikontroletoka.html#cb555-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb555-11"><a href="elementikontroletoka.html#cb555-11" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">table</span>(storms<span class="sc">$</span>intensity)</span></code></pre></div>
+<pre class="chunk-background"><code>## 
+##  Slaba Snažna 
+##  18273   1264</code></pre>
+<ul>
+<li><strong>Statistička analiza s uvjetima</strong></li>
+</ul>
+<p>Ovdje ćemo koristiti „if” uvjete za izračunavanje statističkih podataka, kao što su prosječne vrijednosti, ali samo za određene oluje. Na primjer, izračunajmo prosječni tlak za oluje kategorije 5:</p>
+<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="elementikontroletoka.html#cb557-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> kat_5_tlak <span class="ot">&lt;-</span> <span class="fu">numeric</span>()</span>
+<span id="cb557-2"><a href="elementikontroletoka.html#cb557-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb557-3"><a href="elementikontroletoka.html#cb557-3" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(storms)) {</span>
+<span id="cb557-4"><a href="elementikontroletoka.html#cb557-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="cf">if</span> (storms<span class="sc">$</span>wind[i] <span class="sc">&gt;=</span> <span class="dv">137</span>) {</span>
+<span id="cb557-5"><a href="elementikontroletoka.html#cb557-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     kat_5_tlak <span class="ot">&lt;-</span> <span class="fu">c</span>(kat_5_tlak, storms<span class="sc">$</span>pressure[i]) </span>
+<span id="cb557-6"><a href="elementikontroletoka.html#cb557-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   }</span>
+<span id="cb557-7"><a href="elementikontroletoka.html#cb557-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span>
+<span id="cb557-8"><a href="elementikontroletoka.html#cb557-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Oluje kategorije 5, prosječno dosežu &quot;</span>, </span>
+<span id="cb557-9"><a href="elementikontroletoka.html#cb557-9" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>             <span class="fu">mean</span>(kat_5_tlak, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb557-10"><a href="elementikontroletoka.html#cb557-10" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>             <span class="st">&quot;milibara tlaka zraka u središtu&quot;</span>))</span></code></pre></div>
+<pre class="chunk-background"><code>## [1] &quot;Oluje kategorije 5, prosječno dosežu  918.172413793103 milibara tlaka zraka u središtu&quot;</code></pre>
+<p>Napomena: dok „if” uvjeti mogu biti korisni za iterativno pregledavanje i manipulaciju redaka podatkovnog okvira, vektorizirane funkcije u R-u često nude efikasnija i čišća rješenja za ovakve operacije. Na primjer, dplyr funkcije kao što su <code>filter()</code>, <code>mutate()</code> i <code>summarise()</code> mogu obaviti slične zadatke bez potrebe za eksplicitnom petljom.</p>
+</div>
+<div id="ifelse" class="section level2 hasAnchor" number="9.4">
+<h2><span class="header-section-number">9.4</span> ifelse<a href="elementikontroletoka.html#ifelse" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Za korištenje <em>if</em> uvjeta bez <em>for</em> petlje na skupu podataka storms, možete se osloniti na vektorizirane funkcije poput <strong>ifelse</strong>. <em>ifelse</em> je vrlo koristan za primjenu uvjeta na cijeli vektor ili stupac u podatkovnom okviru.</p>
+<ul>
+<li><strong>Klasifikacija</strong></li>
+</ul>
+<p>Pretpostavimo da želite klasificirati oluje kao „Snažne” ili „Slabe” (kao u ranijem primjeru) na temelju njihove maksimalne brzine vjetra. U ovom slučaju, možete koristiti ifelse da dodate novi stupac u podatkovni okvir:</p>
+<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="elementikontroletoka.html#cb559-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> storms<span class="sc">$</span>intensity <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb559-2"><a href="elementikontroletoka.html#cb559-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb559-3"><a href="elementikontroletoka.html#cb559-3" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> storms <span class="ot">&lt;-</span> storms <span class="sc">%&gt;%</span></span>
+<span id="cb559-4"><a href="elementikontroletoka.html#cb559-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">mutate</span>(<span class="at">intensity =</span> <span class="fu">ifelse</span>(wind <span class="sc">&gt;=</span> <span class="dv">100</span>, <span class="st">&quot;Snažna oluja&quot;</span>, <span class="st">&quot;Slaba oluja&quot;</span>))</span>
+<span id="cb559-5"><a href="elementikontroletoka.html#cb559-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb559-6"><a href="elementikontroletoka.html#cb559-6" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">table</span>(storms<span class="sc">$</span>intensity)</span></code></pre></div>
+<pre class="chunk-background"><code>## 
+##  Slaba oluja Snažna oluja 
+##        18273         1264</code></pre>
+<p>ifelse testira uvjet <span class="math inline">\(wind \geq 100\)</span> za svaki red u skupu podataka storms. Ako je uvjet istinit, dodjeljuje vrijednost „Snažna oluja” novom stupcu intensity. Ako uvjet nije istinit, dodjeljuje „Slaba oluja”.</p>
+<ul>
+<li><strong>Filtriranje podataka</strong></li>
+</ul>
+<p>Također, možete koristiti kombinaciju <strong>ifelse</strong> i <strong>filter</strong> za filtriranje podataka na temelju određenog uvjeta. Na primjer, izdvajanje podataka samo za uragane kategorije 5:</p>
+<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="elementikontroletoka.html#cb561-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> category_5_storms <span class="ot">&lt;-</span> <span class="fu">filter</span>(storms, wind <span class="sc">&gt;=</span> <span class="dv">137</span>)</span>
+<span id="cb561-2"><a href="elementikontroletoka.html#cb561-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb561-3"><a href="elementikontroletoka.html#cb561-3" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">glimpse</span>(category_5_storms)</span></code></pre></div>
+<pre class="chunk-background"><code>## Rows: 116
+## Columns: 14
+## $ name                         &lt;chr&gt; &quot;Anita&quot;, &quot;Anita&quot;, &quot;David&quot;, &quot;David&quot;, &quot;Davi…
+## $ year                         &lt;dbl&gt; 1977, 1977, 1979, 1979, 1979, 1979, 1979,…
+## $ month                        &lt;dbl&gt; 9, 9, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,…
+## $ day                          &lt;int&gt; 2, 2, 30, 30, 30, 31, 31, 31, 31, 5, 5, 5…
+## $ hour                         &lt;dbl&gt; 0, 6, 6, 12, 18, 0, 6, 12, 18, 0, 6, 12, …
+## $ lat                          &lt;dbl&gt; 24.6, 24.2, 16.0, 16.3, 16.6, 16.8, 17.0,…
+## $ long                         &lt;dbl&gt; -96.2, -97.1, -64.2, -65.2, -66.2, -67.3,…
+## $ status                       &lt;fct&gt; hurricane, hurricane, hurricane, hurrican…
+## $ category                     &lt;dbl&gt; 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,…
+## $ wind                         &lt;int&gt; 140, 150, 140, 145, 150, 145, 145, 145, 1…
+## $ pressure                     &lt;int&gt; 931, 926, 925, 924, 924, 927, 928, 927, 9…
+## $ tropicalstorm_force_diameter &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ hurricane_force_diameter     &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ intensity                    &lt;chr&gt; &quot;Snažna oluja&quot;, &quot;Snažna oluja&quot;, &quot;Snažna o…</code></pre>
+<p>Ovdje filter funkcija iz dplyr paketa omogućuje filtriranje redaka u podatkovnom okviru storms, s obzirom na uvjet da je vrijednost stupca wind veća ili jednaka 137.</p>
+<p>Iako se može činiti da se skup podataka i podatkovni okvir koriste naizmjenično kao sinonimi, to nije tako. Ponovimo kratko njihova značenja.
+Skup podataka (<em>engl. dataset</em>) je pojam koji se koristi za označavanje bilo kojeg skupa prikupljenih podataka, neovisno o vrsti i načinu pohrane. To mogu biti skupovi pojedinačnih opažanja, dokumenata, slika, tablica, baza podataka itd. Nadalje, skupovi podataka mogu se pohraniti u različitim formatima kao što su csv datoteke, Excel tablice, SQL baze podataka i slično.
+Podatkovni okvir (<em>engl. dataframe</em>) je specifičan pojam koji se najčešće koristi u kontekstu programskih jezika za statističku analizu i manipulaciju podacima, poput R i Python (posebno uz biblioteku pandas). Podatkovni okvir predstavlja tabličnu strukturu podataka s redovima i stupcima, gdje reci predstavljaju pojedinačne zapise (primjere, mjerenja, itd.), a stupci predstavljaju varijable (atribute, značajke). Na primjer, ako bismo na raspolaganju imali podatkovni okvir rezultata anketiranja, pojedini redak sadržavao bi odgovore jednog ispitanika, dok bi pojedini stupac sadržavao odgovore na pojedino pitanje. Ova struktura omogućava lakšu manipulaciju, analizu i vizualizaciju podataka. Dakle, podatkovni okvir je ujedno i skup podataka, ali neće svaki skup podataka ujedno biti i podatkovni okvir.</p>
+</div>
+<div id="razlika-između-ifelse-i-kombinecije-if-i-else" class="section level2 hasAnchor" number="9.5">
+<h2><span class="header-section-number">9.5</span> Razlika između ifelse i kombinecije if i else<a href="elementikontroletoka.html#razlika-između-ifelse-i-kombinecije-if-i-else" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Razlike između ifelse funkcije i kombinacije if i else izraza u R-u leže u načinu kako oni pristupaju uvjetnom izvršavanju koda, njihovoj vektorizaciji, i u situacijama u kojima se obično koriste.</p>
+<p><strong>ifelse</strong> je vektorizirana funkcija koja omogućava provjeru uvjeta nad cijelim vektorom elemenata odjednom i vraća vektor rezultata temeljem tog uvjeta.
+Sintaksa:</p>
+<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="elementikontroletoka.html#cb563-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ifelse</span>(test, da, ne)</span></code></pre></div>
+<ul>
+<li>test: logički vektor koji sadrži uvjet koji se provjerava za svaki element,</li>
+<li>da: vrijednost koja se vraća ako je uvjet istinit,</li>
+<li>ne: vrijednost koja se vraća ako je uvjet neistinit.</li>
+</ul>
+<p>Primjer: Zamislimo da imamo vektor temperatura i želimo označiti sve temperature iznad 25 stupnjeva kao „Toplo”, a manje ili jednake 25 kao „Ugodno”.</p>
+<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="elementikontroletoka.html#cb564-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> temperature <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">28</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">18</span>)</span>
+<span id="cb564-2"><a href="elementikontroletoka.html#cb564-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> vrijeme <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(temperature <span class="sc">&gt;</span> <span class="dv">25</span>, <span class="st">&quot;Toplo&quot;</span>, <span class="st">&quot;Ugodno&quot;</span>)</span>
+<span id="cb564-3"><a href="elementikontroletoka.html#cb564-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">print</span>(vrijeme)</span></code></pre></div>
+<pre class="chunk-background"><code>## [1] &quot;Ugodno&quot; &quot;Toplo&quot;  &quot;Ugodno&quot; &quot;Toplo&quot;  &quot;Ugodno&quot;</code></pre>
+<p><strong>if</strong> i <strong>else</strong> izrazi koriste se za uvjetno izvršavanje koda temeljem ispunjenja nekog uvjeta. Za razliku od ifelse, if i else se ne mogu direktno primijeniti na vektore, već evaluiraju samo prvi element logičkog vektora ako im se takav prosljedi. Sintaksa:</p>
+<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="elementikontroletoka.html#cb566-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="cf">if</span> (uvjet) {</span>
+<span id="cb566-2"><a href="elementikontroletoka.html#cb566-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># izvršava se ako je uvjet istinit</span></span>
+<span id="cb566-3"><a href="elementikontroletoka.html#cb566-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> } <span class="cf">else</span> {</span>
+<span id="cb566-4"><a href="elementikontroletoka.html#cb566-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># izvršava se ako uvjet nije istinit</span></span>
+<span id="cb566-5"><a href="elementikontroletoka.html#cb566-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span></code></pre></div>
+<p>Primjer: Uzmimo isti scenarij s temperaturama, ali primijenimo if i else za provjeru pojedinog elementa.</p>
+<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="elementikontroletoka.html#cb567-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> temperatura <span class="ot">&lt;-</span> <span class="dv">28</span></span>
+<span id="cb567-2"><a href="elementikontroletoka.html#cb567-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="cf">if</span> (temperatura <span class="sc">&gt;</span> <span class="dv">25</span>) {</span>
+<span id="cb567-3"><a href="elementikontroletoka.html#cb567-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   vrijeme <span class="ot">&lt;-</span> <span class="st">&quot;Toplo&quot;</span></span>
+<span id="cb567-4"><a href="elementikontroletoka.html#cb567-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> } <span class="cf">else</span> {</span>
+<span id="cb567-5"><a href="elementikontroletoka.html#cb567-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   vrijeme <span class="ot">&lt;-</span> <span class="st">&quot;Ugodno&quot;</span></span>
+<span id="cb567-6"><a href="elementikontroletoka.html#cb567-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span>
+<span id="cb567-7"><a href="elementikontroletoka.html#cb567-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">print</span>(vrijeme)</span></code></pre></div>
+<pre class="chunk-background"><code>## [1] &quot;Toplo&quot;</code></pre>
+<p>Za vektoriziranu provjeru, morali bismo koristiti petlju ili neku vrstu aplikacijske funkcije (npr., lapply) ili kombinaciju s for petljom.</p>
+<p><strong>Ključne razlike</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Vektorizacija: ifelse može obraditi cijele vektore odjednom, automatski primjenjujući uvjet na svaki element i vraćajući vektor rezultata. Kombinacija if i else može evaluirati samo pojedinačne elemente ili se mora koristiti unutar petlje za iteraciju kroz vektore.</p></li>
+<li><p>Performanse: ifelse je obično brži za vektorizirane operacije jer je specifično dizajniran za takve zadatke. if i else mogu biti korisni za kontrolu toka unutar funkcija ili skripti gdje evaluacija pojedinačnih uvjeta ima smisla.</p></li>
+<li><p>Složenost: Za složenije uvjetne strukture s više grana, if i else pružaju veću fleksibilnost i čitljivost. ifelse je praktičan za jednostavne, brze provjere i zamjene u vektorima.</p></li>
+</ol>
+<p>Ovisno o zadatku, odabrat ćete ifelse za vektorizirane operacije i jednostavne zamjene, ili if i else za složeniju logiku kontrole toka gdje je potrebna evaluacija pojedinačnih uvjeta ili gdje se koriste složenije strukture odlučivanja.</p>
+</div>
+<div id="switch" class="section level2 hasAnchor" number="9.6">
+<h2><span class="header-section-number">9.6</span> switch<a href="elementikontroletoka.html#switch" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>switch</strong> izraz omogućava jednostavno grananje izvršavanja koda temeljem vrijednosti nekog izraza. Ovo je posebno korisno kada imate višestruke uvjete koje želite testirati protiv jedne varijable. switch može smanjiti potrebu za složenim if-else if lancima, čineći kod čišćim i lakšim za čitanje. Sintaksa:</p>
+<p><code>switch(izraz, slučaj1 = vrijednost1, slučaj2 = vrijednost2, …,
+slučajN = vrijednostN)</code></p>
+<p>gdje je <em>izraz</em> varijabla čiju vrijednost uspoređujete, a <em>slučajX</em> su moguće vrijednosti te varijable. Ako se vrijednost izraza podudara s nekim od slučajeva, izvršit će se zadani kod za prepoznati slučaj.</p>
+<p>Primjer: Zamislimo aplikaciju za praćenje vremena putem koje želimo korisnicima prikazati poruku temeljenu na trenutnoj sezoni.</p>
+<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="elementikontroletoka.html#cb569-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> trenutna_sezona <span class="ot">&lt;-</span> <span class="st">&quot;ljeto&quot;</span></span>
+<span id="cb569-2"><a href="elementikontroletoka.html#cb569-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb569-3"><a href="elementikontroletoka.html#cb569-3" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> poruka <span class="ot">&lt;-</span> <span class="cf">switch</span>(trenutna_sezona,</span>
+<span id="cb569-4"><a href="elementikontroletoka.html#cb569-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                  <span class="at">proljece =</span> <span class="st">&quot;Vrijeme je za sadnju cvijeća!&quot;</span>,</span>
+<span id="cb569-5"><a href="elementikontroletoka.html#cb569-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                  <span class="at">ljeto =</span> <span class="st">&quot;Vrijeme je za plažu i sunčanje!&quot;</span>,</span>
+<span id="cb569-6"><a href="elementikontroletoka.html#cb569-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                  <span class="at">jesen =</span> <span class="st">&quot;Vrijeme je za berbu i promatranje boja lišća!&quot;</span>,</span>
+<span id="cb569-7"><a href="elementikontroletoka.html#cb569-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                  <span class="at">zima =</span> <span class="st">&quot;Vrijeme je za skijanje i uživanje u snijegu!&quot;</span>,</span>
+<span id="cb569-8"><a href="elementikontroletoka.html#cb569-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                  <span class="st">&quot;Nepoznata sezona&quot;</span>)  </span>
+<span id="cb569-9"><a href="elementikontroletoka.html#cb569-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>                  <span class="co"># Zadnji slučaj je „Nepoznata sezona&quot; ako se izraz </span></span>
+<span id="cb569-10"><a href="elementikontroletoka.html#cb569-10" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span>                  <span class="co"># ne podudara ni s jednim slučajem</span></span>
+<span id="cb569-11"><a href="elementikontroletoka.html#cb569-11" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> </span>
+<span id="cb569-12"><a href="elementikontroletoka.html#cb569-12" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">print</span>(poruka)</span></code></pre></div>
+<pre class="chunk-background"><code>## [1] &quot;Vrijeme je za plažu i sunčanje!&quot;</code></pre>
+<p>Ovaj kod postavlja varijablu <em>trenutna_sezona</em> na „ljeto” i koristi <em>switch</em> za odabir odgovarajuće poruke. Budući da je <em>trenutna_sezona</em> postavljena na „ljeto”, ispisat će se: „Vrijeme je za plažu i sunčanje!“.</p>
+<p>Prednosti korištenja <em>switch</em>a:</p>
+<ul>
+<li>Smanjuje potrebu za dugim if-else if lancima, čineći kod preglednijim i lakšim za održavanje.</li>
+<li>Olakšava upravljanje višestrukim grananjima izvršavanja temeljenim na jednoj varijabli.</li>
+<li>Pomaže u očuvanju performansi koda u scenarijima s mnogo uvjeta.</li>
+</ul>
+<p>U praksi, switch se često koristi kada imate unaprijed zadan skup mogućih vrijednosti za varijablu i želite izvršiti različite radnje za svaku od tih vrijednosti. To ga čini idealnim alatom za situacije poput obrade korisničkih unosa, odabira konfiguracijskih opcija, upravljanja stanjima u aplikaciji i slično.</p>
+</div>
+<div id="while" class="section level2 hasAnchor" number="9.7">
+<h2><span class="header-section-number">9.7</span> while<a href="elementikontroletoka.html#while" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>while</strong> petlja se koristi za ponavljanje izvođenja bloka koda dok god je određeni uvjet zadovoljen. Za razliku od <em>for</em> petlje, koja prolazi kroz fiksni skup elemenata, while petlja može se koristiti kada unaprijed ne znamo koliko puta će biti potrebno izvršiti radnju. Sintaksa:</p>
+<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="elementikontroletoka.html#cb571-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="cf">while</span> (uvjet) {</span>
+<span id="cb571-2"><a href="elementikontroletoka.html#cb571-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># kod koji se izvršava dok je uvjet istinit</span></span>
+<span id="cb571-3"><a href="elementikontroletoka.html#cb571-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span></code></pre></div>
+<p>U ovom kontekstu, uvjet je logički izraz. Ako je uvjet istinit (TRUE), kod unutar petlje se izvršava. Nakon svake provedbe, uvjet se ponovno provjerava. Petlja se nastavlja sve dok je uvjet istinit. Ako uvjet postane neistinit (FALSE), izvršavanje petlje se prekida.</p>
+<p>Primjer: Pretpostavimo da želimo izračunati faktorijel broja. Faktorijel broja n (označeno s n!) je umnožak svih pozitivnih cijelih brojeva manjih ili jednakih n. Na primjer, <span class="math inline">\(5! = 5 × 4 × 3 × 2 × 1\)</span></p>
+<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="elementikontroletoka.html#cb572-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> broj <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb572-2"><a href="elementikontroletoka.html#cb572-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> faktorijel <span class="ot">&lt;-</span> <span class="dv">1</span>  <span class="co"># Početna vrijednost faktorijela</span></span>
+<span id="cb572-3"><a href="elementikontroletoka.html#cb572-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb572-4"><a href="elementikontroletoka.html#cb572-4" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="cf">while</span> (broj <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb572-5"><a href="elementikontroletoka.html#cb572-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   faktorijel <span class="ot">&lt;-</span> faktorijel <span class="sc">*</span> broj  </span>
+<span id="cb572-6"><a href="elementikontroletoka.html#cb572-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># Množi trenutnu vrijednost faktorijela s trenutnim brojem</span></span>
+<span id="cb572-7"><a href="elementikontroletoka.html#cb572-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   broj <span class="ot">&lt;-</span> broj <span class="sc">-</span> <span class="dv">1</span>  <span class="co"># Smanjuje broj za 1</span></span>
+<span id="cb572-8"><a href="elementikontroletoka.html#cb572-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span>
+<span id="cb572-9"><a href="elementikontroletoka.html#cb572-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb572-10"><a href="elementikontroletoka.html#cb572-10" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">print</span>(faktorijel)</span></code></pre></div>
+<pre class="chunk-background"><code>## [1] 120</code></pre>
+<p>U ovom primjeru, while petlja se koristi za izračun faktorijala broja 5. Petlja počinje s brojem 5 i množi trenutnu vrijednost faktorijala s trenutnim brojem sve dok broj ne postane 0.</p>
+<p>Prednosti korištenja while petlje:</p>
+<ul>
+<li>Fleksibilnost u izvođenju koda bez prethodnog znanja o broju iteracija.</li>
+<li>Korisna je za situacije kad izvršavanje ovisi o vanjskim uvjetima ili promjenjivim stanjima.</li>
+</ul>
+<p>Bitno je pripaziti da uvjet u while petlji u nekom trenutku postane neistinit, inače može dovesti do beskonačne petlje koja može „zamrznuti” ili ozbiljno usporiti izvršavanje programa. Uvijek osigurajte da postoji mehanizam za prekid petlje kako bi se izbjegle potencijalne beskonačne iteracije.</p>
+</div>
+<div id="pitanja-za-ponavljanje-14" class="section level2 unnumbered hasAnchor">
+<h2>Pitanja za ponavljanje<a href="elementikontroletoka.html#pitanja-za-ponavljanje-14" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><p>Koja je svrha for petlje u R-u, i kako biste je koristili za ispisivanje imena svih oluja iz skupa podataka storms?</p></li>
+<li><p>Kako koristiti if uvjet za provjeru je li brzina vjetra veća od 100 čvorova i dodati oznaku „Snažna oluja” ili „Slaba oluja” za svaku oluju u storms podatkovnom okviru?</p></li>
+<li><p>Koja je razlika između if uvjeta i ifelse funkcije u R-u, te kada biste koristili jednu, a kada drugu?</p></li>
+<li><p>Objasnite kako ifelse može pojednostaviti klasifikaciju podataka u podatkovnom okviru. Prikažite primjer klasifikacije oluja u storms podatkovnom okviru na temelju brzine vjetra.</p></li>
+<li><p>Što radi apply funkcija i u kojim situacijama je ona efikasnija od for petlje?</p></li>
+<li><p>Kako biste primijenili switch izraz za odabir različitih poruka koje se prikazuju ovisno o sezoni („proljeće”, „ljeto”, „jesen”, „zima”)?</p></li>
+<li><p>Objasnite kada biste koristili while petlju umjesto for petlje i navedite primjer za izračun faktorijela broja pomoću while petlje.</p></li>
+<li><p>Kako koristiti lapply funkciju za primjenu operacije na svakom elementu liste u R-u? Dajte primjer u kojem lapply računa kvadrate brojeva u listi.</p></li>
+<li><p>Koje su najčešće greške pri korištenju while petlje, i kako ih izbjeći?</p></li>
+<li><p>Zašto je važno osigurati kraj petlje (npr. u while petlji), i kako biste mogli provjeriti ili izbjeći beskonačnu petlju u R-u?</p></li>
+</ol>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="uvozpodataka.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="kreiranjefunkcija.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="site_libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="site_libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="site_libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="site_libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="site_libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="site_libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="site_libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="site_libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": false,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true,
+"toolbar": {
+"position": "fixed"
+}
+},
+"toc_depth": 2,
+"lot": true,
+"lof": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

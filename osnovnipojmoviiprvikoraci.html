@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title> 2 Osnovni pojmovi i prvi koraci | Uvod u R i R Studio</title>
+  <meta name="description" content=" 2 Osnovni pojmovi i prvi koraci | Uvod u R i R Studio" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content=" 2 Osnovni pojmovi i prvi koraci | Uvod u R i R Studio" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content=" 2 Osnovni pojmovi i prvi koraci | Uvod u R i R Studio" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="rirstudio.html"/>
+<link rel="next" href="instalacijaiaktivacijapaketa.html"/>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="site_libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="site_libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="site_libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="site_libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="site_libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="site_libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="site_libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="site_libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="site_libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="site_libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Uvod u R i R Studio</a></li>
+<li><img src='intro.png' width='280px'></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="uvod-u-r-i-r-studio.html"><a href="uvod-u-r-i-r-studio.html"><i class="fa fa-check"></i>Uvod u R i R Studio</a></li>
+<li class="chapter" data-level="" data-path="impressum.html"><a href="impressum.html"><i class="fa fa-check"></i>Impressum</a></li>
+<li class="chapter" data-level="" data-path="predgovor.html"><a href="predgovor.html"><i class="fa fa-check"></i>Predgovor</a></li>
+<li class="chapter" data-level="1" data-path="rirstudio.html"><a href="rirstudio.html"><i class="fa fa-check"></i><b>1</b> R i RStudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="rirstudio.html"><a href="rirstudio.html#upotreba-r-a-i-rstudija-u-praksi"><i class="fa fa-check"></i><b>1.1</b> Upotreba R-a i RStudija u praksi</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="rirstudio.html"><a href="rirstudio.html#upravljanje-podacima-i-manipulacija"><i class="fa fa-check"></i><b>1.1.1</b> Upravljanje podacima i manipulacija</a></li>
+<li class="chapter" data-level="1.1.2" data-path="rirstudio.html"><a href="rirstudio.html#analiza-podataka"><i class="fa fa-check"></i><b>1.1.2</b> Analiza podataka</a></li>
+<li class="chapter" data-level="1.1.3" data-path="rirstudio.html"><a href="rirstudio.html#vizualizacija"><i class="fa fa-check"></i><b>1.1.3</b> Vizualizacija</a></li>
+<li class="chapter" data-level="1.1.4" data-path="rirstudio.html"><a href="rirstudio.html#reprodukcija-istraživanja-i-simulacija"><i class="fa fa-check"></i><b>1.1.4</b> Reprodukcija istraživanja i simulacija</a></li>
+<li class="chapter" data-level="1.1.5" data-path="rirstudio.html"><a href="rirstudio.html#praktične-primjene-u-različitim-sektorima"><i class="fa fa-check"></i><b>1.1.5</b> Praktične primjene u različitim sektorima</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="rirstudio.html"><a href="rirstudio.html#razumijevanje-r-a-i-osnova-rada-u-r-u"><i class="fa fa-check"></i><b>1.2</b> Razumijevanje R-a i osnova rada u R-u</a></li>
+<li class="chapter" data-level="1.3" data-path="rirstudio.html"><a href="rirstudio.html#statistika-i-grafički-prikaz-u-r-u"><i class="fa fa-check"></i><b>1.3</b> Statistika i grafički prikaz u R-u</a></li>
+<li class="chapter" data-level="1.4" data-path="rirstudio.html"><a href="rirstudio.html#napredne-tehnike-i-rješavanje-problema"><i class="fa fa-check"></i><b>1.4</b> Napredne tehnike i rješavanje problema</a></li>
+<li class="chapter" data-level="1.5" data-path="rirstudio.html"><a href="rirstudio.html#gdje-pronaći-pomoć-i-resurse"><i class="fa fa-check"></i><b>1.5</b> Gdje pronaći pomoć i resurse</a></li>
+<li class="chapter" data-level="1.6" data-path="rirstudio.html"><a href="rirstudio.html#općeniti-savjeti"><i class="fa fa-check"></i><b>1.6</b> Općeniti savjeti</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html"><i class="fa fa-check"></i><b>2</b> Osnovni pojmovi i prvi koraci</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#okruženje-ili-environment"><i class="fa fa-check"></i><b>2.1</b> Okruženje ili environment</a></li>
+<li class="chapter" data-level="2.2" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#konzola"><i class="fa fa-check"></i><b>2.2</b> Konzola</a></li>
+<li class="chapter" data-level="2.3" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#datoteke-i-radni-direktorij"><i class="fa fa-check"></i><b>2.3</b> Datoteke i radni direktorij</a></li>
+<li class="chapter" data-level="2.4" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#projekti"><i class="fa fa-check"></i><b>2.4</b> Projekti</a></li>
+<li class="chapter" data-level="2.5" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#skripte"><i class="fa fa-check"></i><b>2.5</b> Skripte</a></li>
+<li class="chapter" data-level="2.6" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#plots-viewer-i-help"><i class="fa fa-check"></i><b>2.6</b> Plots, Viewer i Help</a></li>
+<li class="chapter" data-level="2.7" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#paketi"><i class="fa fa-check"></i><b>2.7</b> Paketi</a></li>
+<li class="chapter" data-level="2.8" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#najčešće-početničke-greške"><i class="fa fa-check"></i><b>2.8</b> Najčešće početničke greške</a></li>
+<li class="chapter" data-level="" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#pitanja-za-ponavljanje"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="instalacijaiaktivacijapaketa.html"><a href="instalacijaiaktivacijapaketa.html"><i class="fa fa-check"></i><b>3</b> Instalacija i aktivacija paketa</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="instalacijaiaktivacijapaketa.html"><a href="instalacijaiaktivacijapaketa.html#instalacija-paketa"><i class="fa fa-check"></i><b>3.1</b> Instalacija paketa</a></li>
+<li class="chapter" data-level="3.2" data-path="instalacijaiaktivacijapaketa.html"><a href="instalacijaiaktivacijapaketa.html#učitavanje-paketa"><i class="fa fa-check"></i><b>3.2</b> Učitavanje paketa</a></li>
+<li class="chapter" data-level="3.3" data-path="instalacijaiaktivacijapaketa.html"><a href="instalacijaiaktivacijapaketa.html#ažuriranje-paketa"><i class="fa fa-check"></i><b>3.3</b> Ažuriranje paketa</a></li>
+<li class="chapter" data-level="3.4" data-path="instalacijaiaktivacijapaketa.html"><a href="instalacijaiaktivacijapaketa.html#najčešće-pogreške"><i class="fa fa-check"></i><b>3.4</b> Najčešće pogreške</a></li>
+<li class="chapter" data-level="" data-path="instalacijaiaktivacijapaketa.html"><a href="instalacijaiaktivacijapaketa.html#pitanja-za-ponavljanje-1"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="identifikatori-i-vrijednosti.html"><a href="identifikatori-i-vrijednosti.html"><i class="fa fa-check"></i><b>4</b> Identifikatori i vrijednosti</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="identifikatori-i-vrijednosti.html"><a href="identifikatori-i-vrijednosti.html#osnovnitipovipodataka"><i class="fa fa-check"></i><b>4.1</b> Osnovni tipovi podataka</a></li>
+<li class="chapter" data-level="" data-path="identifikatori-i-vrijednosti.html"><a href="identifikatori-i-vrijednosti.html#pitanja-za-ponavljanje-2"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+<li class="chapter" data-level="4.2" data-path="identifikatori-i-vrijednosti.html"><a href="identifikatori-i-vrijednosti.html#nazivi"><i class="fa fa-check"></i><b>4.2</b> Nazivi</a></li>
+<li class="chapter" data-level="" data-path="identifikatori-i-vrijednosti.html"><a href="identifikatori-i-vrijednosti.html#pitanja-za-ponavljanje-3"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+<li class="chapter" data-level="4.3" data-path="identifikatori-i-vrijednosti.html"><a href="identifikatori-i-vrijednosti.html#kreiranjevarijabli"><i class="fa fa-check"></i><b>4.3</b> Kreiranje varijabli</a></li>
+<li class="chapter" data-level="" data-path="identifikatori-i-vrijednosti.html"><a href="identifikatori-i-vrijednosti.html#pitanja-za-ponavljanje-4"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="osnovni-operatori-i-funkcije.html"><a href="osnovni-operatori-i-funkcije.html"><i class="fa fa-check"></i><b>5</b> Osnovni operatori i funkcije</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="osnovni-operatori-i-funkcije.html"><a href="osnovni-operatori-i-funkcije.html#operatoriuR-u"><i class="fa fa-check"></i><b>5.1</b> Operatori u R-u</a></li>
+<li class="chapter" data-level="" data-path="osnovni-operatori-i-funkcije.html"><a href="osnovni-operatori-i-funkcije.html#pitanja-za-ponavljanje-5"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+<li class="chapter" data-level="5.2" data-path="osnovni-operatori-i-funkcije.html"><a href="osnovni-operatori-i-funkcije.html#osnovnefunkcije"><i class="fa fa-check"></i><b>5.2</b> Osnovne funkcije</a></li>
+<li class="chapter" data-level="" data-path="osnovni-operatori-i-funkcije.html"><a href="osnovni-operatori-i-funkcije.html#pitanja-za-ponavljanje-6"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html"><i class="fa fa-check"></i><b>6</b> Jednodimenzionalni tip podataka</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#kreiranjevektora"><i class="fa fa-check"></i><b>6.1</b> Kreiranje vektora</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#kreiranje-vektora-koristeći-izravan-upis-elemenata"><i class="fa fa-check"></i><b>6.1.1</b> Kreiranje vektora koristeći izravan upis elemenata</a></li>
+<li class="chapter" data-level="6.1.2" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#vektor-indeksa"><i class="fa fa-check"></i><b>6.1.2</b> Vektor indeksa</a></li>
+<li class="chapter" data-level="6.1.3" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#kreiranje-vektora-cjelobrojnih-vrijednosti-u-zadanom-intervalu"><i class="fa fa-check"></i><b>6.1.3</b> Kreiranje vektora cjelobrojnih vrijednosti u zadanom intervalu</a></li>
+<li class="chapter" data-level="6.1.4" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#kreiranje-sekvencijskih-vektora"><i class="fa fa-check"></i><b>6.1.4</b> Kreiranje sekvencijskih vektora</a></li>
+<li class="chapter" data-level="6.1.5" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#kreiranje-vektora-s-ponovljenim-vrijednostima"><i class="fa fa-check"></i><b>6.1.5</b> Kreiranje vektora s ponovljenim vrijednostima</a></li>
+<li class="chapter" data-level="6.1.6" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#kreiranje-vektora-koristeći-teorijske-distribucije-vjerojatnosti-generator-slučajnih-brojeva"><i class="fa fa-check"></i><b>6.1.6</b> Kreiranje vektora koristeći teorijske distribucije vjerojatnosti/ generator slučajnih brojeva</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#radsvektorima"><i class="fa fa-check"></i><b>6.2</b> Rad s vektorima</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#spajanje-vektora"><i class="fa fa-check"></i><b>6.2.1</b> Spajanje vektora</a></li>
+<li class="chapter" data-level="6.2.2" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#sortiranje-elemenata-vektora"><i class="fa fa-check"></i><b>6.2.2</b> Sortiranje elemenata vektora</a></li>
+<li class="chapter" data-level="6.2.3" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#tip-vektora"><i class="fa fa-check"></i><b>6.2.3</b> Tip vektora</a></li>
+<li class="chapter" data-level="6.2.4" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#dodavanje-atributa"><i class="fa fa-check"></i><b>6.2.4</b> Dodavanje atributa</a></li>
+<li class="chapter" data-level="6.2.5" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#duljina-vektora"><i class="fa fa-check"></i><b>6.2.5</b> Duljina vektora</a></li>
+<li class="chapter" data-level="6.2.6" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#odabir-elemenata-vektora"><i class="fa fa-check"></i><b>6.2.6</b> Odabir elemenata vektora</a></li>
+<li class="chapter" data-level="6.2.7" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#zamjena-i-brisanje-elemenata-vektora"><i class="fa fa-check"></i><b>6.2.7</b> Zamjena i brisanje elemenata vektora</a></li>
+<li class="chapter" data-level="6.2.8" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#operacije-na-vektorima"><i class="fa fa-check"></i><b>6.2.8</b> Operacije na vektorima</a></li>
+<li class="chapter" data-level="6.2.9" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#izračun-pokazatelja-deskriptivne-statistike-vektora"><i class="fa fa-check"></i><b>6.2.9</b> Izračun pokazatelja deskriptivne statistike vektora</a></li>
+<li class="chapter" data-level="6.2.10" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#recikliranje-vektora"><i class="fa fa-check"></i><b>6.2.10</b> Recikliranje vektora</a></li>
+<li class="chapter" data-level="6.2.11" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#usporedba-vektora"><i class="fa fa-check"></i><b>6.2.11</b> Usporedba vektora</a></li>
+<li class="chapter" data-level="6.2.12" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#logički-upiti"><i class="fa fa-check"></i><b>6.2.12</b> Logički upiti</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#pitanja-za-ponavljanje-7"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+<li class="chapter" data-level="6.3" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#kreiranjefaktora"><i class="fa fa-check"></i><b>6.3</b> Kreiranje faktora</a></li>
+<li class="chapter" data-level="6.4" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#najčešće-greške-pri-kreiranju-i-radu-s-faktorima"><i class="fa fa-check"></i><b>6.4</b> Najčešće greške pri kreiranju i radu s faktorima</a></li>
+<li class="chapter" data-level="" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#pitanja-za-ponavljanje-8"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html"><i class="fa fa-check"></i><b>7</b> Visediomenzionalni tipovi podataka</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#kreiranjematrice"><i class="fa fa-check"></i><b>7.1</b> Kreiranje matrice</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#kreiranje-matrice-koristeći-izravan-upis-elemenata"><i class="fa fa-check"></i><b>7.1.1</b> Kreiranje matrice koristeći izravan upis elemenata</a></li>
+<li class="chapter" data-level="7.1.2" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#matrica-indeksa"><i class="fa fa-check"></i><b>7.1.2</b> Matrica indeksa</a></li>
+<li class="chapter" data-level="7.1.3" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#kreiranje-matrice-iz-vektora"><i class="fa fa-check"></i><b>7.1.3</b> Kreiranje matrice iz vektora</a></li>
+<li class="chapter" data-level="7.1.4" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#dodjela-atributa"><i class="fa fa-check"></i><b>7.1.4</b> Dodjela atributa</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#radsmatricama"><i class="fa fa-check"></i><b>7.2</b> Rad s matricama</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#provjera-tipa-matrice"><i class="fa fa-check"></i><b>7.2.1</b> Provjera tipa matrice</a></li>
+<li class="chapter" data-level="7.2.2" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#odabir-elemenata-matrice"><i class="fa fa-check"></i><b>7.2.2</b> Odabir elemenata matrice</a></li>
+<li class="chapter" data-level="7.2.3" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#zamjena-elemenata-matrica"><i class="fa fa-check"></i><b>7.2.3</b> Zamjena elemenata matrica</a></li>
+<li class="chapter" data-level="7.2.4" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#filtriranje-matrice---odabir-elemenata-prema-kriteriju"><i class="fa fa-check"></i><b>7.2.4</b> Filtriranje matrice - odabir elemenata prema kriteriju</a></li>
+<li class="chapter" data-level="7.2.5" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#kreiranje-matrice-s-ponovljenim-vrijednostima-i-zadavanje-dijagonale"><i class="fa fa-check"></i><b>7.2.5</b> Kreiranje matrice s ponovljenim vrijednostima i zadavanje dijagonale</a></li>
+<li class="chapter" data-level="7.2.6" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#spajanje-matrica"><i class="fa fa-check"></i><b>7.2.6</b> Spajanje matrica</a></li>
+<li class="chapter" data-level="7.2.7" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#operacije-na-matricama"><i class="fa fa-check"></i><b>7.2.7</b> Operacije na matricama</a></li>
+<li class="chapter" data-level="7.2.8" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#konverzija-matrice-u-vektor"><i class="fa fa-check"></i><b>7.2.8</b> Konverzija matrice u vektor</a></li>
+<li class="chapter" data-level="7.2.9" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#konverzija-matrice-u-podatkovni-okvir"><i class="fa fa-check"></i><b>7.2.9</b> Konverzija matrice u podatkovni okvir</a></li>
+<li class="chapter" data-level="7.2.10" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#izračun-pokazatelja-deskriptivne-statistike-za-matrice"><i class="fa fa-check"></i><b>7.2.10</b> Izračun pokazatelja deskriptivne statistike za matrice</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#prednosti-i-nedostaci-rada-s-matricama-te-najčešće-greške"><i class="fa fa-check"></i><b>7.3</b> Prednosti i nedostaci rada s matricama te najčešće greške</a></li>
+<li class="chapter" data-level="" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#pitanja-za-ponavljanje-9"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+<li class="chapter" data-level="7.4" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#kreiranjeiradslistama"><i class="fa fa-check"></i><b>7.4</b> Kreiranje i rad s listama</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#dodavanje-atributa-1"><i class="fa fa-check"></i><b>7.4.1</b> Dodavanje atributa</a></li>
+<li class="chapter" data-level="7.4.2" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#odabir-elemenata"><i class="fa fa-check"></i><b>7.4.2</b> Odabir elemenata</a></li>
+<li class="chapter" data-level="7.4.3" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#dodavanje-elemenata"><i class="fa fa-check"></i><b>7.4.3</b> Dodavanje elemenata</a></li>
+<li class="chapter" data-level="7.4.4" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#izmjena-ili-brisanje-elementa"><i class="fa fa-check"></i><b>7.4.4</b> Izmjena ili brisanje elementa</a></li>
+<li class="chapter" data-level="7.4.5" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#spajanje-lista"><i class="fa fa-check"></i><b>7.4.5</b> Spajanje lista</a></li>
+<li class="chapter" data-level="7.4.6" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#razdvajanje-lista"><i class="fa fa-check"></i><b>7.4.6</b> Razdvajanje lista</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#prednosti-i-nedostaci-rada-s-listama-te-najčešće-greške"><i class="fa fa-check"></i><b>7.5</b> Prednosti i nedostaci rada s listama te najčešće greške</a></li>
+<li class="chapter" data-level="" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#pitanja-za-ponavljanje-10"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+<li class="chapter" data-level="7.6" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#kreiranje-podatkovnih-okvira-data-frame"><i class="fa fa-check"></i><b>7.6</b> Kreiranje podatkovnih okvira (data frame)</a></li>
+<li class="chapter" data-level="7.7" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#radspodatkovnimokvirima"><i class="fa fa-check"></i><b>7.7</b> Rad s podatkovnim okvirima</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#uvid-u-podatkovni-okvir"><i class="fa fa-check"></i><b>7.7.1</b> Uvid u podatkovni okvir</a></li>
+<li class="chapter" data-level="7.7.2" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#odabir-elemenata-1"><i class="fa fa-check"></i><b>7.7.2</b> Odabir elemenata</a></li>
+<li class="chapter" data-level="7.7.3" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#dodavanje-elemenata-1"><i class="fa fa-check"></i><b>7.7.3</b> Dodavanje elemenata</a></li>
+<li class="chapter" data-level="7.7.4" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#podskup-podatkovnog-okvira-prema-kriteriju-filtriranje"><i class="fa fa-check"></i><b>7.7.4</b> Podskup podatkovnog okvira prema kriteriju (filtriranje)</a></li>
+<li class="chapter" data-level="7.7.5" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#sortiranje-elemenata"><i class="fa fa-check"></i><b>7.7.5</b> Sortiranje elemenata</a></li>
+<li class="chapter" data-level="7.7.6" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#brisanje-elemenata"><i class="fa fa-check"></i><b>7.7.6</b> Brisanje elemenata</a></li>
+<li class="chapter" data-level="7.7.7" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#učitavanje-podatkovnog-okvira-sadržanog-u-r-u"><i class="fa fa-check"></i><b>7.7.7</b> Učitavanje podatkovnog okvira sadržanog u R-u</a></li>
+<li class="chapter" data-level="7.7.8" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#izračun-pokazatelja-deskriptivne-statistike"><i class="fa fa-check"></i><b>7.7.8</b> Izračun pokazatelja deskriptivne statistike</a></li>
+<li class="chapter" data-level="7.7.9" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#pretvaranje-varijable-u-faktor-unutar-postojećeg-podatkovnog-okvira"><i class="fa fa-check"></i><b>7.7.9</b> Pretvaranje varijable u faktor unutar postojećeg podatkovnog okvira</a></li>
+<li class="chapter" data-level="7.7.10" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#pretvaranje-podatkovnog-okvira-u-tablicu"><i class="fa fa-check"></i><b>7.7.10</b> Pretvaranje podatkovnog okvira u tablicu</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#prednosti-i-nedostaci-rada-s-podatkovnim-okvirima-te-najčešće-greške"><i class="fa fa-check"></i><b>7.8</b> Prednosti i nedostaci rada s podatkovnim okvirima te najčešće greške</a></li>
+<li class="chapter" data-level="" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#pitanja-za-ponavljanje-11"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+<li class="chapter" data-level="7.9" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#kreiranjetablica"><i class="fa fa-check"></i><b>7.9</b> Kreiranje tablica</a></li>
+<li class="chapter" data-level="7.10" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#prednosti-i-nedostaci-tablica-te-najčešće-greške"><i class="fa fa-check"></i><b>7.10</b> Prednosti i nedostaci tablica te najčešće greške</a></li>
+<li class="chapter" data-level="" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#pitanja-za-ponavljanje-12"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="uvozpodataka.html"><a href="uvozpodataka.html"><i class="fa fa-check"></i><b>8</b> Uvoz podataka</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="uvozpodataka.html"><a href="uvozpodataka.html#uvoz-podataka-pohranjenih-na-računalu"><i class="fa fa-check"></i><b>8.1</b> Uvoz podataka pohranjenih na računalu</a></li>
+<li class="chapter" data-level="8.2" data-path="uvozpodataka.html"><a href="uvozpodataka.html#uvoz-podataka-iz-r-paketa"><i class="fa fa-check"></i><b>8.2</b> Uvoz podataka iz R paketa</a></li>
+<li class="chapter" data-level="8.3" data-path="uvozpodataka.html"><a href="uvozpodataka.html#dohvaćanje-i-uvoz-podataka-iz-online-izvora"><i class="fa fa-check"></i><b>8.3</b> Dohvaćanje i uvoz podataka iz online izvora</a></li>
+<li class="chapter" data-level="8.4" data-path="uvozpodataka.html"><a href="uvozpodataka.html#uvoz-podataka-iz-baza-podataka"><i class="fa fa-check"></i><b>8.4</b> Uvoz podataka iz baza podataka</a></li>
+<li class="chapter" data-level="8.5" data-path="uvozpodataka.html"><a href="uvozpodataka.html#uobičajene-greške-pri-uvozu-podataka"><i class="fa fa-check"></i><b>8.5</b> Uobičajene greške pri uvozu podataka</a></li>
+<li class="chapter" data-level="" data-path="uvozpodataka.html"><a href="uvozpodataka.html#pitanja-za-ponavljanje-13"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html"><i class="fa fa-check"></i><b>9</b> Elementi kontrole toka</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html#for"><i class="fa fa-check"></i><b>9.1</b> for</a></li>
+<li class="chapter" data-level="9.2" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html#apply-sapply-lapply"><i class="fa fa-check"></i><b>9.2</b> apply, sapply, lapply</a></li>
+<li class="chapter" data-level="9.3" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html#if"><i class="fa fa-check"></i><b>9.3</b> if</a></li>
+<li class="chapter" data-level="9.4" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html#ifelse"><i class="fa fa-check"></i><b>9.4</b> ifelse</a></li>
+<li class="chapter" data-level="9.5" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html#razlika-između-ifelse-i-kombinecije-if-i-else"><i class="fa fa-check"></i><b>9.5</b> Razlika između ifelse i kombinecije if i else</a></li>
+<li class="chapter" data-level="9.6" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html#switch"><i class="fa fa-check"></i><b>9.6</b> switch</a></li>
+<li class="chapter" data-level="9.7" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html#while"><i class="fa fa-check"></i><b>9.7</b> while</a></li>
+<li class="chapter" data-level="" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html#pitanja-za-ponavljanje-14"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="kreiranjefunkcija.html"><a href="kreiranjefunkcija.html"><i class="fa fa-check"></i><b>10</b> Kreiranje funkcija</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="kreiranjefunkcija.html"><a href="kreiranjefunkcija.html#funkcije-s-više-argumenata"><i class="fa fa-check"></i><b>10.1</b> Funkcije s više argumenata</a></li>
+<li class="chapter" data-level="10.2" data-path="kreiranjefunkcija.html"><a href="kreiranjefunkcija.html#zadane-vrijednosti-argumenata"><i class="fa fa-check"></i><b>10.2</b> Zadane vrijednosti argumenata</a></li>
+<li class="chapter" data-level="10.3" data-path="kreiranjefunkcija.html"><a href="kreiranjefunkcija.html#funkcije-koje-vraćaju-više-vrijednosti"><i class="fa fa-check"></i><b>10.3</b> Funkcije koje vraćaju više vrijednosti</a></li>
+<li class="chapter" data-level="" data-path="kreiranjefunkcija.html"><a href="kreiranjefunkcija.html#pitanja-za-ponavljanje-15"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="jednostavnevizualizacije.html"><a href="jednostavnevizualizacije.html"><i class="fa fa-check"></i><b>11</b> Jednostavne vizualizacije</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="jednostavnevizualizacije.html"><a href="jednostavnevizualizacije.html#primjeri-najčešće-korištenih-vizualizacija"><i class="fa fa-check"></i><b>11.1</b> Primjeri najčešće korištenih vizualizacija</a></li>
+<li class="chapter" data-level="11.2" data-path="jednostavnevizualizacije.html"><a href="jednostavnevizualizacije.html#prilagodba-grafikona"><i class="fa fa-check"></i><b>11.2</b> Prilagodba grafikona</a></li>
+<li class="chapter" data-level="11.3" data-path="jednostavnevizualizacije.html"><a href="jednostavnevizualizacije.html#prednosti-i-nedostaci-vizualizacija-u-r-u-te-najčešće-pogreške"><i class="fa fa-check"></i><b>11.3</b> Prednosti i nedostaci vizualizacija u R-u te najčešće pogreške</a></li>
+<li class="chapter" data-level="" data-path="jednostavnevizualizacije.html"><a href="jednostavnevizualizacije.html#pitanja-za-ponavljanje-16"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="primjerupravljanjapodacima.html"><a href="primjerupravljanjapodacima.html"><i class="fa fa-check"></i><b>12</b> Primjer upravljanja podacima</a>
+<ul>
+<li class="chapter" data-level="" data-path="primjerupravljanjapodacima.html"><a href="primjerupravljanjapodacima.html#pitanja-za-ponavljanje-17"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+<li class="chapter" data-level="" data-path="primjerupravljanjapodacima.html"><a href="primjerupravljanjapodacima.html#zadaci"><i class="fa fa-check"></i>Zadaci</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="prilagodbara.html"><a href="prilagodbara.html"><i class="fa fa-check"></i><b>13</b> Prilagodba R-a</a></li>
+<li class="chapter" data-level="" data-path="literatura.html"><a href="literatura.html"><i class="fa fa-check"></i>Literatura</a></li>
+<li class="divider"></li>
+<li><img src='unipu.png' width='250px'></li>
+<li><a href=" " target="blank"> <br> Published with bookdown </a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Uvod u R i R Studio</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="osnovnipojmoviiprvikoraci" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number"> 2</span> Osnovni pojmovi i prvi koraci<a href="osnovnipojmoviiprvikoraci.html#osnovnipojmoviiprvikoraci" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Ovo poglavlje služi kao temeljni uvod u rad s R-om, pružajući sve potrebne informacije za početak rada, s posebnim naglaskom na praktične aspekte i osnovnu organizaciju rada. Kroz strukturiran pristup, poglavlje omogućava postupno upoznavanje s alatima i konceptima potrebnim za učinkovito korištenje R-a u analizi podataka.</p>
+<p>Potrebno je prvo instalirati R na računalo, a potom RStudio. Najbolje je R preuzeti sa službene stranice <a href="https://cran.r-project.org/">The Comprehensive R Archive Network</a>. Instalacija RStudija može se provesti na dva načina – preuzimanjem datoteke s <a href="https://posit.co/download/rstudio-desktop/">Posit-a</a> ili iz R-a (potreban je paket devtools). Prvi je način puno jednostavniji i češće korišten. Nakon preuzimanja instalacijskih datoteka, slijedite upute za instalaciju. Primjer kako postupak instalacije može izgledati dostupan je na <a href="https://github.com/genomicsclass/windows">GitHubu</a>.</p>
+<div class="text" style="float: center; margin-left: 10px;">
+<div class="figure">
+<img src="CRAN.png" width="600" alt="" />
+<p class="caption">Preuzimanje putem CRAN-a</p>
+</div>
+</div>
+<p><br></p>
+<div class="text-align: center;">
+<div class="figure">
+<img src="Install.png" height="500" alt="" />
+<p class="caption">Preuzimanje putem posit-a</p>
+</div>
+</div>
+<p><br></p>
+<p><em>Digresija: Posit je novi naziv za tvrtku koja je prethodno bila poznata kao RStudio. Promjena imena odražava širu misiju tvrtke: pružanje podrške alatima ne samo za R, već i za Python i druge jezike korištene u analitici podataka. Posit Connect je alat koji omogućuje distribuciju, dijeljenje i hosting analitičkog sadržaja razvijenog u alatima poput R-a i Python-a. Posit Connect (ranije poznat kao RStudio Connect) dio je Positovog portfelja proizvoda i omogućava korisnicima i organizacijama lako dijeljenje analitičkih aplikacija, izvještaja, nadzornih ploča (dashboards) i API-ja s korisnicima.</em></p>
+<p>Jedna od prednosti R-a jest što se radi o besplatnom, open source softverskom okruženju. Zbog toga je njegova upotreba raširena, a brojni primjeri upotrebe pojedinih paketa mogu se naći u pratećoj dokumentaciji tih paketa (dostupnoj online i preko Help opcije), online forumima te GitHubu. Pritom je <strong>CRAN</strong> (the Comprehensve R Archive Network) osnovna mrežna stranica koja funkcionira kao repozitorij sustava R, paketa i dokumentacije.</p>
+<p>U ovom uvodu, prikazat će se osnovni pojmovi i funkcije, osnovne strukture podataka, kreiranje i definiranje tih struktura te odabiranje, dodavanje i brisanje elemenata iz različitih vrsta struktura podataka, uz osnove rada s tim strukturama podataka. Navedene su osnove koje se uobičajeno koriste tijekom pripreme podataka za analizu.</p>
+<p><strong>RStudio</strong> je najčešće korištena platforma za rad pri korištenju R-a. Ova platforma ne samo da omogućava uređivanje i pisanje skripti, nego također pruža i raznovrsne korisne alate <span class="citation">(Irizarry 2019)</span>. Za početak, upoznat ćete se s osnovama rada u RStudiju.</p>
+<div class="text" style="float: center; margin-left: 10px;">
+<div class="figure">
+<img src="Rstudio.png" width="600" alt="" />
+<p class="caption">RStudio korisničko sučelje</p>
+</div>
+</div>
+<p><br></p>
+<ul>
+<li>Gore lijevo: Script/ Source</li>
+<li>Gore desno: Environment</li>
+<li>Dolje lijevo: Console</li>
+<li>Dolje desno: Files/ Plots/ Packages/Help/ Viewer</li>
+</ul>
+<p><br></p>
+<p>Ako je prethodno otvoren novi <strong>R script</strong> (skripta), gore lijevo prikazuju se zadane naredbe. Alternativno, u tom prozoru prikazuju se korištene datoteke i objekti uz naredbu <code>view()</code> ili klik na datoteke/objekte u prozoru Environment.</p>
+<div id="okruženje-ili-environment" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Okruženje ili environment<a href="osnovnipojmoviiprvikoraci.html#okruženje-ili-environment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Environment</strong> predstavlja radno okruženje i tu se nalaze svi korišteni objekti (učitani podatkovni okviri (<em>engl. data frame</em>), funkcije, varijable, itd.) u pojedinoj sesiji. Okruženje u R-u je zapravo kolekcija parova ime/vrijednost (gdje su imena varijabli, a vrijednosti su objekti pridruženi tim imenima). Neki objekti mogu biti nevidljivi u standardnom prikazu okruženja, kao što su zatvoreni (<em>engl. locked</em>) objekti ili oni kreirani unutar specifičnih struktura.</p>
+<p>Globalno okruženje je vrhovna razina u kojoj radite. Lokalna okruženja se stvaraju unutar funkcija i izolirana su od globalnog okruženja. Klikom na <strong>Global Environment</strong> dobiva se pregled svih aktivnih paketa u sesiji. U tom prozoru moguće je pratiti i utrošenu memoriju, ukloniti sve objekte iz okruženja, pregledati povijest izvršenih naredbi ili pregledati veze (ako su uspostavljane tijekom sesije). Također, dostupni su i linkovi na tutorijale o RStudiju.</p>
+<p>Možete koristiti funkcije kao što su <code>ls()</code> ili <code>objects()</code> za prikaz svih objekata unutar trenutnog okruženja, odnosno <code>rm()</code> za uklanjanje objekata iz okruženja kako biste oslobodili memoriju i izbjegli zabunu s imenima. Preporučuje se korištenje RStudio projekata za odvajanje različitih radnih okruženja. Svaki projekt u RStudiju ima svoje okruženje. Također, periodično provjeravajte upotrebu memorije pomoću <code>memory.size()</code> i <code>memory.limit()</code> na Windowsu ili <code>gc()</code> na svim platformama.</p>
+<p>Organizirajte kod u zasebne skripte prema zadatku ili funkcionalnosti kako biste izbjegli nered u globalnom okruženju.</p>
+</div>
+<div id="konzola" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Konzola<a href="osnovnipojmoviiprvikoraci.html#konzola" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Console</strong> ili konzola prikazuje izvršene naredbe. Naredbe se mogu upisivati i izravno u konzolu. Druga, preferirana mogućnost, je upisivati naredbe u skriptu, pri čemu će se one prikazati u konzoli tek nakon što se te naredbe izvrše (Run ili Ctrl+Enter). Novu skriptu možete kreirati tako da u gornjem desnom uglu, ispod izbornika Files, kliknete na zeleni krug s bijelim plusom i iz padajućeg izbornika odaberete <strong>R script</strong>. Alternativno, možete koristiti prečicu Ctrl+Shift+N.</p>
+</div>
+<div id="datoteke-i-radni-direktorij" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Datoteke i radni direktorij<a href="osnovnipojmoviiprvikoraci.html#datoteke-i-radni-direktorij" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>U donjem desnom prozoru na početku svake sesije bit će prikazane datoteke (<strong>Files</strong>). Moguće ih je učitati izravno, klikom na datoteku te odabirom Import data. Nakon što su učitane, datoteke će biti pripisane objektu (najčešće je to podatkovni okvir) koji će se pojaviti u prozoru Environment. Prikazane datoteke (<em>engl. Files</em>) su one koje se nalaze u radnom direktoriju, pri čemu je zadana (<em>engl. default</em>) mapa Dokumenti (<em>engl. Documents</em>). Provjera za utvrđivanje koja se mapa koristi kao radni direktorij vrši se putem upisa <code>getwd()</code> u konzolu ili skriptu. Ukoliko se radni direktorij želi promijeniti, to je moguće učiniti pomoću <code>setwd()</code> i upisa puta do mape radnog direktorija.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="osnovnipojmoviiprvikoraci.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">getwd</span>()</span>
+<span id="cb1-2"><a href="osnovnipojmoviiprvikoraci.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">setwd</span>(<span class="st">&quot;C:/Users/Documents/Intro&quot;</span>)</span></code></pre></div>
+</div>
+<div id="projekti" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Projekti<a href="osnovnipojmoviiprvikoraci.html#projekti" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Pri radu u R-u jedan od jednostavnijih pristupa je kreiranje dokumenta R projekta (<strong>R project</strong>) na početku rada na pojedinom predmetu (File-&gt; New Project-&gt;New Directory-&gt;New Project te upis naziva novog projekta; alternativno, u gornjem desnom uglu kliknete na dodavanje novog projekta). Na taj način kreira se novo radno okruženje. Ako radite na više predmeta istovremeno i želite svaki od njih sačuvati kako biste se kasnije mogli vratiti radu ili pregledu svakog od njih, korištenje ove opcije će to olakšati. Naime, pojedinom projektu pristupate putem opcije <em>Open project</em>, a ukoliko ste sve pohranili prije posljednjeg zatvaranja, možete nastaviti rad na tom predmetu/projektu, bez da morate počinjati ispočetka svaki sljedeći put. Osim toga, to je korisno i zato jer ćete ponekad htjeti koristiti dijelove koda/ naredbi koje ste kreirali ranije, a ova opcija to olakšava.</p>
+<p>Ipak, treba imati na umu da je glavni izvor temeljem kojeg rekreirate radno okruženje zapravo skripta. Čak i ako okruženje nije sačuvano, pomoću skripte možete ponovo instalirati pakete i kreirati objekte.</p>
+</div>
+<div id="skripte" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Skripte<a href="osnovnipojmoviiprvikoraci.html#skripte" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Skripta se može spremiti u obliku zasebnog dokumenta, <strong>R script</strong>. Ako želite upisati komentare, kao podsjetnik čemu pojedina naredba služi ili objašnjenje skupa naredbi, ispred tih komentara potrebno je upisati #. Tako spremljena datoteka može se ponovo koristiti, dorađivati i/ili ispravljati.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="osnovnipojmoviiprvikoraci.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Ovo je komentar.</span></span>
+<span id="cb2-2"><a href="osnovnipojmoviiprvikoraci.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Ako su ljestve ispred teksta, R će ga ignorirati.</span></span>
+<span id="cb2-3"><a href="osnovnipojmoviiprvikoraci.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Da ispred teksta nisu ljestve, R bi javljao grešku u kodu.</span></span></code></pre></div>
+<p>Osim skripte, moguće je koristiti R dokument <strong>R Markdown</strong>. R Markdown je izvrsna opcija ako se R koristi pri sastavljanju izvješća ili dokumenata, jer podržava pisanje i uređivanje (css, latex) tekstova u kombinaciji s izvođenjem koda i izlazom dokumenta u različitim formatima (html, pdf, docx, epub, i dr.). Nova bilježnica ili R Markdown naći će se kao opcija u padajućem izborniku ispod R script. R Markdown može sadržavati kombinaciju koda, teksta i rezultata, a izlazne datoteke kreiraju se klikom na Knit u alatnoj traci prozora Source. Osim navedene kombinacije upotrebe teksta, koda i rezultata, u R Markdownu, naredbe se, u pravilu, pišu i izvršavaju u blokovima (ili <em>engl. chunk</em>, klik na ikonu +c za dodavanje bloka koda ili prečicom Ctrl+Alt+I). Po pitanju naglašavanja teksta, # ispred teksta na početku reda označit će tekst kao naslov poglavlja; tekst između <em>dviju zvjezdica</em> bit će označen ukošeno (Italics), a tekst između <strong>dvostrukih zvjezdica</strong> podebljano (Bold).</p>
+<p>Skripta može sadržavati jednu ili niz povezanih naredbi, a naredba ili skup naredbi pokreću se klikom na <strong>Run</strong> ili prečicom <strong>Ctrl+Enter</strong>. S obzirom da je R izuzetno osjetljiv na korištenu sintaksu (velika i mala slova, tipfelere, otvaranje i zatvaranje zagrada i dr.), korištenje skripte često predstavlja uštedu vremena. Prvo, nakon upisane naredbe uz pripadajući broj retka uz naredbu prikazat će se crveni kružić s ili bez x-a ukoliko ta naredba sadrži grešku. Drugo, čak ako se naredba primijeni, a obavijest o grešci prikaže u konzoli, neće biti potrebno pretipkavanje čitave naredbe, nego samo korekcija u skripti.</p>
+<p>Korištenje skripti u R-u je ključno za učinkovito i organizirano programiranje. Evo nekoliko savjeta kako ih pravilno koristiti:</p>
+<ul>
+<li>Organizirajte skriptu tako da svaki dio koda obavlja određenu funkciju. Ovo uključuje učitavanje podataka, transformaciju podataka, analizu podataka, i vizualizaciju.</li>
+<li>Redovito komentirajte svoj kod kako bi bio jasniji vama i drugima. Komentari bi trebali objasniti što određeni dio koda radi i zašto.</li>
+<li>Koristite smislena i opisna imena za varijable. Izbjegavajte kratka ili nejasna imena, kao što su x, df, ili temp, osim u slučaju kratkotrajnih privremenih varijabli.</li>
+<li>Ako određeni dio koda koristite više puta, razmislite o pretvaranju tog dijela u funkciju. To olakšava održavanje i testiranje koda.</li>
+<li>Umjesto da izravno upisujete putanje do datoteka ili ključne parametre, koristite varijable. To olakšava promjene i čini kod prenosivijim.</li>
+<li>Koristite RStudio projekte za organizaciju skripti, podataka i povezanih datoteka. To pomaže u očuvanju putanja i olakšava suradnju s drugima.</li>
+<li>Koristite sustave kontrole verzija poput Git-a za praćenje promjena u skriptama. To omogućava lakše vraćanje na prijašnje verzije i suradnju.</li>
+<li>Redovito testirajte svoj kod kako biste osigurali da radi kako je očekivano. Možete koristiti pakete poput testthat za automatsko testiranje u R-u.</li>
+<li>Pišite kod imajući na umu da biste ga mogli ponovo koristiti. Ako mislite da ćete kod ponovno koristiti, napišite ga tako da bude lako prilagodljiv novim situacijama i da vam bude jasan i čitak čak i ako prođe puno vremena prije nego ga ponovo upotrijebite.</li>
+<li>Za složenije skripte ili pakete, napišite dokumentaciju koja objašnjava kako se skripta koristi, njezine funkcije i primjere.</li>
+<li>Redovito ažurirajte skripte kako bi se pratile promjene u R-u i povezanim paketima.</li>
+</ul>
+</div>
+<div id="plots-viewer-i-help" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Plots, Viewer i Help<a href="osnovnipojmoviiprvikoraci.html#plots-viewer-i-help" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Prikaz donjeg desnog prozora možete promijeniti odabirom Plots, Packages, Help ili Viewer. <strong>Plots</strong> prikazuje kreirane grafičke prikaze. <strong>Help</strong> nudi prikaz dokumentacije vezane uz pakete i/ili naredbe. Taj je prikaz izuzetno koristan, osobito pri korištenju novih naredbi ili pri podsjećanju kako naredbu treba zadati (ili kako točno naredba glasi) jer daje uvid u argumente koje pojedina naredba sadržava, uz mogućnosti i primjere upisa te rezultat/output s obzirom na zadane argumente. <strong>Viewer</strong> će prikazati lokalni sadržaj vezan uz korištenje mrežnih resursa (npr. izrada interaktivnog html grafičkog prikaza, iteracije pri simulacijama uz distribuciju upotrebe jezgri i radne memorije i sl.).</p>
+</div>
+<div id="paketi" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> Paketi<a href="osnovnipojmoviiprvikoraci.html#paketi" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Packages</strong> prikazuje popis dostupnih paketa. Paketi se mogu pozvati iz skripte ili konzole s naredbom <code>library()</code> ili klikom uz željeni paket na popisu Packages. Pri radu u R-u, u pravilu, koriste se paketi. <strong>Paketi</strong> predstavljaju grupirane funkcionalnosti R-a. Svaki paket sastoji se od kompiliranog koda i skupa funkcija (ili skupina funkcija). Primjena pojedinog paketa najčešće je vezana za točno određeni, definirani format podataka. Zato je prateća dokumentacija izuzetno važna i treba steći naviku iščitavanja prateće dokumentacije.</p>
+<p>Odabirom <strong>Packages</strong> u donjem desnom prozoru, prikazat će se popis svih osnovnih paketa koji su već instalirani. Ako želite koristiti neki od paketa koji se ne nalaze na tom popisu, potrebno ih je prvo instalirati. To se radi naredbom <code>install.packages()</code>, npr. <code>install.packages(“tidyverse“)</code> <span class="citation">(Wickham et al. 2019)</span>. Da bi se paket aktivirao, potrebno ga je pozvati pomoću <code>library()</code>, npr. <code>library(tidyverse)</code> ili klikom na kućicu pored paketa nakon što se naziv pojavi na popisu. Prateću dokumentaciju moguće je provjeriti na dva načina. Prvi je način kliknuti na <strong>Help</strong> i u polje za pretragu utipkati naziv paketa. Drugi način je upotreba naredbe <code>library(help=“tidyverse“)</code>. Postoje tisuće dostupnih paketa i njihov broj raste. Grupirane pakete po temama (područjima primjene/metodama) moguće je naći na <a href="https://cran.r-project.org/web/views/">CRANE-u</a>, The Comprehensive R Archive Networku <span class="citation">(Wickham and Bryan 2023)</span>. Osim toga, neki su paketi deponirani na GitHubu i drugim repozitorijima, ali se tad najčešće radi o paketima u razvojnim fazama.</p>
+<p>Ukratko, R je ‘GNU S,’ slobodno dostupan jezik i okruženje za statističko računanje i grafiku koje pruža širok spektar modeliranja, statističkih i grafičkih tehnika: linearno i nelinearno modeliranje, statistički testovi, analiza vremenskih serija, klasifikacija, klasteriranje itd.(<span class="citation">Ripley (2001)</span>). Naznačeni osnovni pojmovi detaljnije će se razložiti u nastavku.</p>
+</div>
+<div id="najčešće-početničke-greške" class="section level2 hasAnchor" number="2.8">
+<h2><span class="header-section-number">2.8</span> Najčešće početničke greške<a href="osnovnipojmoviiprvikoraci.html#najčešće-početničke-greške" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><p><strong>Nerazumijevanje osnovnih koncepta</strong>: Mnogi početnici preskaču osnove R-a, kao što su projekti, skripte, bilježnice, tipovi podataka, strukture podataka (vektori, liste, matrice, podatkovni okviri) i osnovne funkcije. Razumijevanje ovih temelja ključno je za efikasno korištenje R-a.</p></li>
+<li><p><strong>Ignoriranje vektorskih operacija</strong>: R je dizajniran s naglaskom na vektorske operacije, što omogućava obradu cijelih nizova podataka bez potrebe za petljama. Neiskorištavanje ovih mogućnosti čini kod sporijim i manje efikasnim.</p></li>
+<li><p><strong>Prekomjerna upotreba petlji</strong>: Iako su petlje (for, while) ponekad neophodne, u mnogim slučajevima one se mogu izbjeći koristeći vektorske operacije ili primjenom funkcija iz obitelji apply (npr. apply, lapply, sapply).</p></li>
+<li><p><strong>Zanemarivanje postojećih funkcija i paketa</strong>: R ima veliku zajednicu i gotovo da nema statističke metode ili algoritma koji već nije implementiran. Ponovno kreiranje funkcija može dovesti do gubitka vremena i veće vjerojatnosti pogreške.</p></li>
+<li><p><strong>Nepravilno upravljanje radnim direktorijem</strong>: Početnici često zanemaruju postavljanje radnog direktorija ili nepravilno koriste relativne i apsolutne putanje, što može dovesti do grešaka u učitavanju i spremanju podataka.</p></li>
+<li><p><strong>Zanemarivanje vizualizacije podataka</strong>: Vizualizacija je ključna za razumijevanje podataka. Zanemarivanje paketa poput ggplot2 za izradu grafikona često je propuštena prilika za bolje razumijevanje i prezentaciju rezultata.</p></li>
+<li><p><strong>Ignoriranje upozorenja i poruka o greškama</strong>: Poruke o greškama i upozorenja postoje s razlogom. Ignoriranje ovih poruka može dovesti do ozbiljnih problema u kodu koje može biti teško otkriti kasnije.</p></li>
+<li><p><strong>Nepravilno upravljanje verzijama</strong>: Ako se ne koriste sustavi za upravljanje verzijama poput Git-a, praćenje promjena i suradnja s drugima mogu biti otežane.</p></li>
+<li><p><strong>Zanemarivanje važnosti ponavljanja analize</strong>: Ako se ne dokumentiraju koraci analize, kasnije ponavljanje te analize, kao i provjera rezultata, mogu biti otežani.</p></li>
+</ol>
+</div>
+<div id="pitanja-za-ponavljanje" class="section level2 unnumbered hasAnchor">
+<h2>Pitanja za ponavljanje<a href="osnovnipojmoviiprvikoraci.html#pitanja-za-ponavljanje" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><p>Koje su glavne prednosti korištenja R-a kao programskog jezika za statističku analizu?</p></li>
+<li><p>Koji su osnovni koraci za instalaciju R-a i RStudija?</p></li>
+<li><p>Što predstavlja CRAN, i zašto je važan za rad u R-u?</p></li>
+<li><p>Kako u RStudiju možete otvoriti novu skriptu, a kako novu R Markdown datoteku?</p></li>
+<li><p>Što se nalazi u prozoru Environment u RStudiju, i koja je njegova funkcija?</p></li>
+<li><p>Koja je razlika između globalnog i lokalnog okruženja u R-u?</p></li>
+<li><p>Koja je svrha radnog direktorija, i kako ga možete postaviti u R-u?</p></li>
+<li><p>Koje su osnovne funkcije za rad s objektima u radnom okruženju (npr., prikaz, uklanjanje)?</p></li>
+<li><p>Kako funkcionira korištenje paketa u R-u? Navedite primjer instalacije i aktivacije paketa.</p></li>
+<li><p>Što su najčešće početničke greške pri korištenju R-a i RStudija?</p></li>
+</ol>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="rirstudio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="instalacijaiaktivacijapaketa.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="site_libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="site_libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="site_libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="site_libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="site_libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="site_libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="site_libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="site_libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": false,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true,
+"toolbar": {
+"position": "fixed"
+}
+},
+"toc_depth": 2,
+"lot": true,
+"lof": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title> 12 Primjer upravljanja podacima | Uvod u R i R Studio</title>
+  <meta name="description" content=" 12 Primjer upravljanja podacima | Uvod u R i R Studio" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content=" 12 Primjer upravljanja podacima | Uvod u R i R Studio" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content=" 12 Primjer upravljanja podacima | Uvod u R i R Studio" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="jednostavnevizualizacije.html"/>
+<link rel="next" href="prilagodbara.html"/>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="site_libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="site_libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="site_libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="site_libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="site_libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="site_libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="site_libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="site_libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="site_libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="site_libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Uvod u R i R Studio</a></li>
+<li><img src='intro.png' width='280px'></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="uvod-u-r-i-r-studio.html"><a href="uvod-u-r-i-r-studio.html"><i class="fa fa-check"></i>Uvod u R i R Studio</a></li>
+<li class="chapter" data-level="" data-path="impressum.html"><a href="impressum.html"><i class="fa fa-check"></i>Impressum</a></li>
+<li class="chapter" data-level="" data-path="predgovor.html"><a href="predgovor.html"><i class="fa fa-check"></i>Predgovor</a></li>
+<li class="chapter" data-level="1" data-path="rirstudio.html"><a href="rirstudio.html"><i class="fa fa-check"></i><b>1</b> R i RStudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="rirstudio.html"><a href="rirstudio.html#upotreba-r-a-i-rstudija-u-praksi"><i class="fa fa-check"></i><b>1.1</b> Upotreba R-a i RStudija u praksi</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="rirstudio.html"><a href="rirstudio.html#upravljanje-podacima-i-manipulacija"><i class="fa fa-check"></i><b>1.1.1</b> Upravljanje podacima i manipulacija</a></li>
+<li class="chapter" data-level="1.1.2" data-path="rirstudio.html"><a href="rirstudio.html#analiza-podataka"><i class="fa fa-check"></i><b>1.1.2</b> Analiza podataka</a></li>
+<li class="chapter" data-level="1.1.3" data-path="rirstudio.html"><a href="rirstudio.html#vizualizacija"><i class="fa fa-check"></i><b>1.1.3</b> Vizualizacija</a></li>
+<li class="chapter" data-level="1.1.4" data-path="rirstudio.html"><a href="rirstudio.html#reprodukcija-istraživanja-i-simulacija"><i class="fa fa-check"></i><b>1.1.4</b> Reprodukcija istraživanja i simulacija</a></li>
+<li class="chapter" data-level="1.1.5" data-path="rirstudio.html"><a href="rirstudio.html#praktične-primjene-u-različitim-sektorima"><i class="fa fa-check"></i><b>1.1.5</b> Praktične primjene u različitim sektorima</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="rirstudio.html"><a href="rirstudio.html#razumijevanje-r-a-i-osnova-rada-u-r-u"><i class="fa fa-check"></i><b>1.2</b> Razumijevanje R-a i osnova rada u R-u</a></li>
+<li class="chapter" data-level="1.3" data-path="rirstudio.html"><a href="rirstudio.html#statistika-i-grafički-prikaz-u-r-u"><i class="fa fa-check"></i><b>1.3</b> Statistika i grafički prikaz u R-u</a></li>
+<li class="chapter" data-level="1.4" data-path="rirstudio.html"><a href="rirstudio.html#napredne-tehnike-i-rješavanje-problema"><i class="fa fa-check"></i><b>1.4</b> Napredne tehnike i rješavanje problema</a></li>
+<li class="chapter" data-level="1.5" data-path="rirstudio.html"><a href="rirstudio.html#gdje-pronaći-pomoć-i-resurse"><i class="fa fa-check"></i><b>1.5</b> Gdje pronaći pomoć i resurse</a></li>
+<li class="chapter" data-level="1.6" data-path="rirstudio.html"><a href="rirstudio.html#općeniti-savjeti"><i class="fa fa-check"></i><b>1.6</b> Općeniti savjeti</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html"><i class="fa fa-check"></i><b>2</b> Osnovni pojmovi i prvi koraci</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#okruženje-ili-environment"><i class="fa fa-check"></i><b>2.1</b> Okruženje ili environment</a></li>
+<li class="chapter" data-level="2.2" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#konzola"><i class="fa fa-check"></i><b>2.2</b> Konzola</a></li>
+<li class="chapter" data-level="2.3" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#datoteke-i-radni-direktorij"><i class="fa fa-check"></i><b>2.3</b> Datoteke i radni direktorij</a></li>
+<li class="chapter" data-level="2.4" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#projekti"><i class="fa fa-check"></i><b>2.4</b> Projekti</a></li>
+<li class="chapter" data-level="2.5" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#skripte"><i class="fa fa-check"></i><b>2.5</b> Skripte</a></li>
+<li class="chapter" data-level="2.6" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#plots-viewer-i-help"><i class="fa fa-check"></i><b>2.6</b> Plots, Viewer i Help</a></li>
+<li class="chapter" data-level="2.7" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#paketi"><i class="fa fa-check"></i><b>2.7</b> Paketi</a></li>
+<li class="chapter" data-level="2.8" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#najčešće-početničke-greške"><i class="fa fa-check"></i><b>2.8</b> Najčešće početničke greške</a></li>
+<li class="chapter" data-level="" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#pitanja-za-ponavljanje"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="instalacijaiaktivacijapaketa.html"><a href="instalacijaiaktivacijapaketa.html"><i class="fa fa-check"></i><b>3</b> Instalacija i aktivacija paketa</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="instalacijaiaktivacijapaketa.html"><a href="instalacijaiaktivacijapaketa.html#instalacija-paketa"><i class="fa fa-check"></i><b>3.1</b> Instalacija paketa</a></li>
+<li class="chapter" data-level="3.2" data-path="instalacijaiaktivacijapaketa.html"><a href="instalacijaiaktivacijapaketa.html#učitavanje-paketa"><i class="fa fa-check"></i><b>3.2</b> Učitavanje paketa</a></li>
+<li class="chapter" data-level="3.3" data-path="instalacijaiaktivacijapaketa.html"><a href="instalacijaiaktivacijapaketa.html#ažuriranje-paketa"><i class="fa fa-check"></i><b>3.3</b> Ažuriranje paketa</a></li>
+<li class="chapter" data-level="3.4" data-path="instalacijaiaktivacijapaketa.html"><a href="instalacijaiaktivacijapaketa.html#najčešće-pogreške"><i class="fa fa-check"></i><b>3.4</b> Najčešće pogreške</a></li>
+<li class="chapter" data-level="" data-path="instalacijaiaktivacijapaketa.html"><a href="instalacijaiaktivacijapaketa.html#pitanja-za-ponavljanje-1"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="identifikatori-i-vrijednosti.html"><a href="identifikatori-i-vrijednosti.html"><i class="fa fa-check"></i><b>4</b> Identifikatori i vrijednosti</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="identifikatori-i-vrijednosti.html"><a href="identifikatori-i-vrijednosti.html#osnovnitipovipodataka"><i class="fa fa-check"></i><b>4.1</b> Osnovni tipovi podataka</a></li>
+<li class="chapter" data-level="" data-path="identifikatori-i-vrijednosti.html"><a href="identifikatori-i-vrijednosti.html#pitanja-za-ponavljanje-2"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+<li class="chapter" data-level="4.2" data-path="identifikatori-i-vrijednosti.html"><a href="identifikatori-i-vrijednosti.html#nazivi"><i class="fa fa-check"></i><b>4.2</b> Nazivi</a></li>
+<li class="chapter" data-level="" data-path="identifikatori-i-vrijednosti.html"><a href="identifikatori-i-vrijednosti.html#pitanja-za-ponavljanje-3"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+<li class="chapter" data-level="4.3" data-path="identifikatori-i-vrijednosti.html"><a href="identifikatori-i-vrijednosti.html#kreiranjevarijabli"><i class="fa fa-check"></i><b>4.3</b> Kreiranje varijabli</a></li>
+<li class="chapter" data-level="" data-path="identifikatori-i-vrijednosti.html"><a href="identifikatori-i-vrijednosti.html#pitanja-za-ponavljanje-4"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="osnovni-operatori-i-funkcije.html"><a href="osnovni-operatori-i-funkcije.html"><i class="fa fa-check"></i><b>5</b> Osnovni operatori i funkcije</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="osnovni-operatori-i-funkcije.html"><a href="osnovni-operatori-i-funkcije.html#operatoriuR-u"><i class="fa fa-check"></i><b>5.1</b> Operatori u R-u</a></li>
+<li class="chapter" data-level="" data-path="osnovni-operatori-i-funkcije.html"><a href="osnovni-operatori-i-funkcije.html#pitanja-za-ponavljanje-5"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+<li class="chapter" data-level="5.2" data-path="osnovni-operatori-i-funkcije.html"><a href="osnovni-operatori-i-funkcije.html#osnovnefunkcije"><i class="fa fa-check"></i><b>5.2</b> Osnovne funkcije</a></li>
+<li class="chapter" data-level="" data-path="osnovni-operatori-i-funkcije.html"><a href="osnovni-operatori-i-funkcije.html#pitanja-za-ponavljanje-6"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html"><i class="fa fa-check"></i><b>6</b> Jednodimenzionalni tip podataka</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#kreiranjevektora"><i class="fa fa-check"></i><b>6.1</b> Kreiranje vektora</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#kreiranje-vektora-koristeći-izravan-upis-elemenata"><i class="fa fa-check"></i><b>6.1.1</b> Kreiranje vektora koristeći izravan upis elemenata</a></li>
+<li class="chapter" data-level="6.1.2" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#vektor-indeksa"><i class="fa fa-check"></i><b>6.1.2</b> Vektor indeksa</a></li>
+<li class="chapter" data-level="6.1.3" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#kreiranje-vektora-cjelobrojnih-vrijednosti-u-zadanom-intervalu"><i class="fa fa-check"></i><b>6.1.3</b> Kreiranje vektora cjelobrojnih vrijednosti u zadanom intervalu</a></li>
+<li class="chapter" data-level="6.1.4" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#kreiranje-sekvencijskih-vektora"><i class="fa fa-check"></i><b>6.1.4</b> Kreiranje sekvencijskih vektora</a></li>
+<li class="chapter" data-level="6.1.5" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#kreiranje-vektora-s-ponovljenim-vrijednostima"><i class="fa fa-check"></i><b>6.1.5</b> Kreiranje vektora s ponovljenim vrijednostima</a></li>
+<li class="chapter" data-level="6.1.6" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#kreiranje-vektora-koristeći-teorijske-distribucije-vjerojatnosti-generator-slučajnih-brojeva"><i class="fa fa-check"></i><b>6.1.6</b> Kreiranje vektora koristeći teorijske distribucije vjerojatnosti/ generator slučajnih brojeva</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#radsvektorima"><i class="fa fa-check"></i><b>6.2</b> Rad s vektorima</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#spajanje-vektora"><i class="fa fa-check"></i><b>6.2.1</b> Spajanje vektora</a></li>
+<li class="chapter" data-level="6.2.2" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#sortiranje-elemenata-vektora"><i class="fa fa-check"></i><b>6.2.2</b> Sortiranje elemenata vektora</a></li>
+<li class="chapter" data-level="6.2.3" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#tip-vektora"><i class="fa fa-check"></i><b>6.2.3</b> Tip vektora</a></li>
+<li class="chapter" data-level="6.2.4" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#dodavanje-atributa"><i class="fa fa-check"></i><b>6.2.4</b> Dodavanje atributa</a></li>
+<li class="chapter" data-level="6.2.5" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#duljina-vektora"><i class="fa fa-check"></i><b>6.2.5</b> Duljina vektora</a></li>
+<li class="chapter" data-level="6.2.6" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#odabir-elemenata-vektora"><i class="fa fa-check"></i><b>6.2.6</b> Odabir elemenata vektora</a></li>
+<li class="chapter" data-level="6.2.7" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#zamjena-i-brisanje-elemenata-vektora"><i class="fa fa-check"></i><b>6.2.7</b> Zamjena i brisanje elemenata vektora</a></li>
+<li class="chapter" data-level="6.2.8" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#operacije-na-vektorima"><i class="fa fa-check"></i><b>6.2.8</b> Operacije na vektorima</a></li>
+<li class="chapter" data-level="6.2.9" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#izračun-pokazatelja-deskriptivne-statistike-vektora"><i class="fa fa-check"></i><b>6.2.9</b> Izračun pokazatelja deskriptivne statistike vektora</a></li>
+<li class="chapter" data-level="6.2.10" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#recikliranje-vektora"><i class="fa fa-check"></i><b>6.2.10</b> Recikliranje vektora</a></li>
+<li class="chapter" data-level="6.2.11" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#usporedba-vektora"><i class="fa fa-check"></i><b>6.2.11</b> Usporedba vektora</a></li>
+<li class="chapter" data-level="6.2.12" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#logički-upiti"><i class="fa fa-check"></i><b>6.2.12</b> Logički upiti</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#pitanja-za-ponavljanje-7"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+<li class="chapter" data-level="6.3" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#kreiranjefaktora"><i class="fa fa-check"></i><b>6.3</b> Kreiranje faktora</a></li>
+<li class="chapter" data-level="6.4" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#najčešće-greške-pri-kreiranju-i-radu-s-faktorima"><i class="fa fa-check"></i><b>6.4</b> Najčešće greške pri kreiranju i radu s faktorima</a></li>
+<li class="chapter" data-level="" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#pitanja-za-ponavljanje-8"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html"><i class="fa fa-check"></i><b>7</b> Visediomenzionalni tipovi podataka</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#kreiranjematrice"><i class="fa fa-check"></i><b>7.1</b> Kreiranje matrice</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#kreiranje-matrice-koristeći-izravan-upis-elemenata"><i class="fa fa-check"></i><b>7.1.1</b> Kreiranje matrice koristeći izravan upis elemenata</a></li>
+<li class="chapter" data-level="7.1.2" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#matrica-indeksa"><i class="fa fa-check"></i><b>7.1.2</b> Matrica indeksa</a></li>
+<li class="chapter" data-level="7.1.3" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#kreiranje-matrice-iz-vektora"><i class="fa fa-check"></i><b>7.1.3</b> Kreiranje matrice iz vektora</a></li>
+<li class="chapter" data-level="7.1.4" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#dodjela-atributa"><i class="fa fa-check"></i><b>7.1.4</b> Dodjela atributa</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#radsmatricama"><i class="fa fa-check"></i><b>7.2</b> Rad s matricama</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#provjera-tipa-matrice"><i class="fa fa-check"></i><b>7.2.1</b> Provjera tipa matrice</a></li>
+<li class="chapter" data-level="7.2.2" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#odabir-elemenata-matrice"><i class="fa fa-check"></i><b>7.2.2</b> Odabir elemenata matrice</a></li>
+<li class="chapter" data-level="7.2.3" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#zamjena-elemenata-matrica"><i class="fa fa-check"></i><b>7.2.3</b> Zamjena elemenata matrica</a></li>
+<li class="chapter" data-level="7.2.4" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#filtriranje-matrice---odabir-elemenata-prema-kriteriju"><i class="fa fa-check"></i><b>7.2.4</b> Filtriranje matrice - odabir elemenata prema kriteriju</a></li>
+<li class="chapter" data-level="7.2.5" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#kreiranje-matrice-s-ponovljenim-vrijednostima-i-zadavanje-dijagonale"><i class="fa fa-check"></i><b>7.2.5</b> Kreiranje matrice s ponovljenim vrijednostima i zadavanje dijagonale</a></li>
+<li class="chapter" data-level="7.2.6" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#spajanje-matrica"><i class="fa fa-check"></i><b>7.2.6</b> Spajanje matrica</a></li>
+<li class="chapter" data-level="7.2.7" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#operacije-na-matricama"><i class="fa fa-check"></i><b>7.2.7</b> Operacije na matricama</a></li>
+<li class="chapter" data-level="7.2.8" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#konverzija-matrice-u-vektor"><i class="fa fa-check"></i><b>7.2.8</b> Konverzija matrice u vektor</a></li>
+<li class="chapter" data-level="7.2.9" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#konverzija-matrice-u-podatkovni-okvir"><i class="fa fa-check"></i><b>7.2.9</b> Konverzija matrice u podatkovni okvir</a></li>
+<li class="chapter" data-level="7.2.10" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#izračun-pokazatelja-deskriptivne-statistike-za-matrice"><i class="fa fa-check"></i><b>7.2.10</b> Izračun pokazatelja deskriptivne statistike za matrice</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#prednosti-i-nedostaci-rada-s-matricama-te-najčešće-greške"><i class="fa fa-check"></i><b>7.3</b> Prednosti i nedostaci rada s matricama te najčešće greške</a></li>
+<li class="chapter" data-level="" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#pitanja-za-ponavljanje-9"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+<li class="chapter" data-level="7.4" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#kreiranjeiradslistama"><i class="fa fa-check"></i><b>7.4</b> Kreiranje i rad s listama</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#dodavanje-atributa-1"><i class="fa fa-check"></i><b>7.4.1</b> Dodavanje atributa</a></li>
+<li class="chapter" data-level="7.4.2" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#odabir-elemenata"><i class="fa fa-check"></i><b>7.4.2</b> Odabir elemenata</a></li>
+<li class="chapter" data-level="7.4.3" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#dodavanje-elemenata"><i class="fa fa-check"></i><b>7.4.3</b> Dodavanje elemenata</a></li>
+<li class="chapter" data-level="7.4.4" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#izmjena-ili-brisanje-elementa"><i class="fa fa-check"></i><b>7.4.4</b> Izmjena ili brisanje elementa</a></li>
+<li class="chapter" data-level="7.4.5" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#spajanje-lista"><i class="fa fa-check"></i><b>7.4.5</b> Spajanje lista</a></li>
+<li class="chapter" data-level="7.4.6" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#razdvajanje-lista"><i class="fa fa-check"></i><b>7.4.6</b> Razdvajanje lista</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#prednosti-i-nedostaci-rada-s-listama-te-najčešće-greške"><i class="fa fa-check"></i><b>7.5</b> Prednosti i nedostaci rada s listama te najčešće greške</a></li>
+<li class="chapter" data-level="" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#pitanja-za-ponavljanje-10"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+<li class="chapter" data-level="7.6" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#kreiranje-podatkovnih-okvira-data-frame"><i class="fa fa-check"></i><b>7.6</b> Kreiranje podatkovnih okvira (data frame)</a></li>
+<li class="chapter" data-level="7.7" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#radspodatkovnimokvirima"><i class="fa fa-check"></i><b>7.7</b> Rad s podatkovnim okvirima</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#uvid-u-podatkovni-okvir"><i class="fa fa-check"></i><b>7.7.1</b> Uvid u podatkovni okvir</a></li>
+<li class="chapter" data-level="7.7.2" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#odabir-elemenata-1"><i class="fa fa-check"></i><b>7.7.2</b> Odabir elemenata</a></li>
+<li class="chapter" data-level="7.7.3" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#dodavanje-elemenata-1"><i class="fa fa-check"></i><b>7.7.3</b> Dodavanje elemenata</a></li>
+<li class="chapter" data-level="7.7.4" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#podskup-podatkovnog-okvira-prema-kriteriju-filtriranje"><i class="fa fa-check"></i><b>7.7.4</b> Podskup podatkovnog okvira prema kriteriju (filtriranje)</a></li>
+<li class="chapter" data-level="7.7.5" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#sortiranje-elemenata"><i class="fa fa-check"></i><b>7.7.5</b> Sortiranje elemenata</a></li>
+<li class="chapter" data-level="7.7.6" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#brisanje-elemenata"><i class="fa fa-check"></i><b>7.7.6</b> Brisanje elemenata</a></li>
+<li class="chapter" data-level="7.7.7" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#učitavanje-podatkovnog-okvira-sadržanog-u-r-u"><i class="fa fa-check"></i><b>7.7.7</b> Učitavanje podatkovnog okvira sadržanog u R-u</a></li>
+<li class="chapter" data-level="7.7.8" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#izračun-pokazatelja-deskriptivne-statistike"><i class="fa fa-check"></i><b>7.7.8</b> Izračun pokazatelja deskriptivne statistike</a></li>
+<li class="chapter" data-level="7.7.9" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#pretvaranje-varijable-u-faktor-unutar-postojećeg-podatkovnog-okvira"><i class="fa fa-check"></i><b>7.7.9</b> Pretvaranje varijable u faktor unutar postojećeg podatkovnog okvira</a></li>
+<li class="chapter" data-level="7.7.10" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#pretvaranje-podatkovnog-okvira-u-tablicu"><i class="fa fa-check"></i><b>7.7.10</b> Pretvaranje podatkovnog okvira u tablicu</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#prednosti-i-nedostaci-rada-s-podatkovnim-okvirima-te-najčešće-greške"><i class="fa fa-check"></i><b>7.8</b> Prednosti i nedostaci rada s podatkovnim okvirima te najčešće greške</a></li>
+<li class="chapter" data-level="" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#pitanja-za-ponavljanje-11"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+<li class="chapter" data-level="7.9" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#kreiranjetablica"><i class="fa fa-check"></i><b>7.9</b> Kreiranje tablica</a></li>
+<li class="chapter" data-level="7.10" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#prednosti-i-nedostaci-tablica-te-najčešće-greške"><i class="fa fa-check"></i><b>7.10</b> Prednosti i nedostaci tablica te najčešće greške</a></li>
+<li class="chapter" data-level="" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#pitanja-za-ponavljanje-12"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="uvozpodataka.html"><a href="uvozpodataka.html"><i class="fa fa-check"></i><b>8</b> Uvoz podataka</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="uvozpodataka.html"><a href="uvozpodataka.html#uvoz-podataka-pohranjenih-na-računalu"><i class="fa fa-check"></i><b>8.1</b> Uvoz podataka pohranjenih na računalu</a></li>
+<li class="chapter" data-level="8.2" data-path="uvozpodataka.html"><a href="uvozpodataka.html#uvoz-podataka-iz-r-paketa"><i class="fa fa-check"></i><b>8.2</b> Uvoz podataka iz R paketa</a></li>
+<li class="chapter" data-level="8.3" data-path="uvozpodataka.html"><a href="uvozpodataka.html#dohvaćanje-i-uvoz-podataka-iz-online-izvora"><i class="fa fa-check"></i><b>8.3</b> Dohvaćanje i uvoz podataka iz online izvora</a></li>
+<li class="chapter" data-level="8.4" data-path="uvozpodataka.html"><a href="uvozpodataka.html#uvoz-podataka-iz-baza-podataka"><i class="fa fa-check"></i><b>8.4</b> Uvoz podataka iz baza podataka</a></li>
+<li class="chapter" data-level="8.5" data-path="uvozpodataka.html"><a href="uvozpodataka.html#uobičajene-greške-pri-uvozu-podataka"><i class="fa fa-check"></i><b>8.5</b> Uobičajene greške pri uvozu podataka</a></li>
+<li class="chapter" data-level="" data-path="uvozpodataka.html"><a href="uvozpodataka.html#pitanja-za-ponavljanje-13"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html"><i class="fa fa-check"></i><b>9</b> Elementi kontrole toka</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html#for"><i class="fa fa-check"></i><b>9.1</b> for</a></li>
+<li class="chapter" data-level="9.2" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html#apply-sapply-lapply"><i class="fa fa-check"></i><b>9.2</b> apply, sapply, lapply</a></li>
+<li class="chapter" data-level="9.3" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html#if"><i class="fa fa-check"></i><b>9.3</b> if</a></li>
+<li class="chapter" data-level="9.4" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html#ifelse"><i class="fa fa-check"></i><b>9.4</b> ifelse</a></li>
+<li class="chapter" data-level="9.5" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html#razlika-između-ifelse-i-kombinecije-if-i-else"><i class="fa fa-check"></i><b>9.5</b> Razlika između ifelse i kombinecije if i else</a></li>
+<li class="chapter" data-level="9.6" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html#switch"><i class="fa fa-check"></i><b>9.6</b> switch</a></li>
+<li class="chapter" data-level="9.7" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html#while"><i class="fa fa-check"></i><b>9.7</b> while</a></li>
+<li class="chapter" data-level="" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html#pitanja-za-ponavljanje-14"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="kreiranjefunkcija.html"><a href="kreiranjefunkcija.html"><i class="fa fa-check"></i><b>10</b> Kreiranje funkcija</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="kreiranjefunkcija.html"><a href="kreiranjefunkcija.html#funkcije-s-više-argumenata"><i class="fa fa-check"></i><b>10.1</b> Funkcije s više argumenata</a></li>
+<li class="chapter" data-level="10.2" data-path="kreiranjefunkcija.html"><a href="kreiranjefunkcija.html#zadane-vrijednosti-argumenata"><i class="fa fa-check"></i><b>10.2</b> Zadane vrijednosti argumenata</a></li>
+<li class="chapter" data-level="10.3" data-path="kreiranjefunkcija.html"><a href="kreiranjefunkcija.html#funkcije-koje-vraćaju-više-vrijednosti"><i class="fa fa-check"></i><b>10.3</b> Funkcije koje vraćaju više vrijednosti</a></li>
+<li class="chapter" data-level="" data-path="kreiranjefunkcija.html"><a href="kreiranjefunkcija.html#pitanja-za-ponavljanje-15"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="jednostavnevizualizacije.html"><a href="jednostavnevizualizacije.html"><i class="fa fa-check"></i><b>11</b> Jednostavne vizualizacije</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="jednostavnevizualizacije.html"><a href="jednostavnevizualizacije.html#primjeri-najčešće-korištenih-vizualizacija"><i class="fa fa-check"></i><b>11.1</b> Primjeri najčešće korištenih vizualizacija</a></li>
+<li class="chapter" data-level="11.2" data-path="jednostavnevizualizacije.html"><a href="jednostavnevizualizacije.html#prilagodba-grafikona"><i class="fa fa-check"></i><b>11.2</b> Prilagodba grafikona</a></li>
+<li class="chapter" data-level="11.3" data-path="jednostavnevizualizacije.html"><a href="jednostavnevizualizacije.html#prednosti-i-nedostaci-vizualizacija-u-r-u-te-najčešće-pogreške"><i class="fa fa-check"></i><b>11.3</b> Prednosti i nedostaci vizualizacija u R-u te najčešće pogreške</a></li>
+<li class="chapter" data-level="" data-path="jednostavnevizualizacije.html"><a href="jednostavnevizualizacije.html#pitanja-za-ponavljanje-16"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="primjerupravljanjapodacima.html"><a href="primjerupravljanjapodacima.html"><i class="fa fa-check"></i><b>12</b> Primjer upravljanja podacima</a>
+<ul>
+<li class="chapter" data-level="" data-path="primjerupravljanjapodacima.html"><a href="primjerupravljanjapodacima.html#pitanja-za-ponavljanje-17"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+<li class="chapter" data-level="" data-path="primjerupravljanjapodacima.html"><a href="primjerupravljanjapodacima.html#zadaci"><i class="fa fa-check"></i>Zadaci</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="prilagodbara.html"><a href="prilagodbara.html"><i class="fa fa-check"></i><b>13</b> Prilagodba R-a</a></li>
+<li class="chapter" data-level="" data-path="literatura.html"><a href="literatura.html"><i class="fa fa-check"></i>Literatura</a></li>
+<li class="divider"></li>
+<li><img src='unipu.png' width='250px'></li>
+<li><a href=" " target="blank"> <br> Published with bookdown </a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Uvod u R i R Studio</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="primjerupravljanjapodacima" class="section level1 hasAnchor" number="12">
+<h1><span class="header-section-number"> 12</span> Primjer upravljanja podacima<a href="primjerupravljanjapodacima.html#primjerupravljanjapodacima" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Ovdje će se prikazati osnove upravljanja podacima na datasetu ‘starwars’ iz paketa dplyr <span class="citation">(Yarberry and Yarberry 2021)</span>. Ovo poglavlje pruža praktičan uvid u primjenu tehnika upravljanja podacima u R-u, koristeći dataset starwars iz paketa dplyr. Kroz primjere se ilustrira kako pristupiti podacima, odabrati i filtrirati relevantne varijable te kako raditi s podacima koji nedostaju. Posebna pažnja posvećena je osnovnim tehnikama čišćenja podataka: zamjena vrijednosti koje nedostaju, formatiranje podataka te pretvaranje višestrukih unosa u jedinstvene zapise. Prikazani su primjeri kako se koristiti složenim tabličnim prikazima, poput tablica kontingencije, dok se dodatnim statističkim izračunima i vizualizacijama analizira raspodjela i povezanost unutar podataka.</p>
+<div class="sourceCode" id="cb614"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb614-1"><a href="primjerupravljanjapodacima.html#cb614-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(tidyverse)</span>
+<span id="cb614-2"><a href="primjerupravljanjapodacima.html#cb614-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(dplyr)</span></code></pre></div>
+<div class="sourceCode" id="cb615"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb615-1"><a href="primjerupravljanjapodacima.html#cb615-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">data</span>(<span class="st">&quot;starwars&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb616"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb616-1"><a href="primjerupravljanjapodacima.html#cb616-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">data</span>(<span class="st">&quot;starwars&quot;</span>)</span>
+<span id="cb616-2"><a href="primjerupravljanjapodacima.html#cb616-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">glimpse</span>(starwars)</span></code></pre></div>
+<pre class="chunk-background"><code>## Rows: 87
+## Columns: 14
+## $ name       &lt;chr&gt; &quot;Luke Skywalker&quot;, &quot;C-3PO&quot;, &quot;R2-D2&quot;, &quot;Darth Vader&quot;, &quot;Leia Or…
+## $ height     &lt;int&gt; 172, 167, 96, 202, 150, 178, 165, 97, 183, 182, 188, 180, 2…
+## $ mass       &lt;dbl&gt; 77, 75, 32, 136, 49, 120, 75, 32, 84, 77, 84, NA, 112, 80, …
+## $ hair_color &lt;chr&gt; &quot;blond&quot;, NA, NA, &quot;none&quot;, &quot;brown&quot;, &quot;brown, grey&quot;, &quot;brown&quot;, N…
+## $ skin_color &lt;chr&gt; &quot;fair&quot;, &quot;gold&quot;, &quot;white, blue&quot;, &quot;white&quot;, &quot;light&quot;, &quot;light&quot;, &quot;…
+## $ eye_color  &lt;chr&gt; &quot;blue&quot;, &quot;yellow&quot;, &quot;red&quot;, &quot;yellow&quot;, &quot;brown&quot;, &quot;blue&quot;, &quot;blue&quot;,…
+## $ birth_year &lt;dbl&gt; 19, 112, 33, 42, 19, 52, 47, NA, 24, 57, 42, 64, 200, 29, 4…
+## $ sex        &lt;chr&gt; &quot;male&quot;, &quot;none&quot;, &quot;none&quot;, &quot;male&quot;, &quot;female&quot;, &quot;male&quot;, &quot;female&quot;,…
+## $ gender     &lt;chr&gt; &quot;masculine&quot;, &quot;masculine&quot;, &quot;masculine&quot;, &quot;masculine&quot;, &quot;femini…
+## $ homeworld  &lt;chr&gt; &quot;Tatooine&quot;, &quot;Tatooine&quot;, &quot;Naboo&quot;, &quot;Tatooine&quot;, &quot;Alderaan&quot;, &quot;T…
+## $ species    &lt;chr&gt; &quot;Human&quot;, &quot;Droid&quot;, &quot;Droid&quot;, &quot;Human&quot;, &quot;Human&quot;, &quot;Human&quot;, &quot;Huma…
+## $ films      &lt;list&gt; &lt;&quot;A New Hope&quot;, &quot;The Empire Strikes Back&quot;, &quot;Return of the J…
+## $ vehicles   &lt;list&gt; &lt;&quot;Snowspeeder&quot;, &quot;Imperial Speeder Bike&quot;&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, &quot;Imp…
+## $ starships  &lt;list&gt; &lt;&quot;X-wing&quot;, &quot;Imperial shuttle&quot;&gt;, &lt;&gt;, &lt;&gt;, &quot;TIE Advanced x1&quot;,…</code></pre>
+<p>Prvo, vidimo da podatkovni okvir sadrži 14 varijabli sa 87 opažanja:</p>
+<ul>
+<li>varijabla ime je tipa „character”, kao što i očekujemo</li>
+<li>varijabla visine je numerička cjelobrojna varijabla, „int”</li>
+<li>varijabla masa/ težina je numerička varijable, „double”</li>
+<li>varijable boja kose, boja kože, boja očiju, spol, rod, planet s kojeg potječu i vrsta su tipa „character</li>
+<li>filmovi, vozila i svemirski brodovi su liste</li>
+</ul>
+<p>Dodatni uvid u strukturu podataka:</p>
+<div class="sourceCode" id="cb618"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb618-1"><a href="primjerupravljanjapodacima.html#cb618-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">head</span>(starwars)</span></code></pre></div>
+<pre class="chunk-background"><code>## # A tibble: 6 × 14
+##   name      height  mass hair_color skin_color eye_color birth_year sex   gender
+##   &lt;chr&gt;      &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+## 1 Luke Sky…    172    77 blond      fair       blue            19   male  mascu…
+## 2 C-3PO        167    75 &lt;NA&gt;       gold       yellow         112   none  mascu…
+## 3 R2-D2         96    32 &lt;NA&gt;       white, bl… red             33   none  mascu…
+## 4 Darth Va…    202   136 none       white      yellow          41.9 male  mascu…
+## 5 Leia Org…    150    49 brown      light      brown           19   fema… femin…
+## 6 Owen Lars    178   120 brown, gr… light      blue            52   male  mascu…
+## # ℹ 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
+## #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
+<p>Ovdje ćemo se detaljnije pozabaviti podatkovnim okvirom, pa ćemo odabrati nekoliko varijabli za daljnje uvide. Odabirom stupaca s određenim varijablama (bilo putem rednih brojeva stupaca ili naziva) kreirat ćemo novi podatkovni skup.</p>
+<div class="sourceCode" id="cb620"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb620-1"><a href="primjerupravljanjapodacima.html#cb620-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Starwars <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(starwars[,<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">10</span>,<span class="dv">11</span>)])</span></code></pre></div>
+<div class="sourceCode" id="cb621"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb621-1"><a href="primjerupravljanjapodacima.html#cb621-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">glimpse</span>(Starwars)</span></code></pre></div>
+<pre class="chunk-background"><code>## Rows: 87
+## Columns: 7
+## $ name       &lt;chr&gt; &quot;Luke Skywalker&quot;, &quot;C-3PO&quot;, &quot;R2-D2&quot;, &quot;Darth Vader&quot;, &quot;Leia Or…
+## $ height     &lt;int&gt; 172, 167, 96, 202, 150, 178, 165, 97, 183, 182, 188, 180, 2…
+## $ mass       &lt;dbl&gt; 77, 75, 32, 136, 49, 120, 75, 32, 84, 77, 84, NA, 112, 80, …
+## $ hair_color &lt;chr&gt; &quot;blond&quot;, NA, NA, &quot;none&quot;, &quot;brown&quot;, &quot;brown, grey&quot;, &quot;brown&quot;, N…
+## $ eye_color  &lt;chr&gt; &quot;blue&quot;, &quot;yellow&quot;, &quot;red&quot;, &quot;yellow&quot;, &quot;brown&quot;, &quot;blue&quot;, &quot;blue&quot;,…
+## $ homeworld  &lt;chr&gt; &quot;Tatooine&quot;, &quot;Tatooine&quot;, &quot;Naboo&quot;, &quot;Tatooine&quot;, &quot;Alderaan&quot;, &quot;T…
+## $ species    &lt;chr&gt; &quot;Human&quot;, &quot;Droid&quot;, &quot;Droid&quot;, &quot;Human&quot;, &quot;Human&quot;, &quot;Human&quot;, &quot;Huma…</code></pre>
+<p>Provjeru podataka koji nedostaju izvršit ćemo kombinacijom dvije funkcije, <code>summary()</code> i <code>is.na()</code>. Druga funkcija služi provjeri nalaze li se u varijabli NA (vrijednosti koje nedostaju), a <code>summary()</code> će poslužiti za jasan prikaz.</p>
+<div class="sourceCode" id="cb623"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb623-1"><a href="primjerupravljanjapodacima.html#cb623-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">summary</span>(<span class="fu">is.na</span>(Starwars))</span></code></pre></div>
+<pre class="chunk-background"><code>##     name           height           mass         hair_color     
+##  Mode :logical   Mode :logical   Mode :logical   Mode :logical  
+##  FALSE:87        FALSE:81        FALSE:59        FALSE:82       
+##                  TRUE :6         TRUE :28        TRUE :5        
+##  eye_color       homeworld        species       
+##  Mode :logical   Mode :logical   Mode :logical  
+##  FALSE:87        FALSE:77        FALSE:83       
+##                  TRUE :10        TRUE :4</code></pre>
+<p>Za 6 likova nedostaje podatak o visini, za 28 nedostaje podatak o težini, za 5 nedostaje podatak o boji kose…. Ukratko, is.na(starwars) provjerava je li vrijednost prisutna (FALSE) ili nedostaje (TRUE), dok summary te podatke sažima u zbroj podataka koji su navedeni i onih koji nedostaju.</p>
+<p>Recimo da pretpostavljamo da bismo mogli znati podatke koji nedostaju o vrsti, pa želimo identificirati gdje se nalaze NA, kako bismo ih eventualno izmijenili.</p>
+<div class="sourceCode" id="cb625"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb625-1"><a href="primjerupravljanjapodacima.html#cb625-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> na_pozicije <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">is.na</span>(Starwars<span class="sc">$</span>species))</span>
+<span id="cb625-2"><a href="primjerupravljanjapodacima.html#cb625-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> na_pozicije</span></code></pre></div>
+<pre class="chunk-background"><code>## [1] 18 59 60 81</code></pre>
+<p>NA se nalaze na pozicijama 18, 59, 60 i 81. Moramo provjeriti o kojim se likovima radi.</p>
+<div class="sourceCode" id="cb627"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb627-1"><a href="primjerupravljanjapodacima.html#cb627-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Starwars<span class="sc">$</span>name[na_pozicije]</span></code></pre></div>
+<pre class="chunk-background"><code>## [1] &quot;Jek Tono Porkins&quot; &quot;Gregar Typho&quot;     &quot;Cord\xe9&quot;         &quot;Sly Moore&quot;</code></pre>
+<p>Kratkim pretraživanjem, možemo saznati kojim vrstama pripadaju ovi likovi:</p>
+<ul>
+<li>Jek Tono Porkins: Human</li>
+<li>Gregar Typho: Human</li>
+<li>Cordé: Human</li>
+<li>Sly Moore: Umbaran</li>
+</ul>
+<p>Sada možemo zamijeniti postojeće NA poznatim podacima. To možemo učiniti na dva načina. S obzirom da ih je malo, možemo koristiti „ručni” unos:</p>
+<div class="sourceCode" id="cb629"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb629-1"><a href="primjerupravljanjapodacima.html#cb629-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Starwars<span class="sc">$</span>species[<span class="dv">18</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Human&quot;</span></span>
+<span id="cb629-2"><a href="primjerupravljanjapodacima.html#cb629-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Starwars<span class="sc">$</span>species[<span class="dv">59</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Human&quot;</span></span>
+<span id="cb629-3"><a href="primjerupravljanjapodacima.html#cb629-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Starwars<span class="sc">$</span>species[<span class="dv">60</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Human&quot;</span></span>
+<span id="cb629-4"><a href="primjerupravljanjapodacima.html#cb629-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Starwars<span class="sc">$</span>species[<span class="dv">81</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Umbaran&quot;</span></span></code></pre></div>
+<p>Provjera:</p>
+<div class="sourceCode" id="cb630"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb630-1"><a href="primjerupravljanjapodacima.html#cb630-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">summary</span>(<span class="fu">is.na</span>(Starwars<span class="sc">$</span>species))</span></code></pre></div>
+<pre class="chunk-background"><code>##    Mode   FALSE 
+## logical      87</code></pre>
+<p>Svi su podaci uspješno zamijenjeni i ta varijabla više ne sadrži NA. Kad bi u pitanju bilo više vrijednosti, onda bi bilo praktičnije prvo kreirati vektor koji mapira imena likova na njihove vrste. Potom bi se koristila petlja for ili vektorizirana funkcija za pregled redova u podatkovnom okviru i zamijenile NA vrijednosti odgovarajućim vrstama:</p>
+<div class="sourceCode" id="cb632"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb632-1"><a href="primjerupravljanjapodacima.html#cb632-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> species_replacements <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Jek Tono Porkins&quot;</span> <span class="ot">=</span> <span class="st">&quot;Human&quot;</span>, </span>
+<span id="cb632-2"><a href="primjerupravljanjapodacima.html#cb632-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                           <span class="st">&quot;Gregar Typho&quot;</span> <span class="ot">=</span> <span class="st">&quot;Human&quot;</span>, </span>
+<span id="cb632-3"><a href="primjerupravljanjapodacima.html#cb632-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                           <span class="st">&quot;Cordé&quot;</span> <span class="ot">=</span> <span class="st">&quot;Human&quot;</span>, </span>
+<span id="cb632-4"><a href="primjerupravljanjapodacima.html#cb632-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                           <span class="st">&quot;Sly Moore&quot;</span> <span class="ot">=</span> <span class="st">&quot;Umbaran&quot;</span>)</span>
+<span id="cb632-5"><a href="primjerupravljanjapodacima.html#cb632-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="cf">for</span> (name <span class="cf">in</span> <span class="fu">names</span>(species_replacements)) {</span>
+<span id="cb632-6"><a href="primjerupravljanjapodacima.html#cb632-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     na_indices <span class="ot">&lt;-</span> <span class="fu">is.na</span>(Starwars<span class="sc">$</span>species) <span class="sc">&amp;</span> Starwars<span class="sc">$</span>name <span class="sc">==</span> name</span>
+<span id="cb632-7"><a href="primjerupravljanjapodacima.html#cb632-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     Starwars<span class="sc">$</span>species[na_indices] <span class="ot">&lt;-</span> species_replacements[name]</span>
+<span id="cb632-8"><a href="primjerupravljanjapodacima.html#cb632-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span></code></pre></div>
+<p>Ovaj kod prvo identificira redove u kojima je species NA i gdje se ime lika podudara s ključem u species_replacements. Zatim zamjenjuje NA odgovarajućom vrstom.</p>
+<p>Sljedeće, provjeravamo za boju kose.</p>
+<div class="sourceCode" id="cb633"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb633-1"><a href="primjerupravljanjapodacima.html#cb633-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> na_pozicije <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">is.na</span>(Starwars<span class="sc">$</span>hair_color))</span>
+<span id="cb633-2"><a href="primjerupravljanjapodacima.html#cb633-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> na_pozicije</span></code></pre></div>
+<pre class="chunk-background"><code>## [1]  2  3  8 15 16</code></pre>
+<div class="sourceCode" id="cb635"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb635-1"><a href="primjerupravljanjapodacima.html#cb635-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Starwars<span class="sc">$</span>name[na_pozicije]</span></code></pre></div>
+<pre class="chunk-background"><code>## [1] &quot;C-3PO&quot;                 &quot;R2-D2&quot;                 &quot;R5-D4&quot;                
+## [4] &quot;Greedo&quot;                &quot;Jabba Desilijic Tiure&quot;</code></pre>
+<p>Za navedene likove boja kose nije primjenjiva. Kako se ne bismo bavili s NA, možemo ih zamijeniti s, na primjer „Unknown” i odmah provjeriti provedbu zamjene.</p>
+<div class="sourceCode" id="cb637"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb637-1"><a href="primjerupravljanjapodacima.html#cb637-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Starwars<span class="sc">$</span>hair_color[na_pozicije]<span class="ot">&lt;-</span> <span class="st">&quot;Unknown&quot;</span></span>
+<span id="cb637-2"><a href="primjerupravljanjapodacima.html#cb637-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb637-3"><a href="primjerupravljanjapodacima.html#cb637-3" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">summary</span>(<span class="fu">is.na</span>(Starwars<span class="sc">$</span>hair_color))</span></code></pre></div>
+<pre class="chunk-background"><code>##    Mode   FALSE 
+## logical      87</code></pre>
+<div class="sourceCode" id="cb639"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb639-1"><a href="primjerupravljanjapodacima.html#cb639-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">unique</span>(Starwars<span class="sc">$</span>hair_color)</span></code></pre></div>
+<pre class="chunk-background"><code>##  [1] &quot;blond&quot;         &quot;Unknown&quot;       &quot;none&quot;          &quot;brown&quot;        
+##  [5] &quot;brown, grey&quot;   &quot;black&quot;         &quot;auburn, white&quot; &quot;auburn, grey&quot; 
+##  [9] &quot;white&quot;         &quot;grey&quot;          &quot;auburn&quot;        &quot;blonde&quot;</code></pre>
+<p>Druga stvar koja se može primijetiti kod boje kose jest da se pojavljuje Unknown i unknown kao zasebna „boja”, iako se radi o pojmovno istoj stvari. To je zbog toga što je R osjetljiv na velika i mala slova. No to možemo jednostavno riješiti tako što ćemo sve znakove u varijabli hair_color podesiti na mala slova.</p>
+<div class="sourceCode" id="cb641"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb641-1"><a href="primjerupravljanjapodacima.html#cb641-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Starwars<span class="sc">$</span>hair_color<span class="ot">&lt;-</span><span class="fu">tolower</span>(Starwars<span class="sc">$</span>hair_color)</span>
+<span id="cb641-2"><a href="primjerupravljanjapodacima.html#cb641-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">unique</span>(Starwars<span class="sc">$</span>hair_color)</span></code></pre></div>
+<pre class="chunk-background"><code>##  [1] &quot;blond&quot;         &quot;unknown&quot;       &quot;none&quot;          &quot;brown&quot;        
+##  [5] &quot;brown, grey&quot;   &quot;black&quot;         &quot;auburn, white&quot; &quot;auburn, grey&quot; 
+##  [9] &quot;white&quot;         &quot;grey&quot;          &quot;auburn&quot;        &quot;blonde&quot;</code></pre>
+<p>Druga stvar koju se može primijetiti kod boje kose jest da da su za neke likove zapisane dvije boje. Recimo da želimo zadržati samo prvu zapisanu boju. To znači da prvo moramo razdvojiti zapisane boje, a potom pohraniti prvu boju u varijablu hair_color.</p>
+<div class="sourceCode" id="cb643"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb643-1"><a href="primjerupravljanjapodacima.html#cb643-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> hair_colors_first <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="fu">strsplit</span>(Starwars<span class="sc">$</span>hair_color, <span class="st">&quot;, &quot;</span>), <span class="st">`</span><span class="at">[</span><span class="st">`</span>, <span class="dv">1</span>)</span>
+<span id="cb643-2"><a href="primjerupravljanjapodacima.html#cb643-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> hair_colors_first</span></code></pre></div>
+<pre class="chunk-background"><code>##  [1] &quot;blond&quot;   &quot;unknown&quot; &quot;unknown&quot; &quot;none&quot;    &quot;brown&quot;   &quot;brown&quot;   &quot;brown&quot;  
+##  [8] &quot;unknown&quot; &quot;black&quot;   &quot;auburn&quot;  &quot;blond&quot;   &quot;auburn&quot;  &quot;brown&quot;   &quot;brown&quot;  
+## [15] &quot;unknown&quot; &quot;unknown&quot; &quot;brown&quot;   &quot;brown&quot;   &quot;white&quot;   &quot;grey&quot;    &quot;black&quot;  
+## [22] &quot;none&quot;    &quot;none&quot;    &quot;black&quot;   &quot;none&quot;    &quot;none&quot;    &quot;auburn&quot;  &quot;brown&quot;  
+## [29] &quot;brown&quot;   &quot;none&quot;    &quot;brown&quot;   &quot;none&quot;    &quot;blond&quot;   &quot;brown&quot;   &quot;none&quot;   
+## [36] &quot;none&quot;    &quot;none&quot;    &quot;brown&quot;   &quot;black&quot;   &quot;none&quot;    &quot;black&quot;   &quot;black&quot;  
+## [43] &quot;none&quot;    &quot;none&quot;    &quot;none&quot;    &quot;none&quot;    &quot;none&quot;    &quot;none&quot;    &quot;none&quot;   
+## [50] &quot;none&quot;    &quot;white&quot;   &quot;none&quot;    &quot;black&quot;   &quot;none&quot;    &quot;none&quot;    &quot;none&quot;   
+## [57] &quot;none&quot;    &quot;none&quot;    &quot;black&quot;   &quot;brown&quot;   &quot;brown&quot;   &quot;none&quot;    &quot;black&quot;  
+## [64] &quot;black&quot;   &quot;brown&quot;   &quot;white&quot;   &quot;black&quot;   &quot;black&quot;   &quot;blonde&quot;  &quot;none&quot;   
+## [71] &quot;none&quot;    &quot;none&quot;    &quot;white&quot;   &quot;none&quot;    &quot;none&quot;    &quot;none&quot;    &quot;none&quot;   
+## [78] &quot;none&quot;    &quot;brown&quot;   &quot;brown&quot;   &quot;none&quot;    &quot;none&quot;    &quot;black&quot;   &quot;brown&quot;  
+## [85] &quot;brown&quot;   &quot;none&quot;    &quot;none&quot;</code></pre>
+<div class="sourceCode" id="cb645"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb645-1"><a href="primjerupravljanjapodacima.html#cb645-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Starwars<span class="sc">$</span>hair_color <span class="ot">&lt;-</span> hair_colors_first </span>
+<span id="cb645-2"><a href="primjerupravljanjapodacima.html#cb645-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">unique</span>(Starwars<span class="sc">$</span>hair_color)</span></code></pre></div>
+<pre class="chunk-background"><code>## [1] &quot;blond&quot;   &quot;unknown&quot; &quot;none&quot;    &quot;brown&quot;   &quot;black&quot;   &quot;auburn&quot;  &quot;white&quot;  
+## [8] &quot;grey&quot;    &quot;blonde&quot;</code></pre>
+<p>Uočavamo još dvije stvari: blond i blonde su sinonimi, stoga i to treba korigirati. Također, unknown i none bi također mogli biti vezani za istu situaciju te none možemo zamijeniti s unknown.</p>
+<div class="sourceCode" id="cb647"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb647-1"><a href="primjerupravljanjapodacima.html#cb647-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Zamjena &quot;blond&quot; s &quot;blonde&quot;</span></span>
+<span id="cb647-2"><a href="primjerupravljanjapodacima.html#cb647-2" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Starwars<span class="sc">$</span>hair_color <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">bblond</span><span class="sc">\\</span><span class="st">b&quot;</span>, <span class="st">&quot;blonde&quot;</span>, Starwars<span class="sc">$</span>hair_color) </span>
+<span id="cb647-3"><a href="primjerupravljanjapodacima.html#cb647-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># \\b označava granicu riječi, što osigurava da se zamjena dogodi samo onda</span></span>
+<span id="cb647-4"><a href="primjerupravljanjapodacima.html#cb647-4" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="co">#kada se „blond&quot; pojavljuje kao zasebna riječ, a ne kao dio druge riječi</span></span>
+<span id="cb647-5"><a href="primjerupravljanjapodacima.html#cb647-5" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> </span>
+<span id="cb647-6"><a href="primjerupravljanjapodacima.html#cb647-6" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Zamjena „none&quot; s „unknown&quot;</span></span>
+<span id="cb647-7"><a href="primjerupravljanjapodacima.html#cb647-7" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Starwars<span class="sc">$</span>hair_color <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;none&quot;</span>, <span class="st">&quot;unknown&quot;</span>, Starwars<span class="sc">$</span>hair_color)</span>
+<span id="cb647-8"><a href="primjerupravljanjapodacima.html#cb647-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb647-9"><a href="primjerupravljanjapodacima.html#cb647-9" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">unique</span>(Starwars<span class="sc">$</span>hair_color)</span></code></pre></div>
+<pre class="chunk-background"><code>## [1] &quot;blonde&quot;  &quot;unknown&quot; &quot;brown&quot;   &quot;black&quot;   &quot;auburn&quot;  &quot;white&quot;   &quot;grey&quot;</code></pre>
+<p>Ovime smo završili čišćenje podataka u varijabli hair_color. Daljnja analiza ovisi o kvaliteti podataka. Ako podaci nisu pravilno zapisani, potrebno je provesti „čišćenje” podataka, na način da se podaci ne ujednače na pravilan način, riješi se pitanje NA, definira prikladan tip varijable i slično.</p>
+<p>Recimo da nas zbunjuje korištenje engleskih naziva i zbog toga želimo promijeniti nazive varijabli u podatkovnom okviru.</p>
+<div class="sourceCode" id="cb649"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb649-1"><a href="primjerupravljanjapodacima.html#cb649-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">colnames</span>(Starwars) <span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;ime&quot;</span>, <span class="st">&quot;visina&quot;</span>, <span class="st">&quot;tezina&quot;</span>, </span>
+<span id="cb649-2"><a href="primjerupravljanjapodacima.html#cb649-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                        <span class="st">&quot;boja_kose&quot;</span>, <span class="st">&quot;boja_ociju&quot;</span>, </span>
+<span id="cb649-3"><a href="primjerupravljanjapodacima.html#cb649-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                        <span class="st">&quot;planet&quot;</span>, <span class="st">&quot;vrsta&quot;</span>)</span>
+<span id="cb649-4"><a href="primjerupravljanjapodacima.html#cb649-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">str</span>(Starwars)</span></code></pre></div>
+<pre class="chunk-background"><code>## &#39;data.frame&#39;:    87 obs. of  7 variables:
+##  $ ime       : chr  &quot;Luke Skywalker&quot; &quot;C-3PO&quot; &quot;R2-D2&quot; &quot;Darth Vader&quot; ...
+##  $ visina    : int  172 167 96 202 150 178 165 97 183 182 ...
+##  $ tezina    : num  77 75 32 136 49 120 75 32 84 77 ...
+##  $ boja_kose : chr  &quot;blonde&quot; &quot;unknown&quot; &quot;unknown&quot; &quot;unknown&quot; ...
+##  $ boja_ociju: chr  &quot;blue&quot; &quot;yellow&quot; &quot;red&quot; &quot;yellow&quot; ...
+##  $ planet    : chr  &quot;Tatooine&quot; &quot;Tatooine&quot; &quot;Naboo&quot; &quot;Tatooine&quot; ...
+##  $ vrsta     : chr  &quot;Human&quot; &quot;Droid&quot; &quot;Droid&quot; &quot;Human&quot; ...</code></pre>
+<p>Recimo da nas zanima koliko iznosi prosječna visina i težina za svaku vrstu. Prvo bismo morali provjeriti koliko ima različitih vrsta, a potom za svaku izračunati visinu i težinu. Nakon toga, mogli bismo to prikazati u tablici.</p>
+<div class="sourceCode" id="cb651"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb651-1"><a href="primjerupravljanjapodacima.html#cb651-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">unique</span>(Starwars<span class="sc">$</span>vrsta)</span></code></pre></div>
+<pre class="chunk-background"><code>##  [1] &quot;Human&quot;          &quot;Droid&quot;          &quot;Wookiee&quot;        &quot;Rodian&quot;        
+##  [5] &quot;Hutt&quot;           &quot;Yoda&#39;s species&quot; &quot;Trandoshan&quot;     &quot;Mon Calamari&quot;  
+##  [9] &quot;Ewok&quot;           &quot;Sullustan&quot;      &quot;Neimodian&quot;      &quot;Gungan&quot;        
+## [13] &quot;Toydarian&quot;      &quot;Dug&quot;            &quot;Zabrak&quot;         &quot;Twi&#39;lek&quot;       
+## [17] &quot;Aleena&quot;         &quot;Vulptereen&quot;     &quot;Xexto&quot;          &quot;Toong&quot;         
+## [21] &quot;Cerean&quot;         &quot;Nautolan&quot;       &quot;Tholothian&quot;     &quot;Iktotchi&quot;      
+## [25] &quot;Quermian&quot;       &quot;Kel Dor&quot;        &quot;Chagrian&quot;       &quot;Geonosian&quot;     
+## [29] &quot;Mirialan&quot;       &quot;Clawdite&quot;       &quot;Besalisk&quot;       &quot;Kaminoan&quot;      
+## [33] &quot;Skakoan&quot;        &quot;Muun&quot;           &quot;Togruta&quot;        &quot;Kaleesh&quot;       
+## [37] &quot;Umbaran&quot;        &quot;Pau&#39;an&quot;</code></pre>
+<p>Koristeći naredbu <code>unique()</code>, utvrđujemo da postoji 38 jedinstvenih naziva za vrste. No, izgledno je da će se neke vrste pojavljivati samo jedanput. Za njih nećemo računati prosječne vrijednosti. To znači da prvo moramo utvrditi frekvencije pojavljivanja vrsta. To možemo učiniti na sljedeći način.</p>
+<div class="sourceCode" id="cb653"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb653-1"><a href="primjerupravljanjapodacima.html#cb653-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> vrsta_frekv <span class="ot">&lt;-</span> <span class="fu">table</span>(Starwars<span class="sc">$</span>vrsta)</span>
+<span id="cb653-2"><a href="primjerupravljanjapodacima.html#cb653-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> vrsta_frekv</span></code></pre></div>
+<pre class="chunk-background"><code>## 
+##         Aleena       Besalisk         Cerean       Chagrian       Clawdite 
+##              1              1              1              1              1 
+##          Droid            Dug           Ewok      Geonosian         Gungan 
+##              6              1              1              1              3 
+##          Human           Hutt       Iktotchi        Kaleesh       Kaminoan 
+##             38              1              1              1              2 
+##        Kel Dor       Mirialan   Mon Calamari           Muun       Nautolan 
+##              1              2              1              1              1 
+##      Neimodian         Pau&#39;an       Quermian         Rodian        Skakoan 
+##              1              1              1              1              1 
+##      Sullustan     Tholothian        Togruta          Toong      Toydarian 
+##              1              1              1              1              1 
+##     Trandoshan        Twi&#39;lek        Umbaran     Vulptereen        Wookiee 
+##              1              2              1              1              2 
+##          Xexto Yoda&#39;s species         Zabrak 
+##              1              1              2</code></pre>
+<div class="sourceCode" id="cb655"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb655-1"><a href="primjerupravljanjapodacima.html#cb655-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> vrsta_multiple <span class="ot">&lt;-</span> <span class="fu">which</span>(vrsta_frekv <span class="sc">&gt;</span> <span class="dv">1</span>)</span>
+<span id="cb655-2"><a href="primjerupravljanjapodacima.html#cb655-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> vrsta_multiple_nazivi <span class="ot">&lt;-</span> <span class="fu">names</span>(vrsta_multiple)</span>
+<span id="cb655-3"><a href="primjerupravljanjapodacima.html#cb655-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> vrsta_multiple_nazivi</span></code></pre></div>
+<pre class="chunk-background"><code>## [1] &quot;Droid&quot;    &quot;Gungan&quot;   &quot;Human&quot;    &quot;Kaminoan&quot; &quot;Mirialan&quot; &quot;Twi&#39;lek&quot;  &quot;Wookiee&quot; 
+## [8] &quot;Zabrak&quot;</code></pre>
+<p>Za svaku od ovih vrsta izračunat ćemo prosjek visine i težine temeljem podskupa podataka samo za tu vrstu. To se može učiniti na više načina, a ovdje će se prikazati dva načina.</p>
+<p>U prvom slučaju koristimo dplyr paket i <em>filtriranje</em> skupa podataka, a potom <em>grupiranje</em> i <em>sažimanje</em>.</p>
+<div class="sourceCode" id="cb657"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb657-1"><a href="primjerupravljanjapodacima.html#cb657-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> filtered_data <span class="ot">&lt;-</span> Starwars <span class="sc">%&gt;%</span> </span>
+<span id="cb657-2"><a href="primjerupravljanjapodacima.html#cb657-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                  <span class="fu">filter</span>(vrsta <span class="sc">%in%</span> vrsta_multiple_nazivi)</span>
+<span id="cb657-3"><a href="primjerupravljanjapodacima.html#cb657-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb657-4"><a href="primjerupravljanjapodacima.html#cb657-4" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> prosjek_visina_tezina <span class="ot">&lt;-</span> filtered_data <span class="sc">%&gt;%</span></span>
+<span id="cb657-5"><a href="primjerupravljanjapodacima.html#cb657-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">group_by</span>(vrsta) <span class="sc">%&gt;%</span></span>
+<span id="cb657-6"><a href="primjerupravljanjapodacima.html#cb657-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">summarise</span>(</span>
+<span id="cb657-7"><a href="primjerupravljanjapodacima.html#cb657-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="at">prosjek_visina =</span> <span class="fu">mean</span>(visina, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb657-8"><a href="primjerupravljanjapodacima.html#cb657-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="at">prosjek_tezina =</span> <span class="fu">mean</span>(tezina, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb657-9"><a href="primjerupravljanjapodacima.html#cb657-9" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                      )</span>
+<span id="cb657-10"><a href="primjerupravljanjapodacima.html#cb657-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> prosjek_visina_tezina</span></code></pre></div>
+<pre class="chunk-background"><code>## # A tibble: 8 × 3
+##   vrsta    prosjek_visina prosjek_tezina
+##   &lt;chr&gt;             &lt;dbl&gt;          &lt;dbl&gt;
+## 1 Droid              131.           69.8
+## 2 Gungan             209.           74  
+## 3 Human              178.           82.8
+## 4 Kaminoan           221            88  
+## 5 Mirialan           168            53.1
+## 6 Twi&#39;lek            179            55  
+## 7 Wookiee            231           124  
+## 8 Zabrak             173            80</code></pre>
+<p>Alternativno, možemo koristiti pristup „pješke” upotrebom podskupa podataka. Na taj način izračunavamo prosjek visine za pojedinu vrstu temeljem filtracije za jednu vrstu. Isto to učinimo za težinu, a potom ponovimo postupak za preostale vrste. Na kraju objedinimo podatke u tablicu.</p>
+<div class="sourceCode" id="cb659"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb659-1"><a href="primjerupravljanjapodacima.html#cb659-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> prosjek_visine_Droid <span class="ot">&lt;-</span> <span class="fu">mean</span>(Starwars<span class="sc">$</span>visina[Starwars<span class="sc">$</span>vrsta<span class="sc">==</span><span class="st">&quot;Droid&quot;</span>], </span>
+<span id="cb659-2"><a href="primjerupravljanjapodacima.html#cb659-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                              <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb659-3"><a href="primjerupravljanjapodacima.html#cb659-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb659-4"><a href="primjerupravljanjapodacima.html#cb659-4" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Ovdje moramo koristiti &#39;na.rm = TRUE&#39; zato jer varijable </span></span>
+<span id="cb659-5"><a href="primjerupravljanjapodacima.html#cb659-5" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># visine i težine sadrže nepoznanice koje nismo korigirali</span></span>
+<span id="cb659-6"><a href="primjerupravljanjapodacima.html#cb659-6" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># zbog na.rm će funkcija mean() ignorirati vrijednosti koje nedostaju; </span></span>
+<span id="cb659-7"><a href="primjerupravljanjapodacima.html#cb659-7" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># u suprotnom bismo dobili NA ili error</span></span>
+<span id="cb659-8"><a href="primjerupravljanjapodacima.html#cb659-8" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> </span>
+<span id="cb659-9"><a href="primjerupravljanjapodacima.html#cb659-9" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> prosjek_tezine_Droid <span class="ot">&lt;-</span> <span class="fu">mean</span>(Starwars<span class="sc">$</span>tezina[Starwars<span class="sc">$</span>vrsta<span class="sc">==</span><span class="st">&quot;Droid&quot;</span>], </span>
+<span id="cb659-10"><a href="primjerupravljanjapodacima.html#cb659-10" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                              <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb659-11"><a href="primjerupravljanjapodacima.html#cb659-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb659-12"><a href="primjerupravljanjapodacima.html#cb659-12" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> prosjek_visine_Gungan <span class="ot">&lt;-</span> <span class="fu">mean</span>(Starwars<span class="sc">$</span>visina[Starwars<span class="sc">$</span>vrsta<span class="sc">==</span><span class="st">&quot;Gungan&quot;</span>], </span>
+<span id="cb659-13"><a href="primjerupravljanjapodacima.html#cb659-13" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                               <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb659-14"><a href="primjerupravljanjapodacima.html#cb659-14" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> prosjek_tezine_Gungan <span class="ot">&lt;-</span> <span class="fu">mean</span>(Starwars<span class="sc">$</span>tezina[Starwars<span class="sc">$</span>vrsta<span class="sc">==</span><span class="st">&quot;Gungan&quot;</span>], </span>
+<span id="cb659-15"><a href="primjerupravljanjapodacima.html#cb659-15" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                               <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb659-16"><a href="primjerupravljanjapodacima.html#cb659-16" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb659-17"><a href="primjerupravljanjapodacima.html#cb659-17" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> prosjek_visine_Human <span class="ot">&lt;-</span> <span class="fu">mean</span>(Starwars<span class="sc">$</span>visina[Starwars<span class="sc">$</span>vrsta<span class="sc">==</span><span class="st">&quot;Human&quot;</span>], </span>
+<span id="cb659-18"><a href="primjerupravljanjapodacima.html#cb659-18" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                              <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb659-19"><a href="primjerupravljanjapodacima.html#cb659-19" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> prosjek_tezine_Human <span class="ot">&lt;-</span> <span class="fu">mean</span>(Starwars<span class="sc">$</span>tezina[Starwars<span class="sc">$</span>vrsta<span class="sc">==</span><span class="st">&quot;Human&quot;</span>], </span>
+<span id="cb659-20"><a href="primjerupravljanjapodacima.html#cb659-20" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                              <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb659-21"><a href="primjerupravljanjapodacima.html#cb659-21" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb659-22"><a href="primjerupravljanjapodacima.html#cb659-22" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> prosjek_visine_Kaminoan <span class="ot">&lt;-</span> <span class="fu">mean</span>(Starwars<span class="sc">$</span>visina[Starwars<span class="sc">$</span>vrsta<span class="sc">==</span><span class="st">&quot;Kaminoan&quot;</span>], </span>
+<span id="cb659-23"><a href="primjerupravljanjapodacima.html#cb659-23" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                                 <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb659-24"><a href="primjerupravljanjapodacima.html#cb659-24" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> prosjek_tezine_Kaminoan <span class="ot">&lt;-</span> <span class="fu">mean</span>(Starwars<span class="sc">$</span>tezina[Starwars<span class="sc">$</span>vrsta<span class="sc">==</span><span class="st">&quot;Kaminoan&quot;</span>], </span>
+<span id="cb659-25"><a href="primjerupravljanjapodacima.html#cb659-25" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                                 <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb659-26"><a href="primjerupravljanjapodacima.html#cb659-26" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb659-27"><a href="primjerupravljanjapodacima.html#cb659-27" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> prosjek_visine_Mirialan <span class="ot">&lt;-</span> <span class="fu">mean</span>(Starwars<span class="sc">$</span>visina[Starwars<span class="sc">$</span>vrsta<span class="sc">==</span><span class="st">&quot;Mirialan&quot;</span>], </span>
+<span id="cb659-28"><a href="primjerupravljanjapodacima.html#cb659-28" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                                 <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb659-29"><a href="primjerupravljanjapodacima.html#cb659-29" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> prosjek_tezine_Mirialan <span class="ot">&lt;-</span> <span class="fu">mean</span>(Starwars<span class="sc">$</span>tezina[Starwars<span class="sc">$</span>vrsta<span class="sc">==</span><span class="st">&quot;Mirialan&quot;</span>], </span>
+<span id="cb659-30"><a href="primjerupravljanjapodacima.html#cb659-30" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                                 <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb659-31"><a href="primjerupravljanjapodacima.html#cb659-31" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb659-32"><a href="primjerupravljanjapodacima.html#cb659-32" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> prosjek_visine_Twilek <span class="ot">&lt;-</span> <span class="fu">mean</span>(Starwars<span class="sc">$</span>visina[Starwars<span class="sc">$</span>vrsta<span class="sc">==</span><span class="st">&quot;Twi&#39;lek&quot;</span>], </span>
+<span id="cb659-33"><a href="primjerupravljanjapodacima.html#cb659-33" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                               <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb659-34"><a href="primjerupravljanjapodacima.html#cb659-34" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> prosjek_tezine_Twilek <span class="ot">&lt;-</span> <span class="fu">mean</span>(Starwars<span class="sc">$</span>tezina[Starwars<span class="sc">$</span>vrsta<span class="sc">==</span><span class="st">&quot;Twi&#39;lek&quot;</span>], </span>
+<span id="cb659-35"><a href="primjerupravljanjapodacima.html#cb659-35" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                               <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb659-36"><a href="primjerupravljanjapodacima.html#cb659-36" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb659-37"><a href="primjerupravljanjapodacima.html#cb659-37" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> prosjek_visine_Wookiee <span class="ot">&lt;-</span> <span class="fu">mean</span>(Starwars<span class="sc">$</span>visina[Starwars<span class="sc">$</span>vrsta<span class="sc">==</span><span class="st">&quot;Wookiee&quot;</span>], </span>
+<span id="cb659-38"><a href="primjerupravljanjapodacima.html#cb659-38" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                                <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb659-39"><a href="primjerupravljanjapodacima.html#cb659-39" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> prosjek_tezine_Wookiee <span class="ot">&lt;-</span> <span class="fu">mean</span>(Starwars<span class="sc">$</span>tezina[Starwars<span class="sc">$</span>vrsta<span class="sc">==</span><span class="st">&quot;Wookiee&quot;</span>], </span>
+<span id="cb659-40"><a href="primjerupravljanjapodacima.html#cb659-40" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                                <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb659-41"><a href="primjerupravljanjapodacima.html#cb659-41" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb659-42"><a href="primjerupravljanjapodacima.html#cb659-42" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> prosjek_visine_Zabrak <span class="ot">&lt;-</span> <span class="fu">mean</span>(Starwars<span class="sc">$</span>visina[Starwars<span class="sc">$</span>vrsta<span class="sc">==</span><span class="st">&quot;Zabrak&quot;</span>], </span>
+<span id="cb659-43"><a href="primjerupravljanjapodacima.html#cb659-43" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                               <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb659-44"><a href="primjerupravljanjapodacima.html#cb659-44" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> prosjek_tezine_Zabrak<span class="ot">&lt;-</span> <span class="fu">mean</span>(Starwars<span class="sc">$</span>tezina[Starwars<span class="sc">$</span>vrsta<span class="sc">==</span><span class="st">&quot;Zabrak&quot;</span>], </span>
+<span id="cb659-45"><a href="primjerupravljanjapodacima.html#cb659-45" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                              <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb659-46"><a href="primjerupravljanjapodacima.html#cb659-46" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb659-47"><a href="primjerupravljanjapodacima.html#cb659-47" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Kreiramo tablicu prikaza</span></span>
+<span id="cb659-48"><a href="primjerupravljanjapodacima.html#cb659-48" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> </span>
+<span id="cb659-49"><a href="primjerupravljanjapodacima.html#cb659-49" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> visina_tezina_vrsta <span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="st">&quot;Droid&quot;</span>, </span>
+<span id="cb659-50"><a href="primjerupravljanjapodacima.html#cb659-50" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                                prosjek_visine_Droid, prosjek_tezine_Droid,</span>
+<span id="cb659-51"><a href="primjerupravljanjapodacima.html#cb659-51" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                                <span class="st">&quot;Gungan&quot;</span>, </span>
+<span id="cb659-52"><a href="primjerupravljanjapodacima.html#cb659-52" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                                prosjek_visine_Gungan, prosjek_tezine_Gungan,</span>
+<span id="cb659-53"><a href="primjerupravljanjapodacima.html#cb659-53" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                                <span class="st">&quot;Human&quot;</span>, </span>
+<span id="cb659-54"><a href="primjerupravljanjapodacima.html#cb659-54" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                                prosjek_visine_Human, prosjek_tezine_Human,</span>
+<span id="cb659-55"><a href="primjerupravljanjapodacima.html#cb659-55" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                                <span class="st">&quot;Kaminoan&quot;</span>, </span>
+<span id="cb659-56"><a href="primjerupravljanjapodacima.html#cb659-56" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                                prosjek_visine_Kaminoan, prosjek_tezine_Kaminoan,</span>
+<span id="cb659-57"><a href="primjerupravljanjapodacima.html#cb659-57" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                                <span class="st">&quot;Mirialan&quot;</span>, </span>
+<span id="cb659-58"><a href="primjerupravljanjapodacima.html#cb659-58" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                                prosjek_visine_Mirialan, prosjek_tezine_Mirialan,</span>
+<span id="cb659-59"><a href="primjerupravljanjapodacima.html#cb659-59" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                                <span class="st">&quot;Twi&#39;lek&quot;</span>, </span>
+<span id="cb659-60"><a href="primjerupravljanjapodacima.html#cb659-60" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                                prosjek_visine_Twilek, prosjek_tezine_Twilek,</span>
+<span id="cb659-61"><a href="primjerupravljanjapodacima.html#cb659-61" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                                <span class="st">&quot;Wookiee&quot;</span>, </span>
+<span id="cb659-62"><a href="primjerupravljanjapodacima.html#cb659-62" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                                prosjek_visine_Wookiee, prosjek_tezine_Wookiee,</span>
+<span id="cb659-63"><a href="primjerupravljanjapodacima.html#cb659-63" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                                <span class="st">&quot;Zabrak&quot;</span>, </span>
+<span id="cb659-64"><a href="primjerupravljanjapodacima.html#cb659-64" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                                prosjek_visine_Zabrak, prosjek_tezine_Zabrak),</span>
+<span id="cb659-65"><a href="primjerupravljanjapodacima.html#cb659-65" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                              <span class="at">nrow =</span> <span class="dv">8</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb659-66"><a href="primjerupravljanjapodacima.html#cb659-66" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb659-67"><a href="primjerupravljanjapodacima.html#cb659-67" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">colnames</span>(visina_tezina_vrsta) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Vrsta&quot;</span>, <span class="st">&quot;Prosječna visina&quot;</span>, </span>
+<span id="cb659-68"><a href="primjerupravljanjapodacima.html#cb659-68" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                                    <span class="st">&quot;Prosječna težina&quot;</span>)</span>
+<span id="cb659-69"><a href="primjerupravljanjapodacima.html#cb659-69" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb659-70"><a href="primjerupravljanjapodacima.html#cb659-70" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> visina_tezina_vrsta<span class="ot">&lt;-</span><span class="fu">as.table</span>(visina_tezina_vrsta)</span>
+<span id="cb659-71"><a href="primjerupravljanjapodacima.html#cb659-71" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> visina_tezina_vrsta</span></code></pre></div>
+<pre class="chunk-background"><code>##   Vrsta    Prosječna visina Prosječna težina
+## A Droid    131.2            69.75           
+## B Gungan   208.666666666667 74              
+## C Human    177.636363636364 82.7818181818182
+## D Kaminoan 221              88              
+## E Mirialan 168              53.1            
+## F Twi&#39;lek  179              55              
+## G Wookiee  231              124             
+## H Zabrak   173              80</code></pre>
+<p>Rezultat je isti, iako je prvi pristup puno brži. No, ako preferirate pratiti izračune „korak po korak”, drugi pristup će vam biti prihvatljiviji unatoč većem broju linija koda.</p>
+<p>Recimo da bismo htjeli vizualno prikazati distribucije visina po vrstama i pretpostavljamo da su visine normalno distribuirane varijable za svaku od vrsta. U tom slučaju, potrebna nam je standardna devijacija za svaku vrstu.</p>
+<p>Treba napomenuti da ovo činimo zbog primjera za vježbu i grafičkog prikaza te u inferencijalnoj statistici nećete običavati koristiti podatke ovako malih uzoraka da biste pretpostavljali distribuciju bilo koje karakteristike čitave vrste ili bilo koje veće populacije.</p>
+<div class="sourceCode" id="cb661"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb661-1"><a href="primjerupravljanjapodacima.html#cb661-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> prosjek_sd_visina <span class="ot">&lt;-</span> filtered_data <span class="sc">%&gt;%</span></span>
+<span id="cb661-2"><a href="primjerupravljanjapodacima.html#cb661-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">group_by</span>(vrsta) <span class="sc">%&gt;%</span></span>
+<span id="cb661-3"><a href="primjerupravljanjapodacima.html#cb661-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">summarise</span>(</span>
+<span id="cb661-4"><a href="primjerupravljanjapodacima.html#cb661-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="at">prosjek_visina =</span> <span class="fu">mean</span>(visina, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb661-5"><a href="primjerupravljanjapodacima.html#cb661-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="at">sd_visina =</span> <span class="fu">sd</span>(visina, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb661-6"><a href="primjerupravljanjapodacima.html#cb661-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                      )</span>
+<span id="cb661-7"><a href="primjerupravljanjapodacima.html#cb661-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> prosjek_sd_visina</span></code></pre></div>
+<pre class="chunk-background"><code>## # A tibble: 8 × 3
+##   vrsta    prosjek_visina sd_visina
+##   &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt;
+## 1 Droid              131.     49.1 
+## 2 Gungan             209.     14.2 
+## 3 Human              178.     12.1 
+## 4 Kaminoan           221      11.3 
+## 5 Mirialan           168       2.83
+## 6 Twi&#39;lek            179       1.41
+## 7 Wookiee            231       4.24
+## 8 Zabrak             173       2.83</code></pre>
+<div class="sourceCode" id="cb663"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb663-1"><a href="primjerupravljanjapodacima.html#cb663-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Droidi <span class="ot">&lt;-</span> <span class="fu">density</span>(<span class="fu">rnorm</span>(<span class="dv">1000</span>,prosjek_sd_visina<span class="sc">$</span>prosjek_visina[<span class="dv">1</span>], </span>
+<span id="cb663-2"><a href="primjerupravljanjapodacima.html#cb663-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                         prosjek_sd_visina<span class="sc">$</span>sd_visina[<span class="dv">1</span>]))</span>
+<span id="cb663-3"><a href="primjerupravljanjapodacima.html#cb663-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Gungan <span class="ot">&lt;-</span> <span class="fu">density</span>(<span class="fu">rnorm</span>(<span class="dv">1000</span>,prosjek_sd_visina<span class="sc">$</span>prosjek_visina[<span class="dv">2</span>], </span>
+<span id="cb663-4"><a href="primjerupravljanjapodacima.html#cb663-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                         prosjek_sd_visina<span class="sc">$</span>sd_visina[<span class="dv">2</span>]))</span>
+<span id="cb663-5"><a href="primjerupravljanjapodacima.html#cb663-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Human <span class="ot">&lt;-</span> <span class="fu">density</span>(<span class="fu">rnorm</span>(<span class="dv">1000</span>,prosjek_sd_visina<span class="sc">$</span>prosjek_visina[<span class="dv">3</span>], </span>
+<span id="cb663-6"><a href="primjerupravljanjapodacima.html#cb663-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                        prosjek_sd_visina<span class="sc">$</span>sd_visina[<span class="dv">3</span>]))</span>
+<span id="cb663-7"><a href="primjerupravljanjapodacima.html#cb663-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Kaminoan <span class="ot">&lt;-</span> <span class="fu">density</span>(<span class="fu">rnorm</span>(<span class="dv">1000</span>,prosjek_sd_visina<span class="sc">$</span>prosjek_visina[<span class="dv">4</span>], </span>
+<span id="cb663-8"><a href="primjerupravljanjapodacima.html#cb663-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                           prosjek_sd_visina<span class="sc">$</span>sd_visina[<span class="dv">4</span>]))         </span>
+<span id="cb663-9"><a href="primjerupravljanjapodacima.html#cb663-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Mirialan  <span class="ot">&lt;-</span> <span class="fu">density</span>(<span class="fu">rnorm</span>(<span class="dv">1000</span>,prosjek_sd_visina<span class="sc">$</span>prosjek_visina[<span class="dv">5</span>], </span>
+<span id="cb663-10"><a href="primjerupravljanjapodacima.html#cb663-10" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                            prosjek_sd_visina<span class="sc">$</span>sd_visina[<span class="dv">5</span>]))        </span>
+<span id="cb663-11"><a href="primjerupravljanjapodacima.html#cb663-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Twilek  <span class="ot">&lt;-</span> <span class="fu">density</span>(<span class="fu">rnorm</span>(<span class="dv">1000</span>,prosjek_sd_visina<span class="sc">$</span>prosjek_visina[<span class="dv">6</span>], </span>
+<span id="cb663-12"><a href="primjerupravljanjapodacima.html#cb663-12" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                          prosjek_sd_visina<span class="sc">$</span>sd_visina[<span class="dv">6</span>]))       </span>
+<span id="cb663-13"><a href="primjerupravljanjapodacima.html#cb663-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Wookiee  <span class="ot">&lt;-</span> <span class="fu">density</span>(<span class="fu">rnorm</span>(<span class="dv">1000</span>,prosjek_sd_visina<span class="sc">$</span>prosjek_visina[<span class="dv">7</span>], </span>
+<span id="cb663-14"><a href="primjerupravljanjapodacima.html#cb663-14" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                           prosjek_sd_visina<span class="sc">$</span>sd_visina[<span class="dv">7</span>]))         </span>
+<span id="cb663-15"><a href="primjerupravljanjapodacima.html#cb663-15" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Zabrak  <span class="ot">&lt;-</span> <span class="fu">density</span>(<span class="fu">rnorm</span>(<span class="dv">1000</span>,prosjek_sd_visina<span class="sc">$</span>prosjek_visina[<span class="dv">8</span>], </span>
+<span id="cb663-16"><a href="primjerupravljanjapodacima.html#cb663-16" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                          prosjek_sd_visina<span class="sc">$</span>sd_visina[<span class="dv">8</span>]))</span>
+<span id="cb663-17"><a href="primjerupravljanjapodacima.html#cb663-17" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb663-18"><a href="primjerupravljanjapodacima.html#cb663-18" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">plot</span>(Droidi, <span class="at">main=</span><span class="st">&quot;Visine vrsta&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Visina&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;Gustoća&quot;</span>,</span>
+<span id="cb663-19"><a href="primjerupravljanjapodacima.html#cb663-19" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>      <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">25</span>,<span class="dv">275</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.3</span>))</span>
+<span id="cb663-20"><a href="primjerupravljanjapodacima.html#cb663-20" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">lines</span>(Gungan, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb663-21"><a href="primjerupravljanjapodacima.html#cb663-21" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">lines</span>(Human, <span class="at">col=</span><span class="st">&quot;green&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb663-22"><a href="primjerupravljanjapodacima.html#cb663-22" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">lines</span>(Kaminoan, <span class="at">col=</span><span class="st">&quot;yellow&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb663-23"><a href="primjerupravljanjapodacima.html#cb663-23" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">lines</span>(Mirialan, <span class="at">col=</span><span class="st">&quot;orange&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb663-24"><a href="primjerupravljanjapodacima.html#cb663-24" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">lines</span>(Twilek, <span class="at">col=</span><span class="st">&quot;purple&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb663-25"><a href="primjerupravljanjapodacima.html#cb663-25" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">lines</span>(Wookiee, <span class="at">col=</span><span class="st">&quot;brown&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb663-26"><a href="primjerupravljanjapodacima.html#cb663-26" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">lines</span>(Zabrak, <span class="at">col=</span><span class="st">&quot;pink&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb663-27"><a href="primjerupravljanjapodacima.html#cb663-27" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="at">legend=</span><span class="fu">c</span>(<span class="st">&quot;Droidi&quot;</span>, <span class="st">&quot;Gungan&quot;</span>, <span class="st">&quot;Human&quot;</span>, <span class="st">&quot;Kaminoan&quot;</span>, </span>
+<span id="cb663-28"><a href="primjerupravljanjapodacima.html#cb663-28" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                             <span class="st">&quot;Mirialan&quot;</span>, <span class="st">&quot;Twi&#39;lek&quot;</span>, <span class="st">&quot;Wookiee&quot;</span>, <span class="st">&quot;Zabrak&quot;</span>),</span>
+<span id="cb663-29"><a href="primjerupravljanjapodacima.html#cb663-29" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>        <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;yellow&quot;</span>, </span>
+<span id="cb663-30"><a href="primjerupravljanjapodacima.html#cb663-30" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>              <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;purple&quot;</span>, <span class="st">&quot;brown&quot;</span>, <span class="st">&quot;pink&quot;</span>), <span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="index_files/figure-html/unnamed-chunk-346-1.png" width="672" /></p>
+<p>Alternativno, možda želimo dobiti uvid u distribuciju podataka o opaženim visinama (a ne generiranim vrijednostima) koristeći box-plot. Ako kreiramo usporedne box-plotove za sve vrste iz podskupa <em>filtered_data</em>, moći ćemo ih međusobno usporediti.</p>
+<div class="sourceCode" id="cb664"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb664-1"><a href="primjerupravljanjapodacima.html#cb664-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(filtered_data, <span class="fu">aes</span>(<span class="at">x =</span> vrsta, <span class="at">y =</span> visina, <span class="at">fill =</span> vrsta)) <span class="sc">+</span></span>
+<span id="cb664-2"><a href="primjerupravljanjapodacima.html#cb664-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span> </span>
+<span id="cb664-3"><a href="primjerupravljanjapodacima.html#cb664-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">labs</span>(</span>
+<span id="cb664-4"><a href="primjerupravljanjapodacima.html#cb664-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="at">title =</span> <span class="st">&quot;Box-plot visina po vrstama&quot;</span>,</span>
+<span id="cb664-5"><a href="primjerupravljanjapodacima.html#cb664-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="at">x =</span> <span class="st">&quot;Vrsta&quot;</span>,</span>
+<span id="cb664-6"><a href="primjerupravljanjapodacima.html#cb664-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="at">y =</span> <span class="st">&quot;Visina&quot;</span></span>
+<span id="cb664-7"><a href="primjerupravljanjapodacima.html#cb664-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   ) <span class="sc">+</span></span>
+<span id="cb664-8"><a href="primjerupravljanjapodacima.html#cb664-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb664-9"><a href="primjerupravljanjapodacima.html#cb664-9" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">theme</span>(</span>
+<span id="cb664-10"><a href="primjerupravljanjapodacima.html#cb664-10" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">16</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb664-11"><a href="primjerupravljanjapodacima.html#cb664-11" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>) </span>
+<span id="cb664-12"><a href="primjerupravljanjapodacima.html#cb664-12" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   ) <span class="sc">+</span></span>
+<span id="cb664-13"><a href="primjerupravljanjapodacima.html#cb664-13" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Set3&quot;</span>)</span></code></pre></div>
+<p><img src="index_files/figure-html/unnamed-chunk-347-1.png" width="672" /></p>
+<p>Box-plot prikazuje značajne razlike u visinama među vrstama. Kaminoan i Wookiee ističu se kao najviše vrste, s visokim vrijednostima medijana, dok Droidi i Mirialan imaju najniže medijane. Raspon visina je najširi kod Droida, što sugerira veliku varijabilnost unutar te vrste, dok vrste poput Wookiee i Zabrak imaju uže raspone, što znači da su visine unutar tih vrsta konzistentnije. Human i Gungan imaju slične raspone varijacija.</p>
+<p>Neke vrste, poput Kaminoan, nemaju izdvojenice, dok druge vrste pokazuju visine koje su izvan tipičnih vrijednosti. Ova usporedba omogućuje bolji uvid u razlike među vrstama, naglašavajući kako se vrste razlikuju ne samo po prosječnoj visini već i po varijabilnosti i ekstremnim vrijednostima unutar svojih distribucija.</p>
+<p>No, za pokazatelje deskriptivne statistike, možemo, na primjer, koristiti i paket <em>summarytools</em>. S obzirom da želimo izračunati pokazatelje za svaku vrstu zasebno, kombinirat ćemo s naredbom <code>stby()</code> iz paketa <em>dplyr</em>. Prva naredba, kojom bismo utvrdili sve vrste, neće se pokrenuti, jer je ispis podugačak. No, možete isprobati sami. Drugom skupinom naredbi kreira se podskup podataka koji obuhvaća dvije vrsta (Droide i ljude), a potom se izračunavaju pokazatelji deskriptivne statistike za svaku vrstu likova.</p>
+<div class="sourceCode" id="cb665"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb665-1"><a href="primjerupravljanjapodacima.html#cb665-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># stby(data = Starwars, INDICES = Starwars$vrsta, </span></span>
+<span id="cb665-2"><a href="primjerupravljanjapodacima.html#cb665-2" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="co">#      FUN = function(x) descr(Starwars[,2:3], stats = &quot;all&quot;))</span></span></code></pre></div>
+<div class="sourceCode" id="cb666"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb666-1"><a href="primjerupravljanjapodacima.html#cb666-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> starwars_subset <span class="ot">&lt;-</span> Starwars <span class="sc">%&gt;%</span></span>
+<span id="cb666-2"><a href="primjerupravljanjapodacima.html#cb666-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(Starwars<span class="sc">$</span>vrsta <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Human&quot;</span>, <span class="st">&quot;Droid&quot;</span>))</span>
+<span id="cb666-3"><a href="primjerupravljanjapodacima.html#cb666-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb666-4"><a href="primjerupravljanjapodacima.html#cb666-4" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">stby</span>(<span class="at">data =</span> starwars_subset[, <span class="fu">c</span>(<span class="st">&quot;tezina&quot;</span>, <span class="st">&quot;visina&quot;</span>)], </span>
+<span id="cb666-5"><a href="primjerupravljanjapodacima.html#cb666-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                <span class="at">INDICES =</span> starwars_subset<span class="sc">$</span>vrsta, </span>
+<span id="cb666-6"><a href="primjerupravljanjapodacima.html#cb666-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                <span class="at">FUN =</span> descr, </span>
+<span id="cb666-7"><a href="primjerupravljanjapodacima.html#cb666-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                <span class="at">stats =</span> <span class="st">&quot;all&quot;</span>)</span></code></pre></div>
+<pre class="chunk-background"><code>## Descriptive Statistics  
+## 
+##                     tezina   visina
+## ----------------- -------- --------
+##              Mean    69.75   131.20
+##           Std.Dev    51.03    49.15
+##               Min    32.00    96.00
+##                Q1    32.00    96.00
+##            Median    53.50    97.00
+##                Q3   107.50   167.00
+##               Max   140.00   200.00
+##               MAD    31.88     1.48
+##               IQR    59.25    71.00
+##                CV     0.73     0.37
+##          Skewness     0.45     0.41
+##       SE.Skewness     1.01     0.91
+##          Kurtosis    -1.95    -2.02
+##           N.Valid     4.00     5.00
+##         Pct.Valid    66.67    83.33
+## 
+## N: 38  
+## 
+##                     tezina   visina
+## ----------------- -------- --------
+##              Mean    82.78   177.64
+##           Std.Dev    19.38    12.12
+##               Min    45.00   150.00
+##                Q1    77.00   170.00
+##            Median    79.00   180.00
+##                Q3    84.00   185.00
+##               Max   136.00   202.00
+##               MAD     5.93    11.86
+##               IQR     7.00    15.00
+##                CV     0.23     0.07
+##          Skewness     0.80    -0.54
+##       SE.Skewness     0.49     0.41
+##          Kurtosis     1.46    -0.17
+##           N.Valid    22.00    33.00
+##         Pct.Valid    57.89    86.84</code></pre>
+<p>Droidi su prosječno teški 69.75 kg, uz standardno odstupanje težina od prosjeka za 51.03 kg ukazuje na relativno veliku varijabilnost. U malim uzorcima uobičajeno se opaža veća varijabilnost u podacima. Raspon težina, od 32 kg do 140 kg, dodatno potvrđuje postojanje ekstremnih vrijednosti. Polovica Droida u uzorku teška je 53 kg ili manje od toga, dok je preostala polovica teška toliko ili više. Središnjih 50% podataka o visini nalazi se između 55 i 85 kg. Distribucija težine Droida blago je pozitivno asimetrična, dok je distribucija vrhom zaobljenija od normalne.</p>
+<p>Droidi su prosječno visoki 131.20 cm, uz standardno odstupanje visine od prosjeka za 49.15 cm. Raspon varijacija visina kreće se od 96 do 200 cm. Središnjih 50% Droida visoko je između 96 i 167 cm, ukazujući na izdvojenice s desne strane distribucije. To potvrđuje i pokazatelj asimetrije, ukazujući na to da je distribucija visina Droida blago pozitivno asimetrična. Slično kao i distribucija težina, distribucija visina Droida je vrhom zaobljenija od normalne.</p>
+<p>Ljudi u uzorku su prosječno teški 82.78 kg, uz standardno odstupanje težine od prosjeka za 19.38 kg, što ukazuje na umjerenu varijabilnost težina među ljudima. Polovica ljudi u uzorku ima težinu od 79 kg ili manje, dok druga polovica ima težinu veću od toga. Prosjek je veći od medijana, što upućuje na postojanje nekolicine velikih vrijednosti u nizu, koje odvlače prosjek k većim vrijednostima. Raspon težina kreće se od minimalnih 45 kg do maksimalnih 136 kg, dok se središnjih 50% podataka o težini nalazi u intervalu između 77 kg i 84 kg. Distribucija težine je blago pozitivno asimetrična, što potvrđuje da postoji nekoliko ljudi s većim težinama koje odstupaju od većine opažanja. Kurtosis, ili zaobljenost distribucije, ukazuje na izduženiji vrh distribucije u odnosu na normalnu i veću koncentraciju opažanja oko prosjeka.</p>
+<p>Prosječna visina ljudi u uzorku iznosi 177.64 cm, uz standardno odstupanje od 12.12 cm, što ukazuje na nisku varijabilnost visina. Raspon visina kreće se od minimalnih 150 cm do maksimalnih 202 cm. Središnjih 50% ljudi visoko je između 170 cm i 185 cm. Distribucija visina je blago negativno asimetrična, što znači da postoji nekoliko ljudi s nižim visinama koje povlače distribuciju ulijevo. Kurtosis ukazuje na distribuciju koja je oblikom blizu normalnoj distribuciji, s blago zaobljenijim vrhom.</p>
+<p>No, može nas zanimati i postoji li veza između visina i težina likova Starwarsa.</p>
+<div class="sourceCode" id="cb668"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb668-1"><a href="primjerupravljanjapodacima.html#cb668-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> starwars_clean <span class="ot">&lt;-</span> Starwars <span class="sc">%&gt;%</span></span>
+<span id="cb668-2"><a href="primjerupravljanjapodacima.html#cb668-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">select</span>(vrsta, tezina, visina) <span class="sc">%&gt;%</span></span>
+<span id="cb668-3"><a href="primjerupravljanjapodacima.html#cb668-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(visina) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(tezina))</span>
+<span id="cb668-4"><a href="primjerupravljanjapodacima.html#cb668-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb668-5"><a href="primjerupravljanjapodacima.html#cb668-5" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">cor</span>(starwars_clean[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>], <span class="at">use =</span> <span class="st">&quot;pairwise.complete.obs&quot;</span>)</span></code></pre></div>
+<pre class="chunk-background"><code>##        tezina visina
+## tezina   1.00   0.13
+## visina   0.13   1.00</code></pre>
+<p>Vrijednost korelacije 0.13 sugerira da postoji vrlo slab pozitivan odnos između težine i visine. To znači da, u prosjeku, s povećanjem visine, težina blago raste. Ipak, radi se o vrlo slaboj povezanosti, koja ne ukazuje na izraženu pravilnost.</p>
+<p>Budući da skup podataka sadrži različite vrste likova, moguće je da razlike između skupina značajno smanjuju ukupnu korelaciju. Na primjer, Droidi mogu imati različite obrasce povezanosti težine i visine u usporedbi s ljudima. Bilo bi korisno izračunati korelacije unutar specifičnih skupina (npr. za ljude i Droide) kako bismo vidjeli postoji li jača povezanost u homogenijim podskupinama.</p>
+<div class="sourceCode" id="cb670"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb670-1"><a href="primjerupravljanjapodacima.html#cb670-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(ggplot2)</span>
+<span id="cb670-2"><a href="primjerupravljanjapodacima.html#cb670-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb670-3"><a href="primjerupravljanjapodacima.html#cb670-3" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">ggplot</span>(<span class="at">data =</span> starwars_subset, <span class="fu">aes</span>(<span class="at">x =</span> visina, <span class="at">y =</span> tezina, <span class="at">color =</span> vrsta)) <span class="sc">+</span></span>
+<span id="cb670-4"><a href="primjerupravljanjapodacima.html#cb670-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb670-5"><a href="primjerupravljanjapodacima.html#cb670-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">labs</span>(</span>
+<span id="cb670-6"><a href="primjerupravljanjapodacima.html#cb670-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="at">x =</span> <span class="st">&quot;Visina (cm)&quot;</span>,</span>
+<span id="cb670-7"><a href="primjerupravljanjapodacima.html#cb670-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="at">y =</span> <span class="st">&quot;Težina (kg)&quot;</span>,</span>
+<span id="cb670-8"><a href="primjerupravljanjapodacima.html#cb670-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="at">color =</span> <span class="st">&quot;Vrsta&quot;</span></span>
+<span id="cb670-9"><a href="primjerupravljanjapodacima.html#cb670-9" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   ) <span class="sc">+</span></span>
+<span id="cb670-10"><a href="primjerupravljanjapodacima.html#cb670-10" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb670-11"><a href="primjerupravljanjapodacima.html#cb670-11" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">theme</span>(</span>
+<span id="cb670-12"><a href="primjerupravljanjapodacima.html#cb670-12" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">14</span>),</span>
+<span id="cb670-13"><a href="primjerupravljanjapodacima.html#cb670-13" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb670-14"><a href="primjerupravljanjapodacima.html#cb670-14" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb670-15"><a href="primjerupravljanjapodacima.html#cb670-15" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>)</span>
+<span id="cb670-16"><a href="primjerupravljanjapodacima.html#cb670-16" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   )</span></code></pre></div>
+<p><img src="index_files/figure-html/unnamed-chunk-351-1.png" width="672" /></p>
+<div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb671-1"><a href="primjerupravljanjapodacima.html#cb671-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> cor_droid <span class="ot">&lt;-</span> starwars_subset <span class="sc">%&gt;%</span></span>
+<span id="cb671-2"><a href="primjerupravljanjapodacima.html#cb671-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(vrsta <span class="sc">==</span> <span class="st">&quot;Droid&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb671-3"><a href="primjerupravljanjapodacima.html#cb671-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">select</span>(tezina, visina) <span class="sc">%&gt;%</span></span>
+<span id="cb671-4"><a href="primjerupravljanjapodacima.html#cb671-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">cor</span>(<span class="at">use =</span> <span class="st">&quot;pairwise.complete.obs&quot;</span>)</span>
+<span id="cb671-5"><a href="primjerupravljanjapodacima.html#cb671-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> cor_droid</span></code></pre></div>
+<pre class="chunk-background"><code>##        tezina visina
+## tezina   1.00   0.96
+## visina   0.96   1.00</code></pre>
+<p>Koeficijent korelacije između težine i visine Droida iznosi 0.96, što ukazuje na vrlo snažnu pozitivnu linearnu vezu. To znači da, kako se povećava visina Droida, težina također gotovo proporcionalno raste. Ovaj visok koeficijent može biti posljedica malog uzorka Droida i homogennosti njihovih karakteristika u skupu podataka, ali je vjerojatnije da je težina rezultat njihove visine i materijala koji su korišteni u njihovoj konstrukciji (veći Droidi zahtijevaju više materijala, što povećava njihovu težinu). S obzirom da Droidi nemaju biološke varijacije poput ljudi (npr., razlike u masi mišića, gustoći kostiju ili postotku masti), veza između težine i visine je jača.</p>
+<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb673-1"><a href="primjerupravljanjapodacima.html#cb673-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> cor_human <span class="ot">&lt;-</span> starwars_subset <span class="sc">%&gt;%</span></span>
+<span id="cb673-2"><a href="primjerupravljanjapodacima.html#cb673-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(vrsta <span class="sc">==</span> <span class="st">&quot;Human&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb673-3"><a href="primjerupravljanjapodacima.html#cb673-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">select</span>(tezina, visina) <span class="sc">%&gt;%</span></span>
+<span id="cb673-4"><a href="primjerupravljanjapodacima.html#cb673-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">cor</span>(<span class="at">use =</span> <span class="st">&quot;pairwise.complete.obs&quot;</span>)</span>
+<span id="cb673-5"><a href="primjerupravljanjapodacima.html#cb673-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> cor_human</span></code></pre></div>
+<pre class="chunk-background"><code>##        tezina visina
+## tezina   1.00   0.51
+## visina   0.51   1.00</code></pre>
+<p>Koeficijent krelacije između težine i visine iznosi 0.51, što ukazuje na umjerenu pozitivnu linearnu vezu. Ovo je očekivano jer su kod ljudi visina i težina povezane, ali nisu savršeno proporcionalne (npr., razlike u građi tijela, masi mišića, itd.). Dakle umjerena pozitivna korelacija je u skladu s raznolikošću podataka o ljudima u uzorku.</p>
+<p>Također, sličnu analizu možemo provesti i za sve vrste, no ovdje ćemo samo grafički prikazati uvide koje možemo dobiti dijagramom rasipanja.</p>
+<div class="sourceCode" id="cb675"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb675-1"><a href="primjerupravljanjapodacima.html#cb675-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(ggplot2)</span>
+<span id="cb675-2"><a href="primjerupravljanjapodacima.html#cb675-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(dplyr)</span>
+<span id="cb675-3"><a href="primjerupravljanjapodacima.html#cb675-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb675-4"><a href="primjerupravljanjapodacima.html#cb675-4" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> starwars_clean <span class="ot">&lt;-</span> Starwars <span class="sc">%&gt;%</span></span>
+<span id="cb675-5"><a href="primjerupravljanjapodacima.html#cb675-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># odabiremo opažanja koja ne sadrže NA </span></span>
+<span id="cb675-6"><a href="primjerupravljanjapodacima.html#cb675-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># te eliminiramo jednu izdvojenicu</span></span>
+<span id="cb675-7"><a href="primjerupravljanjapodacima.html#cb675-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(visina) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(tezina) <span class="sc">&amp;</span> tezina <span class="sc">&lt;=</span> <span class="dv">1000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb675-8"><a href="primjerupravljanjapodacima.html#cb675-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">select</span>(vrsta, visina, tezina)</span>
+<span id="cb675-9"><a href="primjerupravljanjapodacima.html#cb675-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb675-10"><a href="primjerupravljanjapodacima.html#cb675-10" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">ggplot</span>(<span class="at">data =</span> starwars_clean, <span class="fu">aes</span>(<span class="at">x =</span> visina, <span class="at">y =</span> tezina, <span class="at">color =</span> vrsta)) <span class="sc">+</span></span>
+<span id="cb675-11"><a href="primjerupravljanjapodacima.html#cb675-11" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb675-12"><a href="primjerupravljanjapodacima.html#cb675-12" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">labs</span>(</span>
+<span id="cb675-13"><a href="primjerupravljanjapodacima.html#cb675-13" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="at">title =</span> <span class="st">&quot;Raspršenost visine i težine u Starwars skupu podataka&quot;</span>,</span>
+<span id="cb675-14"><a href="primjerupravljanjapodacima.html#cb675-14" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="at">x =</span> <span class="st">&quot;Visina (cm)&quot;</span>,</span>
+<span id="cb675-15"><a href="primjerupravljanjapodacima.html#cb675-15" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="at">y =</span> <span class="st">&quot;Težina (kg)&quot;</span>,</span>
+<span id="cb675-16"><a href="primjerupravljanjapodacima.html#cb675-16" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="at">color =</span> <span class="st">&quot;Vrsta&quot;</span></span>
+<span id="cb675-17"><a href="primjerupravljanjapodacima.html#cb675-17" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   ) <span class="sc">+</span></span>
+<span id="cb675-18"><a href="primjerupravljanjapodacima.html#cb675-18" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb675-19"><a href="primjerupravljanjapodacima.html#cb675-19" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">theme</span>(</span>
+<span id="cb675-20"><a href="primjerupravljanjapodacima.html#cb675-20" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb675-21"><a href="primjerupravljanjapodacima.html#cb675-21" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb675-22"><a href="primjerupravljanjapodacima.html#cb675-22" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb675-23"><a href="primjerupravljanjapodacima.html#cb675-23" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb675-24"><a href="primjerupravljanjapodacima.html#cb675-24" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span></span>
+<span id="cb675-25"><a href="primjerupravljanjapodacima.html#cb675-25" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   )</span></code></pre></div>
+<p><img src="index_files/figure-html/unnamed-chunk-354-1.png" width="672" /></p>
+<p>Ako želite, možete samostalno provesti daljnju analizu visina i težina za svaku vrstu, po uzoru na postupak proveden za Droide i ljude.</p>
+<p>Sljedeće nas zanima koji likovi iz određenih vrsta imaju visinu i težinu iznad dvije standardne devijacije od prosjeka za svoju vrstu? Odgovor na to pitanje iziskuje nekoliko koraka u analizi. Prvo je potrebno izračunati prosječnu visinu i težinu za svaku vrstu u skupu podataka. Nakon toga trebamo filtrirati likove koji su iznad prosječne visine i težine za svoju vrstu. I naravno, na kraju treba ispisati ili prikazati rezultate. Ovo je izvrstan primjer na kojem se može prikazati kreiranje vlastitih funkcija u kontekstu analize podataka.</p>
+<div class="sourceCode" id="cb676"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb676-1"><a href="primjerupravljanjapodacima.html#cb676-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(dplyr)</span>
+<span id="cb676-2"><a href="primjerupravljanjapodacima.html#cb676-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb676-3"><a href="primjerupravljanjapodacima.html#cb676-3" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Funkcija za pronalazak likova iznad prosječne visine i težine</span></span>
+<span id="cb676-4"><a href="primjerupravljanjapodacima.html#cb676-4" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> iznadprosjecni_likovi <span class="ot">&lt;-</span> <span class="cf">function</span>(data, vrsta, visina, tezina) {</span>
+<span id="cb676-5"><a href="primjerupravljanjapodacima.html#cb676-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   </span>
+<span id="cb676-6"><a href="primjerupravljanjapodacima.html#cb676-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># 1. Grupiranje podataka po vrsti i računanje prosjeka</span></span>
+<span id="cb676-7"><a href="primjerupravljanjapodacima.html#cb676-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   avg_stats <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb676-8"><a href="primjerupravljanjapodacima.html#cb676-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="fu">group_by</span>(<span class="sc">!!</span><span class="fu">sym</span>(vrsta)) <span class="sc">%&gt;%</span></span>
+<span id="cb676-9"><a href="primjerupravljanjapodacima.html#cb676-9" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="fu">summarize</span>(</span>
+<span id="cb676-10"><a href="primjerupravljanjapodacima.html#cb676-10" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>       <span class="at">avg_visina =</span> <span class="fu">mean</span>(<span class="sc">!!</span><span class="fu">sym</span>(visina), <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb676-11"><a href="primjerupravljanjapodacima.html#cb676-11" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>       <span class="at">sd_visina =</span> <span class="fu">sd</span>(<span class="sc">!!</span><span class="fu">sym</span>(visina), <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb676-12"><a href="primjerupravljanjapodacima.html#cb676-12" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>       <span class="at">avg_tezina =</span> <span class="fu">mean</span>(<span class="sc">!!</span><span class="fu">sym</span>(tezina), <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb676-13"><a href="primjerupravljanjapodacima.html#cb676-13" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>       <span class="at">sd_tezina =</span> <span class="fu">sd</span>(<span class="sc">!!</span><span class="fu">sym</span>(tezina), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb676-14"><a href="primjerupravljanjapodacima.html#cb676-14" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     )</span>
+<span id="cb676-15"><a href="primjerupravljanjapodacima.html#cb676-15" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   </span>
+<span id="cb676-16"><a href="primjerupravljanjapodacima.html#cb676-16" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># 2. Spajanje originalnih podataka s prosjecima</span></span>
+<span id="cb676-17"><a href="primjerupravljanjapodacima.html#cb676-17" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   data_with_avg <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb676-18"><a href="primjerupravljanjapodacima.html#cb676-18" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="fu">left_join</span>(avg_stats, <span class="at">by =</span> vrsta)</span>
+<span id="cb676-19"><a href="primjerupravljanjapodacima.html#cb676-19" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   </span>
+<span id="cb676-20"><a href="primjerupravljanjapodacima.html#cb676-20" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># 3. Filtriranje likova čija visina i težina odstupaju više od 2 standardne devijacije iznad prosjeka</span></span>
+<span id="cb676-21"><a href="primjerupravljanjapodacima.html#cb676-21" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   above_2sd <span class="ot">&lt;-</span> data_with_avg <span class="sc">%&gt;%</span></span>
+<span id="cb676-22"><a href="primjerupravljanjapodacima.html#cb676-22" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="fu">filter</span>(</span>
+<span id="cb676-23"><a href="primjerupravljanjapodacima.html#cb676-23" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>       <span class="sc">!!</span><span class="fu">sym</span>(visina) <span class="sc">&gt;</span> avg_visina <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> sd_visina <span class="sc">&amp;</span></span>
+<span id="cb676-24"><a href="primjerupravljanjapodacima.html#cb676-24" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>       <span class="sc">!!</span><span class="fu">sym</span>(tezina) <span class="sc">&gt;</span> avg_tezina <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> sd_tezina</span>
+<span id="cb676-25"><a href="primjerupravljanjapodacima.html#cb676-25" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     ) <span class="sc">%&gt;%</span></span>
+<span id="cb676-26"><a href="primjerupravljanjapodacima.html#cb676-26" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="fu">select</span>(ime, <span class="sc">!!</span><span class="fu">sym</span>(vrsta), <span class="sc">!!</span><span class="fu">sym</span>(visina), <span class="sc">!!</span><span class="fu">sym</span>(tezina))</span>
+<span id="cb676-27"><a href="primjerupravljanjapodacima.html#cb676-27" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   </span>
+<span id="cb676-28"><a href="primjerupravljanjapodacima.html#cb676-28" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">return</span>(above_2sd)</span>
+<span id="cb676-29"><a href="primjerupravljanjapodacima.html#cb676-29" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span>
+<span id="cb676-30"><a href="primjerupravljanjapodacima.html#cb676-30" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb676-31"><a href="primjerupravljanjapodacima.html#cb676-31" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Primjena funkcije</span></span>
+<span id="cb676-32"><a href="primjerupravljanjapodacima.html#cb676-32" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> likovi <span class="ot">&lt;-</span> <span class="fu">iznadprosjecni_likovi</span>(</span>
+<span id="cb676-33"><a href="primjerupravljanjapodacima.html#cb676-33" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="at">data =</span> Starwars,</span>
+<span id="cb676-34"><a href="primjerupravljanjapodacima.html#cb676-34" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="at">vrsta =</span> <span class="st">&quot;vrsta&quot;</span>,</span>
+<span id="cb676-35"><a href="primjerupravljanjapodacima.html#cb676-35" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="at">visina =</span> <span class="st">&quot;visina&quot;</span>,</span>
+<span id="cb676-36"><a href="primjerupravljanjapodacima.html#cb676-36" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="at">tezina =</span> <span class="st">&quot;tezina&quot;</span></span>
+<span id="cb676-37"><a href="primjerupravljanjapodacima.html#cb676-37" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> )</span>
+<span id="cb676-38"><a href="primjerupravljanjapodacima.html#cb676-38" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb676-39"><a href="primjerupravljanjapodacima.html#cb676-39" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Prikaz rezultata</span></span>
+<span id="cb676-40"><a href="primjerupravljanjapodacima.html#cb676-40" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> likovi</span></code></pre></div>
+<pre class="chunk-background"><code>##           ime vrsta visina tezina
+## 1 Darth Vader Human    202    136</code></pre>
+<p>Recimo da se sad želimo usredotočiti na raznovrsnost imena i želimo ih prvo poredati po abecedi. Jedan od načina kako možemo dobiti takav prikaz i čitav skup podataka poredati prema imenima likova je koristeći funkciju <code>arrange()</code>.</p>
+<div class="sourceCode" id="cb678"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb678-1"><a href="primjerupravljanjapodacima.html#cb678-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> sorted_Starwars <span class="ot">&lt;-</span> <span class="fu">arrange</span>(Starwars, ime)  </span>
+<span id="cb678-2"><a href="primjerupravljanjapodacima.html#cb678-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># kad bismo htjeli poredati silazno po imenima Z-&gt;A, </span></span>
+<span id="cb678-3"><a href="primjerupravljanjapodacima.html#cb678-3" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># onda bi umjesto imena upisali desc(ime)</span></span>
+<span id="cb678-4"><a href="primjerupravljanjapodacima.html#cb678-4" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">str</span>(sorted_Starwars)</span></code></pre></div>
+<pre class="chunk-background"><code>## &#39;data.frame&#39;:    87 obs. of  7 variables:
+##  $ ime       : chr  &quot;Ackbar&quot; &quot;Adi Gallia&quot; &quot;Anakin Skywalker&quot; &quot;Arvel Crynyd&quot; ...
+##  $ visina    : int  180 184 188 NA 178 NA 191 166 163 165 ...
+##  $ tezina    : num  83 50 84 NA 55 NA NA 50 65 75 ...
+##  $ boja_kose : chr  &quot;unknown&quot; &quot;unknown&quot; &quot;blonde&quot; &quot;brown&quot; ...
+##  $ boja_ociju: chr  &quot;orange&quot; &quot;blue&quot; &quot;blue&quot; &quot;brown&quot; ...
+##  $ planet    : chr  &quot;Mon Cala&quot; &quot;Coruscant&quot; &quot;Tatooine&quot; NA ...
+##  $ vrsta     : chr  &quot;Mon Calamari&quot; &quot;Tholothian&quot; &quot;Human&quot; &quot;Human&quot; ...</code></pre>
+<p>Ako nas zanima koliko je jedinstvenih imena, odnosno likova, obuhvaćeno ovim skupom podataka, možemo koristiti funkciju <code>unique()</code>.</p>
+<div class="sourceCode" id="cb680"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb680-1"><a href="primjerupravljanjapodacima.html#cb680-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">unique</span>(sorted_Starwars<span class="sc">$</span>ime)</span></code></pre></div>
+<pre class="chunk-background"><code>##  [1] &quot;Ackbar&quot;                &quot;Adi Gallia&quot;            &quot;Anakin Skywalker&quot;     
+##  [4] &quot;Arvel Crynyd&quot;          &quot;Ayla Secura&quot;           &quot;BB8&quot;                  
+##  [7] &quot;Bail Prestor Organa&quot;   &quot;Barriss Offee&quot;         &quot;Ben Quadinaros&quot;       
+## [10] &quot;Beru Whitesun Lars&quot;    &quot;Bib Fortuna&quot;           &quot;Biggs Darklighter&quot;    
+## [13] &quot;Boba Fett&quot;             &quot;Bossk&quot;                 &quot;C-3PO&quot;                
+## [16] &quot;Captain Phasma&quot;        &quot;Chewbacca&quot;             &quot;Cliegg Lars&quot;          
+## [19] &quot;Cord\xe9&quot;              &quot;Darth Maul&quot;            &quot;Darth Vader&quot;          
+## [22] &quot;Dexter Jettster&quot;       &quot;Dooku&quot;                 &quot;Dorm\xe9&quot;             
+## [25] &quot;Dud Bolt&quot;              &quot;Eeth Koth&quot;             &quot;Finis Valorum&quot;        
+## [28] &quot;Finn&quot;                  &quot;Gasgano&quot;               &quot;Greedo&quot;               
+## [31] &quot;Gregar Typho&quot;          &quot;Grievous&quot;              &quot;Han Solo&quot;             
+## [34] &quot;IG-88&quot;                 &quot;Jabba Desilijic Tiure&quot; &quot;Jango Fett&quot;           
+## [37] &quot;Jar Jar Binks&quot;         &quot;Jek Tono Porkins&quot;      &quot;Jocasta Nu&quot;           
+## [40] &quot;Ki-Adi-Mundi&quot;          &quot;Kit Fisto&quot;             &quot;Lama Su&quot;              
+## [43] &quot;Lando Calrissian&quot;      &quot;Leia Organa&quot;           &quot;Lobot&quot;                
+## [46] &quot;Luke Skywalker&quot;        &quot;Luminara Unduli&quot;       &quot;Mace Windu&quot;           
+## [49] &quot;Mas Amedda&quot;            &quot;Mon Mothma&quot;            &quot;Nien Nunb&quot;            
+## [52] &quot;Nute Gunray&quot;           &quot;Obi-Wan Kenobi&quot;        &quot;Owen Lars&quot;            
+## [55] &quot;Padm\xe9 Amidala&quot;      &quot;Palpatine&quot;             &quot;Plo Koon&quot;             
+## [58] &quot;Poe Dameron&quot;           &quot;Poggle the Lesser&quot;     &quot;Quarsh Panaka&quot;        
+## [61] &quot;Qui-Gon Jinn&quot;          &quot;R2-D2&quot;                 &quot;R4-P17&quot;               
+## [64] &quot;R5-D4&quot;                 &quot;Ratts Tyerel&quot;          &quot;Raymus Antilles&quot;      
+## [67] &quot;Rey&quot;                   &quot;Ric Oli\xe9&quot;           &quot;Roos Tarpals&quot;         
+## [70] &quot;Rugor Nass&quot;            &quot;Saesee Tiin&quot;           &quot;San Hill&quot;             
+## [73] &quot;Sebulba&quot;               &quot;Shaak Ti&quot;              &quot;Shmi Skywalker&quot;       
+## [76] &quot;Sly Moore&quot;             &quot;Tarfful&quot;               &quot;Taun We&quot;              
+## [79] &quot;Tion Medon&quot;            &quot;Wat Tambor&quot;            &quot;Watto&quot;                
+## [82] &quot;Wedge Antilles&quot;        &quot;Wicket Systri Warrick&quot; &quot;Wilhuff Tarkin&quot;       
+## [85] &quot;Yarael Poof&quot;           &quot;Yoda&quot;                  &quot;Zam Wesell&quot;</code></pre>
+<p>Recimo da nas u sljedećem koraku zanimaju boje kose prema vrsti likova te apsolutne frekvencije u kojima se pojedine kombinacije pojavljuju. Za to nam je potrebna tablica kontingence.</p>
+<div class="sourceCode" id="cb682"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb682-1"><a href="primjerupravljanjapodacima.html#cb682-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> contingency_table <span class="ot">&lt;-</span> <span class="fu">table</span>(Starwars<span class="sc">$</span>boja_kose, Starwars<span class="sc">$</span>vrsta)</span>
+<span id="cb682-2"><a href="primjerupravljanjapodacima.html#cb682-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb682-3"><a href="primjerupravljanjapodacima.html#cb682-3" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Prikazivanje tablice</span></span>
+<span id="cb682-4"><a href="primjerupravljanjapodacima.html#cb682-4" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> contingency_table</span></code></pre></div>
+<pre class="chunk-background"><code>##          
+##           Aleena Besalisk Cerean Chagrian Clawdite Droid Dug Ewok Geonosian
+##   auburn       0        0      0        0        0     0   0    0         0
+##   black        0        0      0        0        0     0   0    0         0
+##   blonde       0        0      0        0        1     0   0    0         0
+##   brown        0        0      0        0        0     0   0    1         0
+##   grey         0        0      0        0        0     0   0    0         0
+##   unknown      1        1      0        1        0     6   1    0         1
+##   white        0        0      1        0        0     0   0    0         0
+##          
+##           Gungan Human Hutt Iktotchi Kaleesh Kaminoan Kel Dor Mirialan
+##   auburn       0     3    0        0       0        0       0        0
+##   black        0     9    0        0       0        0       0        2
+##   blonde       0     3    0        0       0        0       0        0
+##   brown        0    16    0        0       0        0       0        0
+##   grey         0     1    0        0       0        0       0        0
+##   unknown      3     4    1        1       1        2       1        0
+##   white        0     2    0        0       0        0       0        0
+##          
+##           Mon Calamari Muun Nautolan Neimodian Pau&#39;an Quermian Rodian Skakoan
+##   auburn             0    0        0         0      0        0      0       0
+##   black              0    0        0         0      0        0      0       0
+##   blonde             0    0        0         0      0        0      0       0
+##   brown              0    0        0         0      0        0      0       0
+##   grey               0    0        0         0      0        0      0       0
+##   unknown            1    1        1         1      1        1      1       1
+##   white              0    0        0         0      0        0      0       0
+##          
+##           Sullustan Tholothian Togruta Toong Toydarian Trandoshan Twi&#39;lek
+##   auburn          0          0       0     0         0          0       0
+##   black           0          0       0     0         1          0       0
+##   blonde          0          0       0     0         0          0       0
+##   brown           0          0       0     0         0          0       0
+##   grey            0          0       0     0         0          0       0
+##   unknown         1          1       1     1         0          1       2
+##   white           0          0       0     0         0          0       0
+##          
+##           Umbaran Vulptereen Wookiee Xexto Yoda&#39;s species Zabrak
+##   auburn        0          0       0     0              0      0
+##   black         0          0       0     0              0      1
+##   blonde        0          0       0     0              0      0
+##   brown         0          0       2     0              0      0
+##   grey          0          0       0     0              0      0
+##   unknown       1          1       0     1              0      1
+##   white         0          0       0     0              1      0</code></pre>
+<p>S obzirom da postoji puno jedinstvenih kombinacija i jako puno kombinacija koje se ne pojavljuju, možemo isto ispitati za podskup vrsta za koje smo ranije utvrdili da su učestalije i spremili u df filtered_data.</p>
+<div class="sourceCode" id="cb684"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb684-1"><a href="primjerupravljanjapodacima.html#cb684-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> contingency_table <span class="ot">&lt;-</span> <span class="fu">table</span>(filtered_data<span class="sc">$</span>boja_kose, filtered_data<span class="sc">$</span>vrsta)</span>
+<span id="cb684-2"><a href="primjerupravljanjapodacima.html#cb684-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb684-3"><a href="primjerupravljanjapodacima.html#cb684-3" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Prikazivanje tablice</span></span>
+<span id="cb684-4"><a href="primjerupravljanjapodacima.html#cb684-4" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> contingency_table</span></code></pre></div>
+<pre class="chunk-background"><code>##          
+##           Droid Gungan Human Kaminoan Mirialan Twi&#39;lek Wookiee Zabrak
+##   auburn      0      0     3        0        0       0       0      0
+##   black       0      0     9        0        2       0       0      1
+##   blonde      0      0     3        0        0       0       0      0
+##   brown       0      0    16        0        0       0       2      0
+##   grey        0      0     1        0        0       0       0      0
+##   unknown     6      3     4        2        0       2       0      1
+##   white       0      0     2        0        0       0       0      0</code></pre>
+<p>Svi Droidi imaju nepoznatu boju kose, odnosno nemaju kose. Slična je situacija i sa svim Gunganima, Kaminoanima, Twi’lekima i jednim/om Zabrakom. Kosa ljudi se pojavljuje u najviše boja. Temeljem ovog uzorka, moglo bi se zaključiti da Mirilalani imaju crnu kosu, Wookiee imaju smeđu kosu, a Zabraci imaju crnu ili nemaju kose.</p>
+<p>Što bi nas moglo zanimati dalje? Moglo bi nas zanimati postoji li statistički značajna razlika u težinama s obzirom na vrstu. Mogli bismo htjeti kreirati dodatne grafičke prikaze… Uz dovoljno podataka i predznanja te malo znatiželje, dostupni skupovi podataka u R-u mogu postati nepresušna oaza za vježbanje i kalibriranje vještina upravljanja podacima.</p>
+<div id="pitanja-za-ponavljanje-17" class="section level2 unnumbered hasAnchor">
+<h2>Pitanja za ponavljanje<a href="primjerupravljanjapodacima.html#pitanja-za-ponavljanje-17" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><p>Koje funkcije možete koristiti za pregled strukture skupa podataka i uvida u varijable s nedostajućim vrijednostima?</p></li>
+<li><p>Kako biste identificirali sve pozicije s vrijednostima koje nedostaju za određenu varijablu, npr. <em>species</em>?</p></li>
+<li><p>Na koji način možemo ručno zamijeniti specifične NA vrijednosti u varijabli species u skupu podataka <em>Starwars</em>?</p></li>
+<li><p>Objasnite kako koristiti funkciju <code>tolower()</code> za ujednačavanje teksta u varijabli <em>hair_color</em>. Koji je problem riješen ovom funkcijom?</p></li>
+<li><p>Kako bi izgledao kod za zamjenu riječi „blond“ s „blonde“ u varijabli <em>hair_color</em>? Koji je dodatni simbol korišten kako bi se zamjena izvršila samo za tu riječ?</p></li>
+<li><p>Na koji način biste prikazali različite vrste unutar skupa podataka <em>Starwars</em> i koliko puta se svaka od njih pojavljuje?</p></li>
+<li><p>Koristeći <em>dplyr</em>, kako biste dobili prosječne vrijednosti visine i težine po vrsti u skupu podataka?</p></li>
+<li><p>Na koji način biste kreirali vizualni prikaz distribucija visina za svaku vrstu? Koje pretpostavke su ovdje korištene?</p></li>
+<li><p>Kako biste poredali podatke u <em>Starwars</em> prema imenima likova u uzlaznom redoslijedu koristeći <em>dplyr</em>?</p></li>
+<li><p>Na koji način biste ispitali odnos između boje kose i vrste likova te prikazali apsolutne frekvencije za kombinacije pomoću tablice kontingencije?</p></li>
+</ol>
+</div>
+<div id="zadaci" class="section level2 unnumbered hasAnchor">
+<h2>Zadaci<a href="primjerupravljanjapodacima.html#zadaci" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div style="page-break-after: always;"></div>
+<p><strong>Otvorite novi R Script dokument.</strong></p>
+<ol style="list-style-type: decimal">
+<li>Kreirajte vektor <em>z</em> koji će sadržavati sve parne brojeve između 50 i 100.</li>
+<li>Provjerite tip <em>z</em>-a.</li>
+<li>Izračunajte prosjek vrijednosti varijable <em>z</em>.</li>
+<li>Kreirajte podatkovni okvir prema podacima iz tablice na 32. stranici u <a href="https://podaci.dzs.hr/media/erdfes4y/statinfo2021.pdf"><em>Statističkim informacijama</em></a></li>
+<li>Pretvorite podatkovni okvir iz prošlog zadatka u tablicu.</li>
+<li>Kreirajte vektor temeljem podataka iz tablice na 33. stranici <em>Statističkih informacija</em>, na način da koristite samo opažanja iz 2020. godine za minimalno šest varijabli.</li>
+<li>Kreirajte vektor temeljem podataka iz tablice na 33. stranici <em>Statističkih informacija</em>, na način da koristite samo opažanja iz 2019. godine za iste varijable koje ste odabrali u prethodnom zadatku.</li>
+<li>Vektorima iz 6. i 7. zadatka pridružite nazive.</li>
+<li>Spojite vektore iz 6. i 7. zadatka.</li>
+<li>Vektor iz prethodnog zadatka pretvorite u matricu.</li>
+<li>Matrici iz prethodnog zadatka pridodajte opažanja iz 2018., za iste varijable, iz istog izvora podataka.</li>
+<li>Matricu pretvorite u podatkovni okvir.</li>
+<li>Iz podatkovnog okvira obrišite jedan podatak iz 2018. godine.</li>
+<li>Iz podatkovnog okvira obrišite jednu, proizvoljno odabranu, varijablu.</li>
+<li>Izračunajte nekoliko statističkih pokazatelja za preostale varijable.</li>
+<li>Je li moguće spojiti dva podatkovna okvira koja ste kreirali? Obrazložite odgovor.</li>
+<li>Ako vas zanima udio nezaposlenih žena prema razinama obrazovanja, na koji način možete sortirati/filtrirati podatkovni okvir?</li>
+<li>Na stranici 36. <em>Statističkih informacija</em> pogledajte dio podataka pod nazivom <em>Upisani studenti</em>. Na koje je sve načine moguće podatke zapisati u R-u? O kakvim se podacima radi? Što su opažanja, a što su varijable?</li>
+<li>Na stranici 53 istog dokumenta, nalazi se tablica „BRUTO DOMAĆI PROIZVOD REPUBLIKE HRVATSKE”. Razmislite o kakvim se podacima radi, što su varijable, a što opažanja i na koji bi način bilo potrebno upisati podatke u R da se kreira podatkovni okvir.</li>
+<li>Ako niste ranije, bilo bi dobro sad proći sve primjere naredbi u ovom dokumentu. Osobitu pozornost posvetite onim funkcijama koje su vam nejasne i ne zaboravite koristiti prozor Help. Ako i nakon toga imate poteškoće, javite se za konzultacije ili pitajte na početku sljedećeg sata.</li>
+</ol>
+<p><strong>Otvorite novi R Script dokument.</strong></p>
+<ol style="list-style-type: decimal">
+<li>Iz paketa <em>nycflights13</em> uvezite podatke <em>flights</em>.</li>
+<li>Izdvojite sve letove koji su poletjeli iz zračne luke JFK i imali kašnjenje pri polasku veće od 60 minuta.</li>
+<li>Sortirajte letove prema duljini leta (<em>air_time</em>) u silaznom redoslijedu.</li>
+<li>Dodajte novu varijablu koja prikazuje razliku između planiranog i stvarnog vremena dolaska (<em>arr_delay - dep_delay</em>).</li>
+<li>Kreirajte novi podatkovni okvir koji uključuje samo varijable <em>origin</em>, <em>dest</em>, <em>air_time</em>, i <em>distance</em>.</li>
+<li>Koliko je ukupno letova bilo iz svake zračne luke (<em>origin</em>)?</li>
+<li>Koji je bio najdulji let (<em>air_time</em>) iz zračne luke EWR?</li>
+<li>Kolika je prosječna udaljenost (<em>distance</em>) letova s obzirom na polazište (<em>origin</em>)?</li>
+<li>Kreirajte histogram koji prikazuje distribuciju kašnjenja pri polasku (<em>dep_delay</em>).</li>
+<li>Izračunajte pokazatelje deskriptivne statistike za varijable <em>air_time</em> i <em>distance</em>.</li>
+</ol>
+<p><strong>Otvorite novi R Script dokument.</strong></p>
+<ol style="list-style-type: decimal">
+<li>Učitajte podatke dostupne na: “<a href="http://sites.williams.edu/rdeveaux/files/2014/09/Saratoga.txt" class="uri">http://sites.williams.edu/rdeveaux/files/2014/09/Saratoga.txt</a>”</li>
+<li>Jesu li cijene kuća uz obalu (<code>Waterfront == 1</code>) više u usporedbi s onima koje nisu uz obalu? Odgovor potkrijepite grafički.</li>
+<li>Kako se cijene nekretnina mijenjaju s obzirom na broj soba (<em>Rooms</em>)?</li>
+<li>Jesu li cijene novoizgrađene nekretnine (<code>New.Construct == 1</code>) više u odnosu na one koje nisu novogradnja?</li>
+<li>Imaju li kuće s više kamina (<em>Fireplaces</em>) veću prosječnu cijenu? Kako se cijena razlikuje za kuće s jednim, dva ili više kamina?</li>
+<li>Kako je omjer broja kupaonica (<em>Bathrooms</em>) i broja soba (<em>Rooms</em>) vezan uz cijenu kuće? Jesu li kuće s većim brojem kupaonica po sobi skuplje?</li>
+<li>Izračunajte pokazatelje deskriptivne statistike za sve kvantitativne varijable.</li>
+<li>Kreirajte prikladan grafički prikaz za svaku varijablu u ovom podatkovnom okviru.</li>
+<li>Korištenjem grafičkog prikaza provjerite razlike u medijalnim cijenama kuća s obzirom na centralno grijanje (<em>Central.Air</em>)?</li>
+<li>Kreirajte tablice frekvencija za sve kvalitativne varijable o ovom skupu podataka.</li>
+</ol>
+<p><strong>Otvorite novi R Script dokument.</strong></p>
+<ol style="list-style-type: decimal">
+<li>U svibnju 2024., više od 65000 programera odgovorilo je na godišnju anketu o kodiranju, tehnologijama i alatima koje koriste i koje žele naučiti, umjetnoj inteligenciji i iskustvu programera na poslu. Podaci su dostupni za <a href="https://cdn.sanity.io/files/jo7n4k8s/production/262f04c41d99fea692e0125c342e446782233fe4.zip/stack-overflow-developer-survey-2024.zip">preuzimanje putem linka</a> u .zip datoteci. Ta datoteka uključuje provedeni upitnik (u pdf formatu) te dva .csv dokumenta. Učitajte <em>survey_results_public.csv</em>.</li>
+<li>Izračunajte udio vrijednosti koje nedostaju za svaku varijablu. Je li možda samo pitanje razlog izostanka odgovora?</li>
+<li>Pronađite 10 najčešćih zemalja (<em>Country</em>) među ispitanicima i izračunajte njihovu relativnu učestalost.</li>
+<li>Kreirajte tablicu frekvencija za starosne skupine (<em>Age</em>) i prikažite podatke grafički.</li>
+<li>Kreirajte tablicu kontingence za varijable <em>Employment</em> i <em>LearnCode</em>.</li>
+<li>Izdvojite jedinstvene vrijednosti za sve <em>OfficeStackAsync</em> te sve <em>OfficeStackSync</em> varijable, a nakon toga utvrdite učestalosti. Koje su najpoželjnije baze?</li>
+<li>Izdvojite najčešće jezike koje ispitanici koriste (<em>LanguageHaveWorkedWith</em>) i prikažite njihove frekvencije.Koristeći tablicu kontingencije, povežite s načinom na koji su naučili kodirati (<em>LearnCode</em>)</li>
+<li>Izdvojite sve varijable koje sadrže <em>Admired</em> u nazivu i utvrdite učestalosti svakog modaliteta.</li>
+<li>Izdvojite i grafički prikažite najčešće načine upotrebe AI-a.</li>
+<li>Zadovoljstvo poslom mjereno je varijablama koje u nazivu sadrže <em>JobSatPoints</em>. Kreirajte novu varijablu, na način da ona predstavlja niz prosječnih opažanja po recima, a nakon toga, tu novu varijablu prikažite histogramom i box-plotom.</li>
+<li>Pronađite jezike koje ispitanici žele koristiti (<em>LanguageWantToWorkWith</em>) i usporedite s jezicima koje trenutno koriste.</li>
+<li>Izračunajte osnovne statističke pokazatelje za godišnje plaće (<em>ConvertedCompYearly</em>), uklanjajući vrijednosti koje nedostaju.</li>
+<li>Prikažite distribuciju veličina organizacija (<em>OrgSize</em>) u kojima ispitanici rade.</li>
+<li>Izračunajte prosječno radno iskustvo u godinama (<em>WorkExp</em>) za ispitanike koji rade puno radno vrijeme.</li>
+<li>Postoji li veza između radnog iskustva u godinama (<em>WorkExp</em>) i godišnjih plaća (<em>ConvertedCompYearly</em>) zaposlenika? Je li ta veza jača ili slabija, ako se odnos tih varijabli ispituje zasebno za ispitanike po državama?</li>
+</ol>
+<p>Važno je ne zaboraviti - na kraju rada <strong>pohraniti</strong> projekt/ skriptu…</p>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="jednostavnevizualizacije.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="prilagodbara.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="site_libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="site_libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="site_libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="site_libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="site_libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="site_libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="site_libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="site_libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": false,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true,
+"toolbar": {
+"position": "fixed"
+}
+},
+"toc_depth": 2,
+"lot": true,
+"lof": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

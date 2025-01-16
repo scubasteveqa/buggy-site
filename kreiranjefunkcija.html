@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title> 10 Kreiranje funkcija | Uvod u R i R Studio</title>
+  <meta name="description" content=" 10 Kreiranje funkcija | Uvod u R i R Studio" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content=" 10 Kreiranje funkcija | Uvod u R i R Studio" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content=" 10 Kreiranje funkcija | Uvod u R i R Studio" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="elementikontroletoka.html"/>
+<link rel="next" href="jednostavnevizualizacije.html"/>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="site_libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="site_libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="site_libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="site_libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="site_libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="site_libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="site_libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="site_libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="site_libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="site_libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Uvod u R i R Studio</a></li>
+<li><img src='intro.png' width='280px'></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="uvod-u-r-i-r-studio.html"><a href="uvod-u-r-i-r-studio.html"><i class="fa fa-check"></i>Uvod u R i R Studio</a></li>
+<li class="chapter" data-level="" data-path="impressum.html"><a href="impressum.html"><i class="fa fa-check"></i>Impressum</a></li>
+<li class="chapter" data-level="" data-path="predgovor.html"><a href="predgovor.html"><i class="fa fa-check"></i>Predgovor</a></li>
+<li class="chapter" data-level="1" data-path="rirstudio.html"><a href="rirstudio.html"><i class="fa fa-check"></i><b>1</b> R i RStudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="rirstudio.html"><a href="rirstudio.html#upotreba-r-a-i-rstudija-u-praksi"><i class="fa fa-check"></i><b>1.1</b> Upotreba R-a i RStudija u praksi</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="rirstudio.html"><a href="rirstudio.html#upravljanje-podacima-i-manipulacija"><i class="fa fa-check"></i><b>1.1.1</b> Upravljanje podacima i manipulacija</a></li>
+<li class="chapter" data-level="1.1.2" data-path="rirstudio.html"><a href="rirstudio.html#analiza-podataka"><i class="fa fa-check"></i><b>1.1.2</b> Analiza podataka</a></li>
+<li class="chapter" data-level="1.1.3" data-path="rirstudio.html"><a href="rirstudio.html#vizualizacija"><i class="fa fa-check"></i><b>1.1.3</b> Vizualizacija</a></li>
+<li class="chapter" data-level="1.1.4" data-path="rirstudio.html"><a href="rirstudio.html#reprodukcija-istraživanja-i-simulacija"><i class="fa fa-check"></i><b>1.1.4</b> Reprodukcija istraživanja i simulacija</a></li>
+<li class="chapter" data-level="1.1.5" data-path="rirstudio.html"><a href="rirstudio.html#praktične-primjene-u-različitim-sektorima"><i class="fa fa-check"></i><b>1.1.5</b> Praktične primjene u različitim sektorima</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="rirstudio.html"><a href="rirstudio.html#razumijevanje-r-a-i-osnova-rada-u-r-u"><i class="fa fa-check"></i><b>1.2</b> Razumijevanje R-a i osnova rada u R-u</a></li>
+<li class="chapter" data-level="1.3" data-path="rirstudio.html"><a href="rirstudio.html#statistika-i-grafički-prikaz-u-r-u"><i class="fa fa-check"></i><b>1.3</b> Statistika i grafički prikaz u R-u</a></li>
+<li class="chapter" data-level="1.4" data-path="rirstudio.html"><a href="rirstudio.html#napredne-tehnike-i-rješavanje-problema"><i class="fa fa-check"></i><b>1.4</b> Napredne tehnike i rješavanje problema</a></li>
+<li class="chapter" data-level="1.5" data-path="rirstudio.html"><a href="rirstudio.html#gdje-pronaći-pomoć-i-resurse"><i class="fa fa-check"></i><b>1.5</b> Gdje pronaći pomoć i resurse</a></li>
+<li class="chapter" data-level="1.6" data-path="rirstudio.html"><a href="rirstudio.html#općeniti-savjeti"><i class="fa fa-check"></i><b>1.6</b> Općeniti savjeti</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html"><i class="fa fa-check"></i><b>2</b> Osnovni pojmovi i prvi koraci</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#okruženje-ili-environment"><i class="fa fa-check"></i><b>2.1</b> Okruženje ili environment</a></li>
+<li class="chapter" data-level="2.2" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#konzola"><i class="fa fa-check"></i><b>2.2</b> Konzola</a></li>
+<li class="chapter" data-level="2.3" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#datoteke-i-radni-direktorij"><i class="fa fa-check"></i><b>2.3</b> Datoteke i radni direktorij</a></li>
+<li class="chapter" data-level="2.4" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#projekti"><i class="fa fa-check"></i><b>2.4</b> Projekti</a></li>
+<li class="chapter" data-level="2.5" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#skripte"><i class="fa fa-check"></i><b>2.5</b> Skripte</a></li>
+<li class="chapter" data-level="2.6" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#plots-viewer-i-help"><i class="fa fa-check"></i><b>2.6</b> Plots, Viewer i Help</a></li>
+<li class="chapter" data-level="2.7" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#paketi"><i class="fa fa-check"></i><b>2.7</b> Paketi</a></li>
+<li class="chapter" data-level="2.8" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#najčešće-početničke-greške"><i class="fa fa-check"></i><b>2.8</b> Najčešće početničke greške</a></li>
+<li class="chapter" data-level="" data-path="osnovnipojmoviiprvikoraci.html"><a href="osnovnipojmoviiprvikoraci.html#pitanja-za-ponavljanje"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="instalacijaiaktivacijapaketa.html"><a href="instalacijaiaktivacijapaketa.html"><i class="fa fa-check"></i><b>3</b> Instalacija i aktivacija paketa</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="instalacijaiaktivacijapaketa.html"><a href="instalacijaiaktivacijapaketa.html#instalacija-paketa"><i class="fa fa-check"></i><b>3.1</b> Instalacija paketa</a></li>
+<li class="chapter" data-level="3.2" data-path="instalacijaiaktivacijapaketa.html"><a href="instalacijaiaktivacijapaketa.html#učitavanje-paketa"><i class="fa fa-check"></i><b>3.2</b> Učitavanje paketa</a></li>
+<li class="chapter" data-level="3.3" data-path="instalacijaiaktivacijapaketa.html"><a href="instalacijaiaktivacijapaketa.html#ažuriranje-paketa"><i class="fa fa-check"></i><b>3.3</b> Ažuriranje paketa</a></li>
+<li class="chapter" data-level="3.4" data-path="instalacijaiaktivacijapaketa.html"><a href="instalacijaiaktivacijapaketa.html#najčešće-pogreške"><i class="fa fa-check"></i><b>3.4</b> Najčešće pogreške</a></li>
+<li class="chapter" data-level="" data-path="instalacijaiaktivacijapaketa.html"><a href="instalacijaiaktivacijapaketa.html#pitanja-za-ponavljanje-1"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="identifikatori-i-vrijednosti.html"><a href="identifikatori-i-vrijednosti.html"><i class="fa fa-check"></i><b>4</b> Identifikatori i vrijednosti</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="identifikatori-i-vrijednosti.html"><a href="identifikatori-i-vrijednosti.html#osnovnitipovipodataka"><i class="fa fa-check"></i><b>4.1</b> Osnovni tipovi podataka</a></li>
+<li class="chapter" data-level="" data-path="identifikatori-i-vrijednosti.html"><a href="identifikatori-i-vrijednosti.html#pitanja-za-ponavljanje-2"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+<li class="chapter" data-level="4.2" data-path="identifikatori-i-vrijednosti.html"><a href="identifikatori-i-vrijednosti.html#nazivi"><i class="fa fa-check"></i><b>4.2</b> Nazivi</a></li>
+<li class="chapter" data-level="" data-path="identifikatori-i-vrijednosti.html"><a href="identifikatori-i-vrijednosti.html#pitanja-za-ponavljanje-3"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+<li class="chapter" data-level="4.3" data-path="identifikatori-i-vrijednosti.html"><a href="identifikatori-i-vrijednosti.html#kreiranjevarijabli"><i class="fa fa-check"></i><b>4.3</b> Kreiranje varijabli</a></li>
+<li class="chapter" data-level="" data-path="identifikatori-i-vrijednosti.html"><a href="identifikatori-i-vrijednosti.html#pitanja-za-ponavljanje-4"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="osnovni-operatori-i-funkcije.html"><a href="osnovni-operatori-i-funkcije.html"><i class="fa fa-check"></i><b>5</b> Osnovni operatori i funkcije</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="osnovni-operatori-i-funkcije.html"><a href="osnovni-operatori-i-funkcije.html#operatoriuR-u"><i class="fa fa-check"></i><b>5.1</b> Operatori u R-u</a></li>
+<li class="chapter" data-level="" data-path="osnovni-operatori-i-funkcije.html"><a href="osnovni-operatori-i-funkcije.html#pitanja-za-ponavljanje-5"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+<li class="chapter" data-level="5.2" data-path="osnovni-operatori-i-funkcije.html"><a href="osnovni-operatori-i-funkcije.html#osnovnefunkcije"><i class="fa fa-check"></i><b>5.2</b> Osnovne funkcije</a></li>
+<li class="chapter" data-level="" data-path="osnovni-operatori-i-funkcije.html"><a href="osnovni-operatori-i-funkcije.html#pitanja-za-ponavljanje-6"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html"><i class="fa fa-check"></i><b>6</b> Jednodimenzionalni tip podataka</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#kreiranjevektora"><i class="fa fa-check"></i><b>6.1</b> Kreiranje vektora</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#kreiranje-vektora-koristeći-izravan-upis-elemenata"><i class="fa fa-check"></i><b>6.1.1</b> Kreiranje vektora koristeći izravan upis elemenata</a></li>
+<li class="chapter" data-level="6.1.2" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#vektor-indeksa"><i class="fa fa-check"></i><b>6.1.2</b> Vektor indeksa</a></li>
+<li class="chapter" data-level="6.1.3" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#kreiranje-vektora-cjelobrojnih-vrijednosti-u-zadanom-intervalu"><i class="fa fa-check"></i><b>6.1.3</b> Kreiranje vektora cjelobrojnih vrijednosti u zadanom intervalu</a></li>
+<li class="chapter" data-level="6.1.4" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#kreiranje-sekvencijskih-vektora"><i class="fa fa-check"></i><b>6.1.4</b> Kreiranje sekvencijskih vektora</a></li>
+<li class="chapter" data-level="6.1.5" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#kreiranje-vektora-s-ponovljenim-vrijednostima"><i class="fa fa-check"></i><b>6.1.5</b> Kreiranje vektora s ponovljenim vrijednostima</a></li>
+<li class="chapter" data-level="6.1.6" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#kreiranje-vektora-koristeći-teorijske-distribucije-vjerojatnosti-generator-slučajnih-brojeva"><i class="fa fa-check"></i><b>6.1.6</b> Kreiranje vektora koristeći teorijske distribucije vjerojatnosti/ generator slučajnih brojeva</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#radsvektorima"><i class="fa fa-check"></i><b>6.2</b> Rad s vektorima</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#spajanje-vektora"><i class="fa fa-check"></i><b>6.2.1</b> Spajanje vektora</a></li>
+<li class="chapter" data-level="6.2.2" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#sortiranje-elemenata-vektora"><i class="fa fa-check"></i><b>6.2.2</b> Sortiranje elemenata vektora</a></li>
+<li class="chapter" data-level="6.2.3" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#tip-vektora"><i class="fa fa-check"></i><b>6.2.3</b> Tip vektora</a></li>
+<li class="chapter" data-level="6.2.4" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#dodavanje-atributa"><i class="fa fa-check"></i><b>6.2.4</b> Dodavanje atributa</a></li>
+<li class="chapter" data-level="6.2.5" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#duljina-vektora"><i class="fa fa-check"></i><b>6.2.5</b> Duljina vektora</a></li>
+<li class="chapter" data-level="6.2.6" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#odabir-elemenata-vektora"><i class="fa fa-check"></i><b>6.2.6</b> Odabir elemenata vektora</a></li>
+<li class="chapter" data-level="6.2.7" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#zamjena-i-brisanje-elemenata-vektora"><i class="fa fa-check"></i><b>6.2.7</b> Zamjena i brisanje elemenata vektora</a></li>
+<li class="chapter" data-level="6.2.8" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#operacije-na-vektorima"><i class="fa fa-check"></i><b>6.2.8</b> Operacije na vektorima</a></li>
+<li class="chapter" data-level="6.2.9" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#izračun-pokazatelja-deskriptivne-statistike-vektora"><i class="fa fa-check"></i><b>6.2.9</b> Izračun pokazatelja deskriptivne statistike vektora</a></li>
+<li class="chapter" data-level="6.2.10" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#recikliranje-vektora"><i class="fa fa-check"></i><b>6.2.10</b> Recikliranje vektora</a></li>
+<li class="chapter" data-level="6.2.11" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#usporedba-vektora"><i class="fa fa-check"></i><b>6.2.11</b> Usporedba vektora</a></li>
+<li class="chapter" data-level="6.2.12" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#logički-upiti"><i class="fa fa-check"></i><b>6.2.12</b> Logički upiti</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#pitanja-za-ponavljanje-7"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+<li class="chapter" data-level="6.3" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#kreiranjefaktora"><i class="fa fa-check"></i><b>6.3</b> Kreiranje faktora</a></li>
+<li class="chapter" data-level="6.4" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#najčešće-greške-pri-kreiranju-i-radu-s-faktorima"><i class="fa fa-check"></i><b>6.4</b> Najčešće greške pri kreiranju i radu s faktorima</a></li>
+<li class="chapter" data-level="" data-path="jednodimenzionalni-tip-podataka.html"><a href="jednodimenzionalni-tip-podataka.html#pitanja-za-ponavljanje-8"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html"><i class="fa fa-check"></i><b>7</b> Visediomenzionalni tipovi podataka</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#kreiranjematrice"><i class="fa fa-check"></i><b>7.1</b> Kreiranje matrice</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#kreiranje-matrice-koristeći-izravan-upis-elemenata"><i class="fa fa-check"></i><b>7.1.1</b> Kreiranje matrice koristeći izravan upis elemenata</a></li>
+<li class="chapter" data-level="7.1.2" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#matrica-indeksa"><i class="fa fa-check"></i><b>7.1.2</b> Matrica indeksa</a></li>
+<li class="chapter" data-level="7.1.3" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#kreiranje-matrice-iz-vektora"><i class="fa fa-check"></i><b>7.1.3</b> Kreiranje matrice iz vektora</a></li>
+<li class="chapter" data-level="7.1.4" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#dodjela-atributa"><i class="fa fa-check"></i><b>7.1.4</b> Dodjela atributa</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#radsmatricama"><i class="fa fa-check"></i><b>7.2</b> Rad s matricama</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#provjera-tipa-matrice"><i class="fa fa-check"></i><b>7.2.1</b> Provjera tipa matrice</a></li>
+<li class="chapter" data-level="7.2.2" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#odabir-elemenata-matrice"><i class="fa fa-check"></i><b>7.2.2</b> Odabir elemenata matrice</a></li>
+<li class="chapter" data-level="7.2.3" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#zamjena-elemenata-matrica"><i class="fa fa-check"></i><b>7.2.3</b> Zamjena elemenata matrica</a></li>
+<li class="chapter" data-level="7.2.4" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#filtriranje-matrice---odabir-elemenata-prema-kriteriju"><i class="fa fa-check"></i><b>7.2.4</b> Filtriranje matrice - odabir elemenata prema kriteriju</a></li>
+<li class="chapter" data-level="7.2.5" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#kreiranje-matrice-s-ponovljenim-vrijednostima-i-zadavanje-dijagonale"><i class="fa fa-check"></i><b>7.2.5</b> Kreiranje matrice s ponovljenim vrijednostima i zadavanje dijagonale</a></li>
+<li class="chapter" data-level="7.2.6" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#spajanje-matrica"><i class="fa fa-check"></i><b>7.2.6</b> Spajanje matrica</a></li>
+<li class="chapter" data-level="7.2.7" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#operacije-na-matricama"><i class="fa fa-check"></i><b>7.2.7</b> Operacije na matricama</a></li>
+<li class="chapter" data-level="7.2.8" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#konverzija-matrice-u-vektor"><i class="fa fa-check"></i><b>7.2.8</b> Konverzija matrice u vektor</a></li>
+<li class="chapter" data-level="7.2.9" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#konverzija-matrice-u-podatkovni-okvir"><i class="fa fa-check"></i><b>7.2.9</b> Konverzija matrice u podatkovni okvir</a></li>
+<li class="chapter" data-level="7.2.10" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#izračun-pokazatelja-deskriptivne-statistike-za-matrice"><i class="fa fa-check"></i><b>7.2.10</b> Izračun pokazatelja deskriptivne statistike za matrice</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#prednosti-i-nedostaci-rada-s-matricama-te-najčešće-greške"><i class="fa fa-check"></i><b>7.3</b> Prednosti i nedostaci rada s matricama te najčešće greške</a></li>
+<li class="chapter" data-level="" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#pitanja-za-ponavljanje-9"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+<li class="chapter" data-level="7.4" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#kreiranjeiradslistama"><i class="fa fa-check"></i><b>7.4</b> Kreiranje i rad s listama</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#dodavanje-atributa-1"><i class="fa fa-check"></i><b>7.4.1</b> Dodavanje atributa</a></li>
+<li class="chapter" data-level="7.4.2" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#odabir-elemenata"><i class="fa fa-check"></i><b>7.4.2</b> Odabir elemenata</a></li>
+<li class="chapter" data-level="7.4.3" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#dodavanje-elemenata"><i class="fa fa-check"></i><b>7.4.3</b> Dodavanje elemenata</a></li>
+<li class="chapter" data-level="7.4.4" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#izmjena-ili-brisanje-elementa"><i class="fa fa-check"></i><b>7.4.4</b> Izmjena ili brisanje elementa</a></li>
+<li class="chapter" data-level="7.4.5" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#spajanje-lista"><i class="fa fa-check"></i><b>7.4.5</b> Spajanje lista</a></li>
+<li class="chapter" data-level="7.4.6" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#razdvajanje-lista"><i class="fa fa-check"></i><b>7.4.6</b> Razdvajanje lista</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#prednosti-i-nedostaci-rada-s-listama-te-najčešće-greške"><i class="fa fa-check"></i><b>7.5</b> Prednosti i nedostaci rada s listama te najčešće greške</a></li>
+<li class="chapter" data-level="" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#pitanja-za-ponavljanje-10"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+<li class="chapter" data-level="7.6" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#kreiranje-podatkovnih-okvira-data-frame"><i class="fa fa-check"></i><b>7.6</b> Kreiranje podatkovnih okvira (data frame)</a></li>
+<li class="chapter" data-level="7.7" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#radspodatkovnimokvirima"><i class="fa fa-check"></i><b>7.7</b> Rad s podatkovnim okvirima</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#uvid-u-podatkovni-okvir"><i class="fa fa-check"></i><b>7.7.1</b> Uvid u podatkovni okvir</a></li>
+<li class="chapter" data-level="7.7.2" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#odabir-elemenata-1"><i class="fa fa-check"></i><b>7.7.2</b> Odabir elemenata</a></li>
+<li class="chapter" data-level="7.7.3" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#dodavanje-elemenata-1"><i class="fa fa-check"></i><b>7.7.3</b> Dodavanje elemenata</a></li>
+<li class="chapter" data-level="7.7.4" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#podskup-podatkovnog-okvira-prema-kriteriju-filtriranje"><i class="fa fa-check"></i><b>7.7.4</b> Podskup podatkovnog okvira prema kriteriju (filtriranje)</a></li>
+<li class="chapter" data-level="7.7.5" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#sortiranje-elemenata"><i class="fa fa-check"></i><b>7.7.5</b> Sortiranje elemenata</a></li>
+<li class="chapter" data-level="7.7.6" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#brisanje-elemenata"><i class="fa fa-check"></i><b>7.7.6</b> Brisanje elemenata</a></li>
+<li class="chapter" data-level="7.7.7" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#učitavanje-podatkovnog-okvira-sadržanog-u-r-u"><i class="fa fa-check"></i><b>7.7.7</b> Učitavanje podatkovnog okvira sadržanog u R-u</a></li>
+<li class="chapter" data-level="7.7.8" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#izračun-pokazatelja-deskriptivne-statistike"><i class="fa fa-check"></i><b>7.7.8</b> Izračun pokazatelja deskriptivne statistike</a></li>
+<li class="chapter" data-level="7.7.9" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#pretvaranje-varijable-u-faktor-unutar-postojećeg-podatkovnog-okvira"><i class="fa fa-check"></i><b>7.7.9</b> Pretvaranje varijable u faktor unutar postojećeg podatkovnog okvira</a></li>
+<li class="chapter" data-level="7.7.10" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#pretvaranje-podatkovnog-okvira-u-tablicu"><i class="fa fa-check"></i><b>7.7.10</b> Pretvaranje podatkovnog okvira u tablicu</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#prednosti-i-nedostaci-rada-s-podatkovnim-okvirima-te-najčešće-greške"><i class="fa fa-check"></i><b>7.8</b> Prednosti i nedostaci rada s podatkovnim okvirima te najčešće greške</a></li>
+<li class="chapter" data-level="" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#pitanja-za-ponavljanje-11"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+<li class="chapter" data-level="7.9" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#kreiranjetablica"><i class="fa fa-check"></i><b>7.9</b> Kreiranje tablica</a></li>
+<li class="chapter" data-level="7.10" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#prednosti-i-nedostaci-tablica-te-najčešće-greške"><i class="fa fa-check"></i><b>7.10</b> Prednosti i nedostaci tablica te najčešće greške</a></li>
+<li class="chapter" data-level="" data-path="visediomenzionalni-tipovi-podataka.html"><a href="visediomenzionalni-tipovi-podataka.html#pitanja-za-ponavljanje-12"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="uvozpodataka.html"><a href="uvozpodataka.html"><i class="fa fa-check"></i><b>8</b> Uvoz podataka</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="uvozpodataka.html"><a href="uvozpodataka.html#uvoz-podataka-pohranjenih-na-računalu"><i class="fa fa-check"></i><b>8.1</b> Uvoz podataka pohranjenih na računalu</a></li>
+<li class="chapter" data-level="8.2" data-path="uvozpodataka.html"><a href="uvozpodataka.html#uvoz-podataka-iz-r-paketa"><i class="fa fa-check"></i><b>8.2</b> Uvoz podataka iz R paketa</a></li>
+<li class="chapter" data-level="8.3" data-path="uvozpodataka.html"><a href="uvozpodataka.html#dohvaćanje-i-uvoz-podataka-iz-online-izvora"><i class="fa fa-check"></i><b>8.3</b> Dohvaćanje i uvoz podataka iz online izvora</a></li>
+<li class="chapter" data-level="8.4" data-path="uvozpodataka.html"><a href="uvozpodataka.html#uvoz-podataka-iz-baza-podataka"><i class="fa fa-check"></i><b>8.4</b> Uvoz podataka iz baza podataka</a></li>
+<li class="chapter" data-level="8.5" data-path="uvozpodataka.html"><a href="uvozpodataka.html#uobičajene-greške-pri-uvozu-podataka"><i class="fa fa-check"></i><b>8.5</b> Uobičajene greške pri uvozu podataka</a></li>
+<li class="chapter" data-level="" data-path="uvozpodataka.html"><a href="uvozpodataka.html#pitanja-za-ponavljanje-13"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html"><i class="fa fa-check"></i><b>9</b> Elementi kontrole toka</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html#for"><i class="fa fa-check"></i><b>9.1</b> for</a></li>
+<li class="chapter" data-level="9.2" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html#apply-sapply-lapply"><i class="fa fa-check"></i><b>9.2</b> apply, sapply, lapply</a></li>
+<li class="chapter" data-level="9.3" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html#if"><i class="fa fa-check"></i><b>9.3</b> if</a></li>
+<li class="chapter" data-level="9.4" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html#ifelse"><i class="fa fa-check"></i><b>9.4</b> ifelse</a></li>
+<li class="chapter" data-level="9.5" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html#razlika-između-ifelse-i-kombinecije-if-i-else"><i class="fa fa-check"></i><b>9.5</b> Razlika između ifelse i kombinecije if i else</a></li>
+<li class="chapter" data-level="9.6" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html#switch"><i class="fa fa-check"></i><b>9.6</b> switch</a></li>
+<li class="chapter" data-level="9.7" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html#while"><i class="fa fa-check"></i><b>9.7</b> while</a></li>
+<li class="chapter" data-level="" data-path="elementikontroletoka.html"><a href="elementikontroletoka.html#pitanja-za-ponavljanje-14"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="kreiranjefunkcija.html"><a href="kreiranjefunkcija.html"><i class="fa fa-check"></i><b>10</b> Kreiranje funkcija</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="kreiranjefunkcija.html"><a href="kreiranjefunkcija.html#funkcije-s-više-argumenata"><i class="fa fa-check"></i><b>10.1</b> Funkcije s više argumenata</a></li>
+<li class="chapter" data-level="10.2" data-path="kreiranjefunkcija.html"><a href="kreiranjefunkcija.html#zadane-vrijednosti-argumenata"><i class="fa fa-check"></i><b>10.2</b> Zadane vrijednosti argumenata</a></li>
+<li class="chapter" data-level="10.3" data-path="kreiranjefunkcija.html"><a href="kreiranjefunkcija.html#funkcije-koje-vraćaju-više-vrijednosti"><i class="fa fa-check"></i><b>10.3</b> Funkcije koje vraćaju više vrijednosti</a></li>
+<li class="chapter" data-level="" data-path="kreiranjefunkcija.html"><a href="kreiranjefunkcija.html#pitanja-za-ponavljanje-15"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="jednostavnevizualizacije.html"><a href="jednostavnevizualizacije.html"><i class="fa fa-check"></i><b>11</b> Jednostavne vizualizacije</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="jednostavnevizualizacije.html"><a href="jednostavnevizualizacije.html#primjeri-najčešće-korištenih-vizualizacija"><i class="fa fa-check"></i><b>11.1</b> Primjeri najčešće korištenih vizualizacija</a></li>
+<li class="chapter" data-level="11.2" data-path="jednostavnevizualizacije.html"><a href="jednostavnevizualizacije.html#prilagodba-grafikona"><i class="fa fa-check"></i><b>11.2</b> Prilagodba grafikona</a></li>
+<li class="chapter" data-level="11.3" data-path="jednostavnevizualizacije.html"><a href="jednostavnevizualizacije.html#prednosti-i-nedostaci-vizualizacija-u-r-u-te-najčešće-pogreške"><i class="fa fa-check"></i><b>11.3</b> Prednosti i nedostaci vizualizacija u R-u te najčešće pogreške</a></li>
+<li class="chapter" data-level="" data-path="jednostavnevizualizacije.html"><a href="jednostavnevizualizacije.html#pitanja-za-ponavljanje-16"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="primjerupravljanjapodacima.html"><a href="primjerupravljanjapodacima.html"><i class="fa fa-check"></i><b>12</b> Primjer upravljanja podacima</a>
+<ul>
+<li class="chapter" data-level="" data-path="primjerupravljanjapodacima.html"><a href="primjerupravljanjapodacima.html#pitanja-za-ponavljanje-17"><i class="fa fa-check"></i>Pitanja za ponavljanje</a></li>
+<li class="chapter" data-level="" data-path="primjerupravljanjapodacima.html"><a href="primjerupravljanjapodacima.html#zadaci"><i class="fa fa-check"></i>Zadaci</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="prilagodbara.html"><a href="prilagodbara.html"><i class="fa fa-check"></i><b>13</b> Prilagodba R-a</a></li>
+<li class="chapter" data-level="" data-path="literatura.html"><a href="literatura.html"><i class="fa fa-check"></i>Literatura</a></li>
+<li class="divider"></li>
+<li><img src='unipu.png' width='250px'></li>
+<li><a href=" " target="blank"> <br> Published with bookdown </a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Uvod u R i R Studio</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="kreiranjefunkcija" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number"> 10</span> Kreiranje funkcija<a href="kreiranjefunkcija.html#kreiranjefunkcija" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Kreiranje vlastitih funkcija u R-u omogućava nam da modulariziramo kod i grupiramo ponavljajuće zadatke u ponovno upotrebljive blokove. Na taj način smanjujemo potrebu za ponavljanjem koda, poboljšavamo čitljivost te omogućavamo brže i jednostavnije promjene u budućnosti. Ovo poglavlje pokriva osnovne primjere, kao što su jednostavne funkcije s jednim argumentom, funkcije s više argumenata i funkcije koje vraćaju više izlaznih vrijednosti koristeći složene strukture podataka, poput lista. Također, upoznat ćemo se s funkcijama koje omogućuju postavljanje zadane vrijednosti za argumente, što korisnicima daje dodatnu fleksibilnost pri pozivanju funkcije bez potrebe za unosom svakog argumenta.</p>
+<p>U R-u, funkcije se kreiraju pomoću ključne riječi <strong>function</strong>. Osnovna sintaksa za kreiranje funkcije je sljedeća:</p>
+<p><code> ime_funkcije &lt;- function(argumenti) { </code></p>
+<p><code> # tijelo funkcije </code></p>
+<p><code> return(vrijednost) </code></p>
+<p><code> } </code></p>
+<p>Gdje je <em>ime_funkcije</em> ime koje dajete funkciji, <em>argumenti</em> su ulazni parametri funkcije, a <em>vrijednost</em> je ono što funkcija vraća. <code>return()</code> neće uvijek biti potreban jer R automatski vraća posljednju liniju iz tijela funkcije, ali ako je output strukturiran, treba koristiti tu naredbu.</p>
+<p>Evo jednostavnog primjera funkcije koja izračunava kvadrat broja:</p>
+<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="kreiranjefunkcija.html#cb574-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> kvadrat <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb574-2"><a href="kreiranjefunkcija.html#cb574-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   rezultat <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb574-3"><a href="kreiranjefunkcija.html#cb574-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">return</span>(rezultat)</span>
+<span id="cb574-4"><a href="kreiranjefunkcija.html#cb574-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span></code></pre></div>
+<p>U ovom primjeru, funkcija kvadrat prima jedan argument x i vraća njegov kvadrat. Možemo isprobati kako radi, tako što ćemo pozvati definiranu funkciju <code>kvadrat()</code> i unijeti argument, npr. 5.</p>
+<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb575-1"><a href="kreiranjefunkcija.html#cb575-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">kvadrat</span>(<span class="dv">5</span>)</span></code></pre></div>
+<pre class="chunk-background"><code>## [1] 25</code></pre>
+<p>Evo još jednog primjera, funkcije koja računa prosječnu vrijednost niza brojeva:</p>
+<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="kreiranjefunkcija.html#cb577-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> prosjek <span class="ot">&lt;-</span> <span class="cf">function</span>(brojevi) {</span>
+<span id="cb577-2"><a href="kreiranjefunkcija.html#cb577-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   suma <span class="ot">&lt;-</span> <span class="fu">sum</span>(brojevi)</span>
+<span id="cb577-3"><a href="kreiranjefunkcija.html#cb577-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   broj_elemenata <span class="ot">&lt;-</span> <span class="fu">length</span>(brojevi)</span>
+<span id="cb577-4"><a href="kreiranjefunkcija.html#cb577-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">return</span>(suma <span class="sc">/</span> broj_elemenata)</span>
+<span id="cb577-5"><a href="kreiranjefunkcija.html#cb577-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span></code></pre></div>
+<p>Primjer upotrebe:</p>
+<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="kreiranjefunkcija.html#cb578-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> vektor <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">35</span>, <span class="dv">12</span>)</span>
+<span id="cb578-2"><a href="kreiranjefunkcija.html#cb578-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb578-3"><a href="kreiranjefunkcija.html#cb578-3" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">prosjek</span>(vektor)</span></code></pre></div>
+<pre class="chunk-background"><code>## [1] 33.68962</code></pre>
+<p>Kreiranje funkcija na ovaj način omogućuje vam da zapakirate ponavljajuće zadatke u ponovno upotrebljive blokove koda, što čini vaše programiranje u R-u efikasnijim i urednijim.</p>
+<div id="funkcije-s-više-argumenata" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> Funkcije s više argumenata<a href="kreiranjefunkcija.html#funkcije-s-više-argumenata" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Funkcije mogu imati više argumenata koji omogućuju veću fleksibilnost i prilagodbu njihovog ponašanja.</p>
+<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb580-1"><a href="kreiranjefunkcija.html#cb580-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> zbroj_i_umnozak <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb580-2"><a href="kreiranjefunkcija.html#cb580-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   zbroj <span class="ot">&lt;-</span> x <span class="sc">+</span> y</span>
+<span id="cb580-3"><a href="kreiranjefunkcija.html#cb580-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   umnozak <span class="ot">&lt;-</span> x <span class="sc">*</span> y</span>
+<span id="cb580-4"><a href="kreiranjefunkcija.html#cb580-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">return</span>(<span class="fu">list</span>(<span class="st">&quot;Zbroj&quot;</span> <span class="ot">=</span> zbroj, <span class="st">&quot;Umnozak&quot;</span> <span class="ot">=</span> umnozak))</span>
+<span id="cb580-5"><a href="kreiranjefunkcija.html#cb580-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span></code></pre></div>
+<p>Kreirana je funkcija <code>zbroj_i_umnozak()</code> kao primjer funkcije koja prima dva argumenta (x i y), izračunava njihov zbroj i umnožak, te vraća obje vrijednosti kao listu. Postupak kreiranja:</p>
+<ul>
+<li><p>Funkcija počinje s ključnom riječi <em>function</em> nakon koje slijede argumenti funkcije unutar zagrada (x, y). Ovi argumenti su varijable koje funkcija očekuje kada se pozove.</p></li>
+<li><p>Unutar tijela funkcije, prvo se izračunava zbroj dvaju brojeva pohranjenih u varijablama x i y, a zatim se izračunava njihov umnožak. Rezultati se pohranjuju u varijable zbroj i umnožak.</p></li>
+<li><p>Potom funkcija vraća listu koja sadrži oba rezultata: zbroj i umnožak. Lista je složeni objekt u R-u koji može sadržavati više elemenata različitih tipova. Ovdje, elementi liste imaju nazive „zbroj” i „umnozak” kojima se može pristupiti po imenu.</p></li>
+</ul>
+<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="kreiranjefunkcija.html#cb581-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> rezultat <span class="ot">&lt;-</span> <span class="fu">zbroj_i_umnozak</span>(<span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb581-2"><a href="kreiranjefunkcija.html#cb581-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">print</span>(rezultat)</span></code></pre></div>
+<pre class="chunk-background"><code>## $Zbroj
+## [1] 9
+## 
+## $Umnozak
+## [1] 20</code></pre>
+<p>Pozivanje funkcije odvija se na sljedeći način:</p>
+<ul>
+<li>Funkcija se može pozvati s dva brojna argumenta, npr., <code>zbroj_i_umnozak(4, 5)</code>. Ovaj poziv funkcije izračunat će zbroj (4 + 5 = 9) i umnožak (4 * 5 = 20) brojeva 4 i 5, te će vratiti listu s rezultatima.</li>
+<li>Korištenjem <code>print(rezultat)</code>, gdje je rezultat varijabla u koju je pohranjen povrat funkcije, može se prikazati izlaz funkcije u konzoli.</li>
+</ul>
+</div>
+<div id="zadane-vrijednosti-argumenata" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> Zadane vrijednosti argumenata<a href="kreiranjefunkcija.html#zadane-vrijednosti-argumenata" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Funkcije mogu imati zadane vrijednosti za neke ili sve argumente, što korisnicima omogućava da ih pozovu bez potrebe za specificiranjem svih argumenata. To znači da kada pozivate funkciju, nije potrebno specificirati vrijednost za svaki argument ako je za njega već postavljena defaultna vrijednost. Ovo je korisno za postavljanje standardnih opcija ili vrijednosti koje su najčešće korištene, omogućujući korisniku da preskoči unos tih vrijednosti pri svakom pozivu funkcije.</p>
+<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="kreiranjefunkcija.html#cb583-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> pozdrav <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">ime =</span> <span class="st">&quot;Svijete&quot;</span>) {</span>
+<span id="cb583-2"><a href="kreiranjefunkcija.html#cb583-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   poruka <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&quot;Pozdrav,&quot;</span>, ime, <span class="st">&quot;!&quot;</span>)</span>
+<span id="cb583-3"><a href="kreiranjefunkcija.html#cb583-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">return</span>(poruka)</span>
+<span id="cb583-4"><a href="kreiranjefunkcija.html#cb583-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span>
+<span id="cb583-5"><a href="kreiranjefunkcija.html#cb583-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb583-6"><a href="kreiranjefunkcija.html#cb583-6" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">pozdrav</span>()</span></code></pre></div>
+<pre class="chunk-background"><code>## [1] &quot;Pozdrav, Svijete !&quot;</code></pre>
+<p>Ako funkciju pozovemo bez argumenata, ispisuju se zadane vrijednosti. Ova funkcija ispisuje pozdravnu poruku, koristeći zadano ime „Svijete” ako korisnik ne specificira drugačije. No, ako upišemo argument, na primjer, „Ana”, onda će upravo taj argument zamijeniti zadani argument.</p>
+<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb585-1"><a href="kreiranjefunkcija.html#cb585-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">pozdrav</span>(<span class="st">&quot;Ana&quot;</span>)</span></code></pre></div>
+<pre class="chunk-background"><code>## [1] &quot;Pozdrav, Ana !&quot;</code></pre>
+<p>Ako u argument upišemo vektor, funkcija će ponoviti radnju za svaki element vektora.</p>
+<div class="sourceCode" id="cb587"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb587-1"><a href="kreiranjefunkcija.html#cb587-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">pozdrav</span>(<span class="fu">c</span>(<span class="st">&quot;Ana&quot;</span>, <span class="st">&quot;Marija&quot;</span>, <span class="st">&quot;Lidija&quot;</span>))</span></code></pre></div>
+<pre class="chunk-background"><code>## [1] &quot;Pozdrav, Ana !&quot;    &quot;Pozdrav, Marija !&quot; &quot;Pozdrav, Lidija !&quot;</code></pre>
+</div>
+<div id="funkcije-koje-vraćaju-više-vrijednosti" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">10.3</span> Funkcije koje vraćaju više vrijednosti<a href="kreiranjefunkcija.html#funkcije-koje-vraćaju-više-vrijednosti" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Funkcije mogu vratiti više vrijednosti pomoću listi ili drugih složenih struktura podataka.</p>
+<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb589-1"><a href="kreiranjefunkcija.html#cb589-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> pokazatelji <span class="ot">&lt;-</span> <span class="cf">function</span>(brojevi) {</span>
+<span id="cb589-2"><a href="kreiranjefunkcija.html#cb589-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   prosjek <span class="ot">&lt;-</span> <span class="fu">mean</span>(brojevi)</span>
+<span id="cb589-3"><a href="kreiranjefunkcija.html#cb589-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   medijan <span class="ot">&lt;-</span> <span class="fu">median</span>(brojevi)</span>
+<span id="cb589-4"><a href="kreiranjefunkcija.html#cb589-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   maksimum <span class="ot">&lt;-</span> <span class="fu">max</span>(brojevi)</span>
+<span id="cb589-5"><a href="kreiranjefunkcija.html#cb589-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   minimum <span class="ot">&lt;-</span> <span class="fu">min</span>(brojevi)</span>
+<span id="cb589-6"><a href="kreiranjefunkcija.html#cb589-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">return</span>(<span class="fu">list</span>(<span class="st">&quot;Prosjek&quot;</span> <span class="ot">=</span> prosjek, <span class="st">&quot;Medijan&quot;</span> <span class="ot">=</span> medijan, </span>
+<span id="cb589-7"><a href="kreiranjefunkcija.html#cb589-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>               <span class="st">&quot;Maksimum&quot;</span> <span class="ot">=</span> maksimum, <span class="st">&quot;Minimum&quot;</span> <span class="ot">=</span> minimum))</span>
+<span id="cb589-8"><a href="kreiranjefunkcija.html#cb589-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span></code></pre></div>
+<p>Pri kreiranju funkcije koja treba vratiti više vrijednosti, uobičajeni pristup je te vrijednosti pohraniti u listu. Lista može sadržavati elemente različitih tipova i dužina, što je čini idealnom za grupiranje više vrijednosti koje funkcija treba vratiti. U navedenom primjeru, funkcija <em>pokazatelji</em> prihvaća vektor <em>brojevi</em> kao ulazni argument i izračunava nekoliko pokazatelja deskriptivne statistike (prosjek, medijan, maksimum, minimum). Svaki izračunati pokazatelj (prosjek, medijan, maksimum, minimum) kreira zasebnu varijablu. Na kraju, ove se varijable spajaju u listu koristeći funkciju <code>list()</code>, gdje se svakoj vrijednosti dodjeljuje ime (npr., „Prosjek”, „Medijan”, itd.). Ova imena koriste se za identifikaciju pojedinih elemenata liste kada se lista vrati kao rezultat funkcije.</p>
+<div class="sourceCode" id="cb590"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb590-1"><a href="kreiranjefunkcija.html#cb590-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> vektor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">100</span>)</span>
+<span id="cb590-2"><a href="kreiranjefunkcija.html#cb590-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> rezultat <span class="ot">&lt;-</span> <span class="fu">pokazatelji</span>(vektor)</span>
+<span id="cb590-3"><a href="kreiranjefunkcija.html#cb590-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">print</span>(rezultat)</span></code></pre></div>
+<pre class="chunk-background"><code>## $Prosjek
+## [1] 19.16667
+## 
+## $Medijan
+## [1] 3.5
+## 
+## $Maksimum
+## [1] 100
+## 
+## $Minimum
+## [1] 1</code></pre>
+<p>Ova funkcija izračunava i vraća prosjek, medijan, maksimum, i minimum niza brojeva. Ovi primjeri ilustriraju kako R omogućuje razvijanje funkcija koje su moćne, fleksibilne i prilagodljive potrebama korisnika.</p>
+<p>Kada se funkcija pozove, može se pristupiti pojedinim elementima vraćene liste koristeći oznaku <code>$</code> i imena elemenata.</p>
+<div class="sourceCode" id="cb592"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb592-1"><a href="kreiranjefunkcija.html#cb592-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> rezultat<span class="sc">$</span>Prosjek</span></code></pre></div>
+<pre class="chunk-background"><code>## [1] 19.16667</code></pre>
+<p>Korištenjem lista na ovaj način, funkcije u R-u mogu efikasno upravljati i vraćati više izlaznih vrijednosti, čineći kod fleksibilnijim i čitljivijim.</p>
+</div>
+<div id="pitanja-za-ponavljanje-15" class="section level2 unnumbered hasAnchor">
+<h2>Pitanja za ponavljanje<a href="kreiranjefunkcija.html#pitanja-za-ponavljanje-15" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><p>Kako se definira funkcija u R-u, i koja je svrha ključne riječi function pri kreiranju funkcije?</p></li>
+<li><p>Koja je razlika između korištenja <code>return()</code> unutar tijela funkcije i izostavljanja te naredbe u R-u?</p></li>
+<li><p>Napišite jednostavnu funkciju koja izračunava kub broja. Kako biste pozvali tu funkciju za broj 3?</p></li>
+<li><p>Kako možete kreirati funkciju koja prima dva argumenta i vraća njihov zbroj i umnožak kao listu?</p></li>
+<li><p>Što su zadane vrijednosti argumenata u funkciji i kako one poboljšavaju fleksibilnost poziva funkcije? Navedite primjer.</p></li>
+<li><p>Koje su prednosti korištenja lista kao povrata iz funkcije kada je potrebno vratiti više vrijednosti?</p></li>
+<li><p>Kako možete definirati funkciju koja ima zadanu vrijednost za argument, ali omogućava korisniku da tu vrijednost promijeni pri pozivu funkcije?</p></li>
+<li><p>Kreirajte funkciju koja prima niz brojeva i vraća listu koja sadrži srednju vrijednost, standardnu devijaciju i raspon.</p></li>
+<li><p>Što će se dogoditi ako pozovete funkciju pozdrav s vektorom imena </code>c(“Ana,” “Ivan”)</code>? Objasnite kako R rukuje vektorima unutar funkcija.</p></li>
+<li><p>Kako biste u povratnoj vrijednosti iz funkcije pristupili specifičnom elementu liste, primjerice medijanu iz prethodne funkcije koja vraća deskriptivne statističke pokazatelje?</p></li>
+</ol>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="elementikontroletoka.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="jednostavnevizualizacije.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="site_libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="site_libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="site_libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="site_libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="site_libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="site_libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="site_libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="site_libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": false,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true,
+"toolbar": {
+"position": "fixed"
+}
+},
+"toc_depth": 2,
+"lot": true,
+"lof": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

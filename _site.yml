@@ -1,0 +1,15 @@
+name: "Uvod u R i R Studio"
+output_dir: "docs"
+include:
+  in_header: "header.html" 
+output:
+  bookdown::gitbook:
+    config:
+      toc:
+        collapse: subsection
+      edit: null
+      download: ["pdf", "epub"]
+  bookdown::pdf_document2:
+    keep_tex: true
+  bookdown::epub_book:
+    keep_tex: true

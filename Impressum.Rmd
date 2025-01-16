@@ -1,0 +1,80 @@
+---
+title: " "
+author: " "
+date: " "
+output: html_document
+---
+![ ](cover.png)
+\pagebreak
+
+<br>
+<br>
+
+<div style="display:none;">
+# Impressum {-}
+</div>
+
+<br>
+<br>
+
+<div style="text-align: center;">
+
+<p style="font-size: 16px"> Izdavač i sjedište </p>
+
+<p style="font-size: 14px"> <strong> Sveučilište Jurja Dobrile u Puli </strong></p>
+Zagrebačka 30, Pula
+
+<br>
+
+<p style="font-size: 16px"> Za izdavača </p>
+
+<p style="font-size: 14px"> <strong> prof. dr. sc. Marinko Škare </strong></p>
+
+<br>
+
+<p style="font-size: 16px"> Autori</p>
+
+<p style="font-size: 14px"> <strong> Katarina Kostelić </strong></p>
+
+<p style="font-size: 14px"> <strong> Darko Etinger </strong></p>
+
+<br>
+
+<p style="font-size: 16px"> Recenzenti:</p>
+
+<p style="font-size: 14px"> <strong> Siniša Sovilj </strong></p>
+<p style="font-size: 14px"> <strong> Siniša Miličić </strong></p>
+<p style="font-size: 14px"> <strong> Ivan Lorencin </strong></p>
+<p style="font-size: 14px"> <strong> Marko Turk </strong></p>
+
+<br>
+<p style="font-size: 16px"> Lektura:</p>
+<p style="font-size: 14px"><strong> Nitor usluge d.o.o.</strong></p> 
+Petračićeva 4, 10000 Zagreb
+
+
+<br>
+<br>
+
+<p style="font-size: 16px"> Grafičko oblikovanje i prijelom </p>
+
+<p style="font-size: 14px"> <strong> RMarkdown, gitbook, DALL·E </strong></p>
+
+<br>
+
+
+<p style="font-size: 16px"> ISBN </p>
+
+<br>
+
+<p style="font-size: 16px"> DOI </p>
+
+<br>
+
+<p style="font-size: 16px"> Broj i datum odluke Odbora za izdavačku djelatnost:</p>
+
+<p style="font-size: 14px"> <strong> Sveučilišni priručnik je objavljen na temelju Odluke Odbora za izdavačku djelatnost Sveučilišta Jurja Dobrile u Puli, KLASA: </strong></p>
+
+</div>
+
+\pagebreak
